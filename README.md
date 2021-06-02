@@ -77,6 +77,7 @@
 
 ## Deployed Personal Bio Site [![Netlify Status](https://api.netlify.com/api/v1/badges/1b4bfa03-03a1-4e40-ab79-f85ffed56070/deploy-status)](https://app.netlify.com/sites/jim-conner/deploys)
 - [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
+- [Bio Site Repo](https://github.com/jim-conner/personal-bio-react)
 
 <!-- ## Video Walkthrough of APP NAME -->
 

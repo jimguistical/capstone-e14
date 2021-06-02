@@ -1,31 +1,33 @@
  # Social Service Explorer
 
 ## Project Overview
-- This app enables social workers and other social services providers to collect and organize nonprofit and government resources and services that are relevant to their clients' needs.
-## About the User <!-- This is a scaled down user persona -->
-- Ideal user is a government worker, social services provider, or other non-profit/religious group interested in creating an easily accessible reference of services offered throughout the Nashville area. 
+- This app enables the user to search for local resources and save contact info from relevant Service Sites.
+
+## About the User
+- Ideal user is a resident of Nashville/Davidson Co. who is skeeing community services/resources relevant to their needs. 
 
 ## Features 
-- Google Authentication for user
-- User can create a new organization to add to the resource list
-- User can read a list of all organizations and services
-- User can update the organizations' address, contact info, and services
-- User can delete organizations from their list
-
-## Video Walkthrough of APP NAME <!-- A loom link is sufficient -->
+- Google Authentication
+- User can create an account on login to save relevant Service Sites
+- User can filter search results based on available services
+- User can read Service Sites that they select
+- User can update Service Sites on their list
+- User can delete their list
+#### STRETCH:
+- User add contact number & zip code on a form to filter Service Sites from their list by distance from user (using zip code or use browser location data)
+- User can select preferred days of the week to visit Service Site on form to filter for Service Sites that are not closed on the given day(s).
+- User can view a map of all Service Sites avaiable pinned to a Google Map view of Davidson Co.
+- User can view a map of Davidson County with their selected sites only
 
 ## Relevant Links:
-- [Project Board](https://github.com/jim-conner/capstone-e14/projects/1)
+- [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
+<!-- - [Project Board](https://github.com/jim-conner/capstone-e14/projects/1) -->
 <!-- - [Check out the deployed site](#your-link) -->
 <!-- - [Wireframes](#your-link) -->
-- [ERD with embedded link]<iframe width="560" height="315" src='https://dbdiagram.io/embed/60b66194b29a09603d178256'> </iframe>
-[ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
 
-## Deployed Personal Bio Site [![Netlify Status](https://api.netlify.com/api/v1/badges/1b4bfa03-03a1-4e40-ab79-f85ffed56070/deploy-status)](https://app.netlify.com/sites/jim-conner/deploys)
-- [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
 ## Code Snippet
-- example of get request: https://data.nashville.gov/resource/797j-5xh2.json?building=Cohn Community Center
-`[
+- example of get request for specific org: `https://data.nashville.gov/resource/797j-5xh2.json?building=Cohn Community Center`
+```[
     {
         "organization_name": "Metro Social Services",
         "organization_type": "Congregated Meals Site",
@@ -70,9 +72,15 @@
             "human_address": "{\"address\": \"4805 Park Avenue\", \"city\": \"Nashville\", \"state\": \"TN\", \"zip\": \"37209\"}"
         }
     }
-]`
+]
+```
 
-<!-- ## Project Screenshots These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
+## Deployed Personal Bio Site [![Netlify Status](https://api.netlify.com/api/v1/badges/1b4bfa03-03a1-4e40-ab79-f85ffed56070/deploy-status)](https://app.netlify.com/sites/jim-conner/deploys)
+- [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
+
+<!-- ## Video Walkthrough of APP NAME -->
+
+<!-- ## Project Screenshots These can be inside of your project. -->
 <!-- <img width="1148" alt="Your Alt" src="your-link.png"> -->
 <!-- ![Alt Text Here](https://www.yourlinkhere.com) -->
 

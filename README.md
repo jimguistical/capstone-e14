@@ -22,7 +22,7 @@
 [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
 
 ## Deployed Personal Bio Site [![Netlify Status](https://api.netlify.com/api/v1/badges/1b4bfa03-03a1-4e40-ab79-f85ffed56070/deploy-status)](https://app.netlify.com/sites/jim-conner/deploys)
-- [Bio Site](https://jim-conner.netlify.app/)
+- [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
 ## Code Snippet
 - example of get request: https://data.nashville.gov/resource/797j-5xh2.json?building=Cohn Community Center
 `[

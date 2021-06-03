@@ -1,10 +1,10 @@
  # Social Service Explorer
 
 ## Project Overview
-- This app enables the user to search for local resources and save contact info from relevant Service Sites.
+- This app enables the user to search for local services/resources and save a list of relevant Service Sites.
 
 ## About the User
-- Ideal user is a resident of Nashville/Davidson Co. who is skeeing community services/resources relevant to their needs. 
+- Ideal user is a resident of Nashville/Davidson Co. who is seeking community services/resources relevant to their needs. 
 
 ## Features 
 - Google Authentication

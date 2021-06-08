@@ -21,9 +21,9 @@
 
 ## Relevant Links:
 - [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
-<!-- - [Project Board](https://github.com/jim-conner/capstone-e14/projects/1) -->
+- [Project Board](https://github.com/jim-conner/capstone-e14/projects/1)
 <!-- - [Check out the deployed site](#your-link) -->
-<!-- - [Wireframes](#your-link) -->
+- [Wireframes & Work Flow Google Presentation](https://docs.google.com/presentation/d/1A5SCPPLKYg6TkFqRbmKZ4inmh-UfrmH2fbheuLv-Zm4/edit#slide=id.gdf1d490e82_0_173)
 
 ## Code Snippet
 - example of get request for specific org: `https://data.nashville.gov/resource/797j-5xh2.json?building=Cohn Community Center`

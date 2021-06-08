@@ -8,11 +8,11 @@
 
 ## Features 
 - Google Authentication
-- User can create an account on login to save relevant Service Sites
-- User can filter search results based on available services
-- User can read Service Sites that they select
+- User can READ all Service Sites on App load
+- User can READ all Service Sites on App load
+- User can CREATE a List to save relevant Service Sites after logging in
 - User can update Service Sites on their list
-- User can delete their list
+- User can delete their entire list
 #### STRETCH:
 - User add contact number & zip code on a form to filter Service Sites from their list by distance from user (using zip code or use browser location data)
 - User can select preferred days of the week to visit Service Site on form to filter for Service Sites that are not closed on the given day(s).
@@ -22,11 +22,10 @@
 ## Relevant Links:
 - [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
 - [Project Board](https://github.com/jim-conner/capstone-e14/projects/1)
-<!-- - [Check out the deployed site](#your-link) -->
 - [Wireframes & Work Flow Google Presentation](https://docs.google.com/presentation/d/1A5SCPPLKYg6TkFqRbmKZ4inmh-UfrmH2fbheuLv-Zm4/edit#slide=id.gdf1d490e82_0_173)
 
 ## Code Snippet
-- example of get request for specific org: `https://data.nashville.gov/resource/797j-5xh2.json?building=Cohn Community Center`
+- example of GET request from Postman: `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token={{MSS_APP_KEY}}&building=Cohn Community Center`
 ```[
     {
         "organization_name": "Metro Social Services",

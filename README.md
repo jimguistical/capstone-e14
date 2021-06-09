@@ -9,7 +9,7 @@
 ## Features 
 - Google Authentication
 - User can READ all Service Sites on App load
-- User can READ all Service Sites on App load
+- User who is authenticated can READ Service Sites on their own list
 - User can CREATE a List to save relevant Service Sites after logging in
 - User can update Service Sites on their list
 - User can delete their entire list

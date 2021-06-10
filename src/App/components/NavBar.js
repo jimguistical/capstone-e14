@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import {
   Collapse,
@@ -7,7 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
+  // NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -22,16 +23,17 @@ function NavBar() {
   return (
     <div>
       <div>
-      <Navbar color="dark" light expand="md">
-        <NavbarBrand href="/">Branding here</NavbarBrand>
+      <Navbar dark color="dark" expand="md">
+        <NavbarBrand href="/">Social Services Explorer</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/allsites/">Browse All Service Sites</NavLink>
+            <Link className="nav-link" to="/add-player">Browse Service Sites</Link>
+
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+            <Link className="nav-link" to="/add-player">My List</Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

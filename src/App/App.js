@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.scss';
+import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
       <Router>
         <NavBar/>
         {/* <Routes/> */}
-        {/* footer and jumbo too */}
+        {/* jumbo here */}
+        <Footer/>
       </Router>
     </div>
   );

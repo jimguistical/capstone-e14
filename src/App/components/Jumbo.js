@@ -6,8 +6,8 @@ function Jumbo() {
     <div>
        <Jumbotron fluid>
         <Container fluid>
-          <h1 className="display-3">Fluid jumbotron</h1>
-          <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+          <h3 className="display-5">Find Help in Nashville</h3>
+          <p className="lead">Browse available services sites and resources or sign in to customize a resource list.</p>
         </Container>
       </Jumbotron>
     </div>

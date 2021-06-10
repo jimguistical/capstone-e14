@@ -8,13 +8,30 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavbarText
+  // Button
 } from 'reactstrap';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  // const authButtons = () => (
+  //   <>
+  //     <NavItem>
+  //       {
+  //         user !== null
+  //         && <div>
+  //           {
+  //             user
+  //               ? <Button color='danger' onClick={signOutUser}>SIGN OUT</Button>
+  //               : <Button color='info' onClick={signInUser}>SIGN IN</Button>
+  //           }
+  //         </div>
+  //       }
+  //       </NavItem>
+  //   </>
+  // );
   return (
     <div>
       <div>
@@ -31,7 +48,6 @@ function NavBar() {
             <Link className="nav-link" to="/add-player">My List</Link>
             </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>

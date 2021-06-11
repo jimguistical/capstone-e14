@@ -6,10 +6,10 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  // NavbarBrand,
+  NavbarBrand,
   Nav,
   NavItem,
-  Button
+  Button,
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../../helpers/auth';
 
@@ -38,7 +38,7 @@ function NavBar({ user }) {
     <div>
       <div>
       <Navbar dark color="dark" expand="md">
-        <Link className="nav-brand" to="/">Social Services Explorer</Link>
+        <NavbarBrand className="nav-brand" to="/">Social Services Explorer</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -48,9 +48,7 @@ function NavBar({ user }) {
             <NavItem>
             <Link className="nav-link" to="/mylist">My List</Link>
             </NavItem>
-            <NavItem>
               {authButtons()}
-            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

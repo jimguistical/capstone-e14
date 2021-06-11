@@ -19,7 +19,7 @@ function App() {
           userName: userInState.email.split('@')[0]
         };
         setUser(userInfoObject);
-        // get request here
+        console.warn('get request here, logged in');
         // getSites(userInState.uid).then((sitesArray) => setSites(sitesArray))
       } else if (user || user === null) {
         console.warn('not logged in', sites);

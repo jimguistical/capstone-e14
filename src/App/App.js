@@ -5,6 +5,7 @@ import './App.scss';
 import Footer from './components/Footer';
 import Jumbo from './components/Jumbo';
 import NavBar from './components/NavBar';
+import getSites from '../helpers/data/siteData';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,7 +21,7 @@ function App() {
         };
         setUser(userInfoObject);
         console.warn('get request here, logged in');
-        // getSites(userInState.uid).then((sitesArray) => setSites(sitesArray))
+        getSites(userInState.uid).then((sitesArray) => setSites(sitesArray));
       } else if (user || user === null) {
         console.warn('not logged in', sites);
         setUser(false);

@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+.projectHolder {
+  // background-color: #90b0b6;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 10%;
+  justify-content: center;
+  // margin-bottom: 10%;
+}
+.customizedCard {
+  max-width: 300px;
+  overflow: hidden;
+  margin-top: auto;
+  border: none !important;
+}

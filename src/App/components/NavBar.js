@@ -48,7 +48,7 @@ function NavBar({ user }) {
             <NavItem>
             <Link className="nav-link" to="/mylist">My List</Link>
             </NavItem>
-              {authButtons()}
+            {authButtons()}
           </Nav>
         </Collapse>
       </Navbar>

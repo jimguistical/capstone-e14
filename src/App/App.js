@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase';
 import './App.scss';
 import Footer from './components/Footer';
 import Jumbo from './components/Jumbo';
@@ -10,6 +9,7 @@ import NavBar from './components/NavBar';
 function App() {
   const [user, setUser] = useState(null);
   const [sites, setSites] = useState([]);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInState) => {
       if (userInState) {

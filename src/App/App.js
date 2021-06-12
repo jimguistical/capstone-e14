@@ -20,9 +20,7 @@ function App() {
         };
         setUser(userInfoObject);
         // getSites(userInState.uid).then((sitesArray) => setSites(sitesArray));
-        // console.warn('logged in', sites);
       } else if (user || user === null) {
-        console.warn('not logged in', sites);
         setUser(false);
         setSites([]);
       }

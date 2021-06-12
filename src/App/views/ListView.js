@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ListView({ user }) {
+function ListView() {
   return (
     <div>
       <h3>This is the UserList View</h3>
-      {console.warn(user)}
     </div>
   );
 }

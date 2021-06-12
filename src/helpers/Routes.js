@@ -42,9 +42,9 @@ function Routes({ user, sites, setSites }) {
         <PrivateRoute exact path='/my-list'
           user={user}
           component={() => <ListView
-              user={user}
-              // sites={sites}
-              // setSites={setSites}
+            user={user}
+            // sites={sites}
+            // setSites={setSites}
             />
           }
         >

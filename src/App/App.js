@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
 import './App.scss';
+import getSites from '../helpers/data/siteData';
+
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Routes from '../helpers/Routes';
@@ -26,6 +28,11 @@ function App() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    getSites().then((sitesArray) => (setSites(sitesArray)));
+  }, []);
+
   return (
     <div className='App'>
       <Router>

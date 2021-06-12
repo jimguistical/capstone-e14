@@ -37,13 +37,13 @@ function NavBar({ user }) {
   return (
     <div>
       <div>
-      <Navbar dark color="dark" expand="md">
+      <Navbar dark color="dark" expand="sm">
         <NavbarBrand className="nav-brand" to="/">Social Services Explorer</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-            <Link className="nav-link" to="/browse">Browse Service Sites</Link>
+            <Link className="nav-link" to="/servicesites">Browse Service Sites</Link>
             </NavItem>
             <NavItem>
             <Link className="nav-link" to="/mylist">My List</Link>

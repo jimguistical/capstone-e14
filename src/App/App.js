@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
 import './App.scss';
 import Footer from './components/Footer';
-import Jumbo from './components/Jumbo';
 import NavBar from './components/NavBar';
 import getSites from '../helpers/data/siteData';
 import Routes from '../helpers/Routes';
@@ -43,7 +42,6 @@ function App() {
           sites={sites}
           setSites={setSites}
         />
-        <Jumbo/>
         <Footer/>
       </Router>
     </div>

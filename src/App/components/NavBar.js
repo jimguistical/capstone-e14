@@ -43,10 +43,10 @@ function NavBar({ user }) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-            <Link className="nav-link" to="/servicesites">Browse Service Sites</Link>
+            <Link className="nav-link" to="/service-sites">Browse Service Sites</Link>
             </NavItem>
             <NavItem>
-            <Link className="nav-link" to="/mylist">My List</Link>
+            <Link className="nav-link" to="/my-list">My List</Link>
             </NavItem>
             {authButtons()}
           </Nav>

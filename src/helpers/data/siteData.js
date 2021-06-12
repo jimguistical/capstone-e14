@@ -30,10 +30,8 @@ const getList = (uid) => new Promise((resolve, reject) => {
 
 const addSite = (site, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/list.json`, site)
-  // console.warn(site)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
-      console.warn(response.data.name);
       axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
       getList(uid).then((listArray) => resolve(listArray))
         .catch((error) => reject(error));

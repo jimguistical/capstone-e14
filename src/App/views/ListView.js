@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import ListCard from '../components/ListCard';
 
-function ListView() {
+function ListView({ user }) {
+  const [listArray, setListArray] = useState([]);
+
   return (
-    <div>
-      <h3>This is the UserList View</h3>
+    <div className='listHolder'>
+      {listArray.map((listObj) => (
+        <ListCard
+        user={user}
+        key={listObj.firebaseKey}
+        setListArray={setListArray}
+        {...listObj}
+        />
+      ))}
     </div>
   );
 }
 
 ListView.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  listArray: PropTypes.array,
+  setListArray: PropTypes.func
 
 };
 

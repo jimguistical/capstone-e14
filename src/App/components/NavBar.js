@@ -37,7 +37,7 @@ function NavBar({ user }) {
   return (
     <div>
       <div>
-      <Navbar dark color="dark" expand="md">
+      <Navbar dark color="dark" expand="sm">
         <NavbarBrand className="nav-brand" to="/">Social Services Explorer</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

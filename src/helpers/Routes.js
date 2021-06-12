@@ -4,12 +4,20 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import SitesView from '../App/views/SitesView';
 import ListView from '../App/views/ListView';
+import HomeView from '../App/views/HomeView';
 
 function Routes({ user, sites, setSites }) {
   return (
     <div>
       <Switch>
-        <Route exact path='/'></Route>
+        <Route exact path='/'
+          component={() => (
+            <HomeView
+              user={user}
+            />
+          )}
+        >
+        </Route>
         <Route exact path='/service-sites'
           component={() => (
             <SitesView
@@ -18,16 +26,18 @@ function Routes({ user, sites, setSites }) {
               setSites={setSites}
             />
           )}
-        ></Route>
+        >
+        </Route>
         <PrivateRoute exact path='/my-list'
           component={() => (
             <ListView
               user={user}
-              sites={sites}
-              setSites={setSites}
+              // sites={sites}
+              // setSites={setSites}
             />
           )}
-        ></PrivateRoute>
+        >
+        </PrivateRoute>
       </Switch>
     </div>
   );

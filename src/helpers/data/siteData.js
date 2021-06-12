@@ -32,7 +32,7 @@ const addSite = (site) => new Promise((resolve, reject) => {
   console.warn(site)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/list.json/${site}`, body)
+      axios.patch(`${dbUrl}/list.json/${site}`, body);
       getList().then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });

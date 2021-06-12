@@ -22,7 +22,6 @@ function SitesView({ sites, setSites }) {
 }
 
 SitesView.propTypes = {
-  // user: PropTypes.any,
   sites: PropTypes.array,
   setSites: PropTypes.func,
 };

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SiteCard from '../components/SiteCard';
+import getSites from '../../helpers/data/siteData';
 
 function SitesView({ sites, setSites }) {
   useEffect(() => {
-    // getSites().then((sitesArray) => (setSites(sitesArray)));
+    getSites().then((sitesArray) => (setSites(sitesArray)));
   }, []);
 
   return (

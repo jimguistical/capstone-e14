@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SiteCard from '../components/SiteCard';
+import getSites from '../../helpers/data/siteData';
 
 function SitesView({ sites, setSites }) {
+  useEffect(() => {
+    getSites().then((sitesArray) => (setSites(sitesArray)));
+  }, []);
+
   return (
     <div className='cardsHolder' id='sites'>
     {sites.map((siteObj) => (
@@ -17,7 +22,6 @@ function SitesView({ sites, setSites }) {
 }
 
 SitesView.propTypes = {
-  // user: PropTypes.any,
   sites: PropTypes.array,
   setSites: PropTypes.func,
 };

@@ -5,18 +5,24 @@ import React, {
 // import PropTypes from 'prop-types';
 // import { useHistory } from 'react-router-dom';
 import {
-  // Button,
+  Button,
   // CardImg,
   Card,
   CardBody,
-  // CardText,
-  // CardTitle,
+  CardText,
+  CardTitle,
 } from 'reactstrap';
 // import CardModal from './forms/CardModal';
 
-function SiteCard() {
+function SiteCard({ ...siteObj }) {
   // const [editNow, setEditNow] = useState(false);
   // const history = useHistory();
+
+  const handleClick = (type) => {
+    if (type === 'view') {
+      console.warn('you clicked view card button');
+    }
+  };
 
   return (
       <Card body
@@ -26,9 +32,11 @@ function SiteCard() {
         {/* <CardImg top width='100%' height='200px'src={projectObj.image} alt='Player Card'
         /> */}
         <CardBody>
-          {/* <CardTitle tag='h3'>{projectObj.title}</CardTitle>
-          <CardText tag='h5'>{projectObj.description}</CardText> */}
-          {/* <Button color='primary' onClick={() => handleClick('view')}>View Details</Button> */}
+          <CardTitle tag='h3'>{siteObj.building}</CardTitle>
+          <CardText tag='h5'>{siteObj.address}</CardText>
+          <Button color='primary'
+          onClick={() => handleClick('view')}>View Details
+          </Button>
         </CardBody>
           {/* <CardModal
             {...projectObj}
@@ -47,10 +55,10 @@ function SiteCard() {
 }
 
 SiteCard.propTypes = {
-  // admin: PropTypes.any,
-  // projects: PropTypes.array,
-  // setProjects: PropTypes.func,
-  // projectObj: PropTypes.object
+  // user: PropTypes.any,
+  // sites: PropTypes.array,
+  // setSites: PropTypes.func,
+  // siteObj: PropTypes.object
 };
 
 export default SiteCard;

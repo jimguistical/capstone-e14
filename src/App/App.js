@@ -13,6 +13,10 @@ function App() {
   const [sites, setSites] = useState([]);
 
   useEffect(() => {
+    getSites().then((sitesArray) => (setSites(sitesArray)));
+  }, []);
+
+  useEffect(() => {
     firebase.auth().onAuthStateChanged((userInState) => {
       if (userInState) {
         const userInfoObject = {
@@ -20,8 +24,8 @@ function App() {
           uid: userInState.uid,
           userName: userInState.email.split('@')[0]
         };
-        getSites(userInState.uid).then((sitesArray) => setSites(sitesArray));
         setUser(userInfoObject);
+        // getSites(userInState.uid).then((sitesArray) => setSites(sitesArray));
         console.warn('logged in', sites);
       } else if (user || user === null) {
         console.warn('not logged in', sites);

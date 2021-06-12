@@ -8,7 +8,7 @@ function Footer() {
         dark
         color='dark'
         expand='sm'
-        fixed='bottom'
+        // fixed='bottom'
       >
         <NavbarText>
           Copyright © Jim Conner 2021

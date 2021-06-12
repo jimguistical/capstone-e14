@@ -1,8 +1,8 @@
 import React, {
 // useState
 } from 'react';
+import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 // import { useHistory } from 'react-router-dom';
 import {
   Button,
@@ -27,13 +27,15 @@ function SiteCard({ ...siteObj }) {
   return (
       <Card body
         className='customizedCard'
-        color='transparent'
+        // color='transparent'
       >
         {/* <CardImg top width='100%' height='200px'src={projectObj.image} alt='Player Card'
         /> */}
         <CardBody>
-          <CardTitle tag='h3'>{siteObj.building}</CardTitle>
+          <CardTitle tag='h4'>{siteObj.building}</CardTitle>
           <CardText tag='h5'>{siteObj.address}</CardText>
+          <CardText tag='h5'>{siteObj.city}, TN {siteObj.zip_code}</CardText>
+          <CardText tag='h5'></CardText>
           <Button color='primary'
           onClick={() => handleClick('view')}>View Details
           </Button>
@@ -58,7 +60,7 @@ SiteCard.propTypes = {
   // user: PropTypes.any,
   // sites: PropTypes.array,
   // setSites: PropTypes.func,
-  // siteObj: PropTypes.object
+  siteObj: PropTypes.object
 };
 
 export default SiteCard;

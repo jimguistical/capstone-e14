@@ -18,10 +18,14 @@ const getSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// const getList = () => new Promise((resolve, reject) => {
-//   axios.get(`${dbUrl}/players.json?orderBy="uid"&equalTo="${uid}"`)
-
-// })
+const getList = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/list.json`)
+    .then((response) => {
+      const sitesArray = Object.values(response.data);
+      resolve(sitesArray);
+    })
+    .catch((error) => reject(error));
+});
 
 const addSite = (site) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/list.json`, site);
@@ -29,7 +33,7 @@ const addSite = (site) => new Promise((resolve, reject) => {
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/list.json/${site}`, body)
-      // getList().then((listArray) => resolve(listArray))
+      getList().then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });
 });

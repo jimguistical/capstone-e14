@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
 import './App.scss';
 import { getSites } from '../helpers/data/siteData';
-
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Routes from '../helpers/Routes';

@@ -1,14 +1,14 @@
 import React from 'react';
-import SiteCard from '../components/SiteCard';
+// import SiteCard from '../components/SiteCard';
 
 function SitesView() {
   return (
     <div className='cardsHolder' id='sites'>
-    {sites.map((siteObj) => (
+    {/* {sites.map((siteObj) => (
       <SiteCard
       key={siteObj.building}
       />
-    ))}
+    ))} */}
   </div>
   );
 }

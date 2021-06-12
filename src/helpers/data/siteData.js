@@ -1,7 +1,7 @@
 import axios from 'axios';
 import firebaseConfig from '../apiKeys';
 
-// const dbUrl = firebaseConfig.databaseURL;
+const dbUrl = firebaseConfig.databaseURL;
 const apiUrl = `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token=${firebaseConfig.appToken}`;
 // const headers = {
 //   Host: 'data.seattle.gov',
@@ -18,4 +18,14 @@ const getSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getSites;
+const addSite = (site) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/list.json`, site)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/list.json/${site.building}`, body);
+      getSites().then((sitesArray) => resolve(sitesArray))
+        .catch((error) => reject(error));
+    });
+});
+
+export { getSites, addSite };

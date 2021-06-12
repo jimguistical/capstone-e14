@@ -18,22 +18,24 @@ const getSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getList = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/list.json`)
+const getList = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/list.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const sitesArray = Object.values(response.data);
       resolve(sitesArray);
+      // console.warn('getList', response.data);
     })
     .catch((error) => reject(error));
 });
 
-const addSite = (site) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/list.json`, site);
-  console.warn(site)
+const addSite = (site, uid) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/list.json`, site)
+  // console.warn(site)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/list.json/${site}`, body);
-      getList().then((listArray) => resolve(listArray))
+      console.warn(response.data.name);
+      axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
+      getList(uid).then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });
 });

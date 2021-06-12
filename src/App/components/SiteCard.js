@@ -14,15 +14,17 @@ import { addSite } from '../../helpers/data/siteData';
 
 function SiteCard({ user, setSites, ...siteObj }) {
   const [site, setSite] = useState({
-    firebaseKey: siteObj?.building || null,
+    firebaseKey: siteObj?.firebaseKey || null,
+    buildingName: siteObj?.building || '',
+    address: siteObj?.address || '',
+    uid: user.uid || user
   });
   // const [editNow, setEditNow] = useState(false);
   // const history = useHistory();
 
   const handleClick = (type) => {
     if (type === 'add') {
-      // addSite(site).then((sitesArray) => setSites(sitesArray));
-      addSite(site).then((response) => console.warn(response));
+      addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
       console.warn(setSite);
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');

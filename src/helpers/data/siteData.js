@@ -18,12 +18,18 @@ const getSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// const getList = () => new Promise((resolve, reject) => {
+//   axios.get(`${dbUrl}/players.json?orderBy="uid"&equalTo="${uid}"`)
+
+// })
+
 const addSite = (site) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/list.json`, site)
+  axios.post(`${dbUrl}/list.json`, site);
+  console.warn(site)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/list.json/${site.building}`, body);
-      getSites().then((sitesArray) => resolve(sitesArray))
+      axios.patch(`${dbUrl}/list.json/${site}`, body)
+      // getList().then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });
 });

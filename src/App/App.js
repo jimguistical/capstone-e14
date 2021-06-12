@@ -4,16 +4,11 @@ import firebase from 'firebase';
 import './App.scss';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
-// import getSites from '../helpers/data/siteData';
 import Routes from '../helpers/Routes';
 
 function App() {
   const [user, setUser] = useState(null);
   const [sites, setSites] = useState([]);
-
-  // useEffect(() => {
-  //   getSites().then((sitesArray) => (setSites(sitesArray)));
-  // }, []);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInState) => {

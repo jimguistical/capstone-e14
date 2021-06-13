@@ -21,6 +21,7 @@ function App() {
           userName: userInState.email.split('@')[0]
         };
         setUser(userInfoObject);
+        setSites([]);
         getAllSites().then((sitesArray) => setSites(sitesArray));
       } else if (user || user === null) {
         setUser(false);

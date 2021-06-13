@@ -8,7 +8,6 @@ const getList = (uid) => new Promise((resolve, reject) => {
     .then((response) => {
       const sitesArray = Object.values(response.data);
       resolve(sitesArray);
-      // console.warn('getList', response.data);
     })
     .catch((error) => reject(error));
 });
@@ -16,7 +15,7 @@ const getList = (uid) => new Promise((resolve, reject) => {
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/list.json`, list)
     .then((response) => {
-      const body = { listID: response.data.name };
+      const body = { listID: response.data.name, userID: uid };
       axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
       getList(uid).then((listArray) => resolve(listArray))
         .catch((error) => reject(error));

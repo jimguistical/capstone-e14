@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container } from 'reactstrap';
-import ListCard from '../components/ListCard';
 import { createList, getList } from '../../helpers/data/listData';
+// import ListCard from '../components/ListCard';
 
 function ListView({ user }) {
   // const [listButton, setListButton] = useState(true);
-  const [listArray, setListArray] = useState([
-
-  ]);
+  const [listArray, setListArray] = useState([]);
+  // const [listObj, setListObj] = useState({
+  // listID: .firebaseKey || null,
+  // uid: user.uid || user
+  // });
 
   useEffect(() => {
     getList(user.uid).then((listArrayResponse) => (setListArray(listArrayResponse)));
+    console.warn('useEffect listview');
   }, []);
 
   const handleClick = () => {
-    createList(listArray, user.uid).then((getList(user.uid)));
+    createList(listArray, user.uid).then((getList(user.uid).then(setListArray(listArray))));
   };
 
   return (
@@ -24,16 +27,16 @@ function ListView({ user }) {
       <Button color='warning'
               onClick={() => handleClick()}>Create Your List
       </Button>
-    <div className='cardsHolder'>
-      {listArray.map((listObj) => (
+    {/* <div className='cardsHolder'>
+      {listArray.map((cardListObj) => (
         <ListCard
         user={user}
-        key={listObj.business}
+        key={cardListObj.business}
         setListArray={setListArray}
-        {...listObj}
+        {...cardListObj}
         />
       ))}
-    </div>
+    </div> */}
         </Container>
     </>
   );

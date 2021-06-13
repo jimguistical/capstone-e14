@@ -24,13 +24,14 @@ function App() {
       } else if (user || user === null) {
         setUser(false);
         setSites([]);
+        getSites().then((sitesArray) => (setSites(sitesArray)));
       }
     });
   }, []);
 
-  useEffect(() => {
-    getSites().then((sitesArray) => (setSites(sitesArray)));
-  }, []);
+  // useEffect(() => {
+  //   getSites().then((sitesArray) => (setSites(sitesArray)));
+  // }, []);
 
   return (
     <div className='App'>

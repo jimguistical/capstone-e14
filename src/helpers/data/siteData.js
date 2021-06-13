@@ -38,4 +38,4 @@ const addSite = (site, uid) => new Promise((resolve, reject) => {
     });
 });
 
-export { getSites, addSite };
+export { getSites, addSite, getList };

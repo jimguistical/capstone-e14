@@ -42,7 +42,7 @@ function SiteCard({
   return (
       <Card body
         className='customizedCard'
-        key={siteObj.firebaseKey}
+        key={siteObj.building}
         // color='transparent'
       >
         <CardBody>

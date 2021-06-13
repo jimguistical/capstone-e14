@@ -39,8 +39,8 @@ function ListCard({ user, setSites, ...listObj }) {
       <CardBody>
         <CardTitle tag='h4'>{listObj.building}</CardTitle>
         <CardText tag='h5'>{listObj.address}</CardText>
-        <CardText tag='h5'>{listObj.city}, TN {listObj.zip_code}</CardText>
-        <CardText tag='h5'></CardText>
+        <CardText tag='h5'>{listObj.city}{listObj.zip_code}</CardText>
+        {/* <CardText tag='h5'></CardText> */}
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details
         </Button>

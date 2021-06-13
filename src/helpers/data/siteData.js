@@ -13,13 +13,14 @@ const getAllSites = () => new Promise((resolve, reject) => {
   axios.get(`${apiUrl}`)
     .then((response) => {
       const sitesArray = Object.values(response.data);
+      console.warn(sitesArray);
       resolve(sitesArray);
     })
     .catch((error) => reject(error));
 });
 
 const getUserSites = () => new Promise((resolve, reject) => {
-  axios.get(`${apiUrl}`)
+  getAllSites()
     .then((response) => {
       const sitesArray = Object.values(response.data);
       resolve(sitesArray);

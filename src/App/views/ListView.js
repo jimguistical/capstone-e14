@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ListCard from '../components/ListCard';
-import { getList } from '../../helpers/data/siteData';
+// import { getList } from '../../helpers/data/listData';
 
 function ListView({ user }) {
-  const [listArray, setListArray] = useState([]);
+  const [listArray, setListArray] = useState([
+    // listID: firebaseKey,
+
+  ]);
 
   useEffect(() => {
-    getList(user.uid).then((listArrayResponse) => (setListArray(listArrayResponse)));
+    // getList(user.uid).then((listArrayResponse) => (setListArray(listArrayResponse)));
   }, []);
 
   return (

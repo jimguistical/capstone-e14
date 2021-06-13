@@ -32,7 +32,7 @@ function Routes({ user, sites, setSites }) {
         </Route>
         <Route exact path='/service-sites'
           component={() => <SitesView
-              // user={user}
+              user={user}
               sites={sites}
               setSites={setSites}
             />

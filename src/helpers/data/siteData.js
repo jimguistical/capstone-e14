@@ -9,7 +9,16 @@ const apiUrl = `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token=$
 // X-App-Token: {appToken}
 // }
 
-const getSites = () => new Promise((resolve, reject) => {
+const getAllSites = () => new Promise((resolve, reject) => {
+  axios.get(`${apiUrl}`)
+    .then((response) => {
+      const sitesArray = Object.values(response.data);
+      resolve(sitesArray);
+    })
+    .catch((error) => reject(error));
+});
+
+const getUserSites = () => new Promise((resolve, reject) => {
   axios.get(`${apiUrl}`)
     .then((response) => {
       const sitesArray = Object.values(response.data);
@@ -38,4 +47,6 @@ const addSite = (site, uid) => new Promise((resolve, reject) => {
     });
 });
 
-export { getSites, addSite, getList };
+export {
+  getAllSites, getUserSites, getList, addSite
+};

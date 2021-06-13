@@ -33,7 +33,7 @@ function ListCard({ user, setSites, ...listObj }) {
   return (
     <Card body
         className='customizedCard'
-        key={listObj.firebaseKey}
+        key={listObj.building}
         // color='transparent'
       >
       <CardBody>

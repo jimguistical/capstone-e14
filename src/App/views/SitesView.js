@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SiteCard from '../components/SiteCard';
-// import getSites from '../../helpers/data/siteData';
 
 function SitesView({ user, sites, setSites }) {
   return (

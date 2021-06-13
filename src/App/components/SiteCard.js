@@ -19,8 +19,9 @@ function SiteCard({
 }) {
   const [site, setSite] = useState({
     // listName: listName,
-    // building: siteObj?.building || '',
-    firebaseKey: siteObj?.building || '',
+    // firebaseKey: siteObj?.firebaseKey || null,
+    building: siteObj?.building || '',
+    address: siteObj?.address || '',
     uid: user.uid || user || ''
   });
   // const [editNow, setEditNow] = useState(false);

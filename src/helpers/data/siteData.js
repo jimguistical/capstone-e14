@@ -1,5 +1,6 @@
 import axios from 'axios';
 import firebaseConfig from '../apiKeys';
+import { getList } from './listData';
 
 const dbUrl = firebaseConfig.databaseURL;
 const apiUrl = `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token=${firebaseConfig.appToken}`;
@@ -28,15 +29,15 @@ const getUserSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getList = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/list.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => {
-      const sitesArray = Object.values(response.data);
-      resolve(sitesArray);
-      // console.warn('getList', response.data);
-    })
-    .catch((error) => reject(error));
-});
+// const getList = (uid) => new Promise((resolve, reject) => {
+//   axios.get(`${dbUrl}/list.json?orderBy="uid"&equalTo="${uid}"`)
+//     .then((response) => {
+//       const sitesArray = Object.values(response.data);
+//       resolve(sitesArray);
+//       // console.warn('getList', response.data);
+//     })
+//     .catch((error) => reject(error));
+// });
 
 const addSite = (site, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/list.json`, site)
@@ -49,5 +50,5 @@ const addSite = (site, uid) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllSites, getUserSites, getList, addSite
+  getAllSites, getUserSites, addSite
 };

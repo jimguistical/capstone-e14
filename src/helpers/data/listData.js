@@ -33,4 +33,4 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
 //     });
 // });
 
-export default createList;
+export { createList, getList };

@@ -20,7 +20,7 @@ function App() {
           userName: userInState.email.split('@')[0]
         };
         setUser(userInfoObject);
-        getSites().then((sitesArray) => setSites(sitesArray));
+        // getSites().then((sitesArray) => setSites(sitesArray));
       } else if (user || user === null) {
         setUser(false);
         setSites([]);

@@ -18,17 +18,18 @@ function SiteCard({
   ...siteObj
 }) {
   const [site, setSite] = useState({
+    // listName: listName,
     firebaseKey: siteObj?.firebaseKey || null,
     building: siteObj?.building || '',
     address: siteObj?.address || '',
-    uid: user.uid || user
+    uid: user.uid || user || ''
   });
   // const [editNow, setEditNow] = useState(false);
   // const history = useHistory();
 
   const handleClick = (type) => {
     if (type === 'add') {
-      addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
+      addSite(site).then((sitesArray) => setSites(sitesArray));
       // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
       console.warn(site, setSite);
     } else if (type === 'edit') {

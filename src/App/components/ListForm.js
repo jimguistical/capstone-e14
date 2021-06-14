@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import { createList, getList } from '../../helpers/data/listData';
+// import {
+//   createList,
+//   // getList
+// } from '../../helpers/data/listData';
 
-function ListForm({ user }) {
+function ListForm() {
   const [listObj, setListObj] = useState({
     // listID: listObj.firebaseKey || null,
-    // listName: listObj.listName || '',
-    uid: user.uid || user
+    // listName: listObj.listName || ''
+    // uid: user.uid || user
   });
 
   const handleInputChange = (e) => {
@@ -19,9 +22,6 @@ function ListForm({ user }) {
     }));
   };
 
-  const handleClick = () => {
-    createList(listObj, user.uid).then((getList(user.uid).then(setListArray(listArray))));
-  };
   return (
     <div>
       <Form inline>
@@ -33,10 +33,7 @@ function ListForm({ user }) {
           onChange={handleInputChange}
         />
       </FormGroup>
-      <Button>Submit</Button>
-      <Button color='warning'
-              onClick={() => handleClick()}>Create Your List
-      </Button>
+      <Button>Edit List</Button>
     </Form>
     </div>
   );

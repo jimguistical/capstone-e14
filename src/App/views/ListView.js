@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 // import { createList, getList } from '../../helpers/data/listData';
 import ListCard from '../components/ListCard';
+import ListForm from '../components/ListForm';
 
 function ListView({ user }) {
   // const [listButton, setListButton] = useState(true);
@@ -25,7 +26,9 @@ function ListView({ user }) {
   return (
     <>
     <Container>
-
+      <ListForm
+        user={user}
+      />
     <div className='cardsHolder'>
       {listArray.map((cardListObj) => (
         <ListCard

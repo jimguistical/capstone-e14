@@ -16,7 +16,7 @@ const getList = (uid) => new Promise((resolve, reject) => {
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
     .then((response) => {
-      const body = { listID: response.data.name, userID: uid };
+      const body = { listID: response.data.name };
       axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body);
       getList(uid).then((listArray) => resolve(listArray))
         .catch((error) => reject(error));

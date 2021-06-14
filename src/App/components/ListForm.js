@@ -6,23 +6,16 @@ import {
 } from 'reactstrap';
 import {
   createList,
-  getList,
+  // getList,
   editList
 } from '../../helpers/data/listData';
 
 function ListForm({ user }) {
   const [listObj, setListObj] = useState({
-    listID: listObj.firebaseKey || null,
-    listName: listObj.listName || '',
-    uid: user.uid || user
+    // listID: listObj.firebaseKey || null,
+    // listName: listObj.listName || '',
+    // uid: user.uid || ''
   });
-
-  const handleInputChange = (e) => {
-    setListObj((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
 
   // const handleClick = () => {
   //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
@@ -32,11 +25,25 @@ function ListForm({ user }) {
     e.preventDefault();
     if (listObj.listID) {
       editList(listObj, listObj.listID, user.uid).then((response) => setListObj(response));
+      console.warn('edit list');
     } else {
-      createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
+      setListObj({
+        listID: listObj.firebaseKey || null,
+        listName: 'My List' || listObj.listName,
+        uid: user.uid || user
+      });
+      createList(listObj, user.uid);
+      // .then(((listArray) => (setListArray(listArray))));
+      console.warn(listObj, 'create list');
     }
   };
 
+  const handleInputChange = (e) => {
+    setListObj((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
+  };
   return (
     <div>
       <Form autoComplete='off' inline
@@ -45,8 +52,8 @@ function ListForm({ user }) {
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label for="listName" className="mr-sm-2">List Name</Label>
         <Input type="text" name="listName" id="listName"
-          placeholder="list name"
-          value={listObj.listName}
+          // placeholder="list name"
+          value={'My List' || listObj.listName}
           onChange={handleInputChange}
         />
       </FormGroup>
@@ -62,6 +69,8 @@ ListForm.propTypes = {
   user: PropTypes.any,
   listObj: PropTypes.object,
   setListObj: PropTypes.func,
+  listArray: PropTypes.array,
+  setListArray: PropTypes.func
 };
 
 export default ListForm;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import {
@@ -10,7 +10,7 @@ import ListForm from '../components/ListForm';
 
 function ListView({ user }) {
   // const [listButton, setListButton] = useState(true);
-  // const [listArray, setListArray] = useState([]);
+  const [listArray, setListArray] = useState([]);
   // const [listObj, setListObj] = useState({});
   // const [listObj, setListObj] = useState({
   //   listID: listObj.firebaseKey || null,
@@ -30,6 +30,8 @@ function ListView({ user }) {
     {/* <Button color='warning' onClick={() => handleClick()}>Create Your List</Button> */}
       <ListForm
         user={user}
+        listArray={listArray}
+        setListArray={setListArray}
         // setListObj={setListObj}
         // listObj={listObj}
       />

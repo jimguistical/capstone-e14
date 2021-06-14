@@ -9,7 +9,7 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
-import { addSite } from '../../helpers/data/siteData';
+// import { addSite } from '../../helpers/data/siteData';
 // import CardModal from './forms/CardModal';
 
 function SiteCard({
@@ -30,7 +30,7 @@ function SiteCard({
 
   const handleClick = (type) => {
     if (type === 'add') {
-      addSite(siteObj.building).then((sitesArray) => setSites(sitesArray));
+      // addSite(siteObj).then((sitesArray) => setSites(sitesArray));
       // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
       // console.warn(site, setSite);
     } else if (type === 'edit') {

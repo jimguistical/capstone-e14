@@ -14,10 +14,10 @@ const getList = (uid) => new Promise((resolve, reject) => {
 });
 
 const createList = (list, uid) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/list.json`, list)
+  axios.post(`${dbUrl}/resourcelist.json`, list)
     .then((response) => {
       const body = { listID: response.data.name, userID: uid };
-      axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
+      axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body);
       getList(uid).then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });

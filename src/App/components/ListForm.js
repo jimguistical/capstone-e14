@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import {
   createList,
+  // deleteList,
   // getList,
   editList,
   // getList
@@ -33,13 +34,20 @@ function ListForm({ user, setListArray }) {
   //   });
   // };
 
+  const handleClick = (type) => {
+    if (type === 'delete') {
+      console.warn(listObj, 'you want to delete this list');
+      // deleteList(listObj).then((listArray) => (setListArray(listArray)));
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (listObj.listID) {
       editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
       console.warn('edit list');
     } else if (listObj.listID === null) {
-      createList(listObj, user.uid).then(((listArray) => (setListArray(listArray))));
+      createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
       // setListObj({
       //   listID: listObj.firebaseKey || null,
       //   listName: listObj.listName,
@@ -57,7 +65,7 @@ function ListForm({ user, setListArray }) {
   };
   return (
     <div>
-      {/* <Button color='warning' onClick={() => handleClick()}>Create Your List</Button> */}
+      <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
       <Form autoComplete='off' inline
         onSubmit={handleSubmit}
       >

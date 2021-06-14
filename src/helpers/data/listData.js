@@ -29,4 +29,12 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { createList, getList, editList };
+const deleteList = (listID, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/resourcelist/${listID}.json`)
+    .then(() => getList(uid).then(resolve))
+    .catch((error) => reject(error));
+});
+
+export {
+  createList, getList, editList, deleteList
+};

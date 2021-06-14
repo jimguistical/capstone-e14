@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
@@ -7,16 +7,23 @@ import {
 import {
   createList,
   // getList,
-  editList
+  editList,
+  // getList
 } from '../../helpers/data/listData';
 
-function ListForm({ user }) {
+function ListForm({ user, setListArray }) {
   const [listObj, setListObj] = useState({
     // listID: listObj.firebaseKey || null,
     // listName: listObj.listName || '',
     // uid: user.uid || ''
   });
-
+  useEffect(() => {
+    setListObj({
+      listID: listObj.firebaseKey || null,
+      listName: listObj.listName || '',
+      uid: user.uid || ''
+    });
+  }, []);
   // const handleClick = () => {
   //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
   // };
@@ -27,13 +34,7 @@ function ListForm({ user }) {
       editList(listObj, listObj.listID, user.uid).then((response) => setListObj(response));
       console.warn('edit list');
     } else {
-      setListObj({
-        listID: listObj.firebaseKey || null,
-        listName: 'My List' || listObj.listName,
-        uid: user.uid || user
-      });
-      createList(listObj, user.uid);
-      // .then(((listArray) => (setListArray(listArray))));
+      createList(listObj, user.uid).then(((listArray) => (setListArray(listArray))));
       console.warn(listObj, 'create list');
     }
   };

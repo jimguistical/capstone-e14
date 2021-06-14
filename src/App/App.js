@@ -11,6 +11,7 @@ import { getAllSites } from '../helpers/data/siteData';
 function App() {
   const [user, setUser] = useState(null);
   const [sites, setSites] = useState([]);
+  // const [list, setListObj] = useState({});
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInState) => {
@@ -21,6 +22,7 @@ function App() {
           userName: userInState.email.split('@')[0]
         };
         setUser(userInfoObject);
+        setSites([]);
         getAllSites().then((sitesArray) => setSites(sitesArray));
       } else if (user || user === null) {
         setUser(false);

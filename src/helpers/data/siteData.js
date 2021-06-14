@@ -14,7 +14,6 @@ const getAllSites = () => new Promise((resolve, reject) => {
   axios.get(`${apiUrl}`)
     .then((response) => {
       const sitesArray = Object.values(response.data);
-      console.warn(sitesArray);
       resolve(sitesArray);
     })
     .catch((error) => reject(error));
@@ -39,12 +38,12 @@ const getUserSites = () => new Promise((resolve, reject) => {
 //     .catch((error) => reject(error));
 // });
 
-const addSite = (site, uid) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/list.json`, site)
+const addSite = (site) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/resourcelist.json`, site)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
-      getList(uid).then((listArray) => resolve(listArray))
+      getList().then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });
 });

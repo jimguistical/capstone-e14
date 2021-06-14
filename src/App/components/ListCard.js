@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 // import { addSite } from '../../helpers/data/siteData';
 
-function ListCard({ user, setSites, ...listObj }) {
+function ListCard({ user, setSites, ...siteObj }) {
   // const [site, setSite] = useState({
   //   firebaseKey: listObj?.firebaseKey || null,
   //   buildingName: listObj?.building || '',
@@ -33,13 +33,13 @@ function ListCard({ user, setSites, ...listObj }) {
   return (
     <Card body
         className='customizedCard'
-        key={listObj.building}
+        key={siteObj.building}
         // color='transparent'
       >
       <CardBody>
-        <CardTitle tag='h4'>{listObj.building}</CardTitle>
-        <CardText tag='h5'>{listObj.address}</CardText>
-        <CardText tag='h5'>{listObj.city}{listObj.zip_code}</CardText>
+        <CardTitle tag='h4'>{siteObj.building}</CardTitle>
+        <CardText tag='h5'>{siteObj.address}</CardText>
+        <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText>
         {/* <CardText tag='h5'></CardText> */}
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details

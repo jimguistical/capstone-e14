@@ -1,25 +1,26 @@
-import React from 'react';
+/* eslint-disable no-use-before-define */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
 // import { editList } from '../../helpers/data/listData';
 import {
-  // createList,
-  // getList,
+  createList,
+  getList,
   editList
 } from '../../helpers/data/listData';
 
-function ListForm({ user, setListObj, ...listObj }) {
-  // const [listObj, setListObj] = useState({
-  // listID: listObj.firebaseKey || null,
-  // listName: listObj.listName || '',
-  // uid: user.uid || user
-  // });
+function ListForm({ user }) {
+  const [listObj, setListObj] = useState({
+    listID: listObj.firebaseKey || null,
+    listName: listObj.listName || '',
+    uid: user.uid || user
+  });
 
-  // const handleClick = () => {
-  //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
-  // };
+  const handleClick = () => {
+    createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +38,7 @@ function ListForm({ user, setListObj, ...listObj }) {
 
   return (
     <div>
-        {/* <Button color='warning' onClick={() => handleClick()}>Create Your List</Button> */}
+        <Button color='warning' onClick={() => handleClick()}>Create Your List</Button>
       <Form autoComplete='off' inline
         onSubmit={handleSubmit}
       >

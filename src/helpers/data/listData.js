@@ -23,14 +23,10 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
     });
 });
 
-// const addSite = (site, uid) => new Promise((resolve, reject) => {
-//   axios.post(`${dbUrl}/list.json`, site)
-//     .then((response) => {
-//       const body = { firebaseKey: response.data.name };
-//       axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
-//       getList(uid).then((listArray) => resolve(listArray))
-//         .catch((error) => reject(error));
-//     });
-// });
+const editList = (list, listID, uid) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/resourcelist/${listID}.json`, list)
+    .then(() => getList(uid).then(resolve))
+    .catch((error) => reject(error));
+});
 
-export { createList, getList };
+export { createList, getList, editList };

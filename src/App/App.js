@@ -11,6 +11,7 @@ import { getAllSites } from '../helpers/data/siteData';
 function App() {
   const [user, setUser] = useState(null);
   const [sites, setSites] = useState([]);
+  // const [list, setListObj] = useState({});
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInState) => {

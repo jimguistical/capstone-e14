@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import SiteCard from '../components/SiteCard';
-import { createList, getList } from '../../helpers/data/listData';
+// import { createList, getList } from '../../helpers/data/listData';
 
 function SitesView({ user, sites, setSites }) {
   // const [listArray, setListArray] = useState([]);
-  const [list, setListObj] = useState({});
+  // const [listObj, setListObj] = useState({});
 
-  const handleClick = () => {
-    createList(list, user.uid).then((getList(user.uid).then(setListObj(list))));
-  };
+  // const handleClick = () => {
+  //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
+  // };
   return (
     <>
-    <Button color='warning' onClick={() => handleClick()}>Create Your List</Button>
+    {/* <Button color='warning' onClick={() => handleClick()}>Create Your List</Button> */}
+
     <div className='cardsHolder' id='sites'>
     {sites.map((siteObj) => (
       <SiteCard

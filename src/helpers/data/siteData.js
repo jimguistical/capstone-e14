@@ -39,8 +39,8 @@ const getUserSites = () => new Promise((resolve, reject) => {
 //     .catch((error) => reject(error));
 // });
 
-const addSite = (site, uid) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/list.json`, site)
+const addSite = (siteObj, uid) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/list.json`, siteObj)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);

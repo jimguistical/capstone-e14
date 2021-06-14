@@ -8,6 +8,7 @@ const getList = (uid) => new Promise((resolve, reject) => {
     .then((response) => {
       const sitesArray = Object.values(response.data);
       resolve(sitesArray);
+      // console.warn('getList', response.data);
     })
     .catch((error) => reject(error));
 });

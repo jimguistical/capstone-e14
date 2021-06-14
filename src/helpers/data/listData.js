@@ -4,11 +4,11 @@ import firebaseConfig from '../apiKeys';
 const dbUrl = firebaseConfig.databaseURL;
 
 const getList = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/list.json?orderBy="uid"&equalTo="${uid}"`)
+  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const sitesArray = Object.values(response.data);
       resolve(sitesArray);
-      // console.warn('getList', response.data);
+      console.warn('getList', response.data);
     })
     .catch((error) => reject(error));
 });

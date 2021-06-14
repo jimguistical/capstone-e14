@@ -21,20 +21,30 @@ function ListForm({ user, setListArray }) {
     setListObj({
       listID: listObj.firebaseKey || null,
       listName: listObj.listName || '',
-      uid: user.uid || ''
+      uid: user.uid || user
     });
   }, []);
   // const handleClick = () => {
-  //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
+  //   createList(listObj, user.uid).then(((listArray) => (setListArray(listArray))));
+  //   setListObj({
+  //     listID: listObj.firebaseKey || null,
+  //     listName: 'My List' || listObj.listName,
+  //     uid: user.uid || ''
+  //   });
   // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (listObj.listID) {
-      editList(listObj, listObj.listID, user.uid).then((response) => setListObj(response));
+      editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
       console.warn('edit list');
-    } else {
+    } else if (listObj.listID === null) {
       createList(listObj, user.uid).then(((listArray) => (setListArray(listArray))));
+      // setListObj({
+      //   listID: listObj.firebaseKey || null,
+      //   listName: listObj.listName,
+      //   uid: user.uid || ''
+      // });
       console.warn(listObj, 'create list');
     }
   };
@@ -47,19 +57,20 @@ function ListForm({ user, setListArray }) {
   };
   return (
     <div>
+      {/* <Button color='warning' onClick={() => handleClick()}>Create Your List</Button> */}
       <Form autoComplete='off' inline
         onSubmit={handleSubmit}
       >
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label for="listName" className="mr-sm-2">List Name</Label>
         <Input type="text" name="listName" id="listName"
-          // placeholder="list name"
-          value={'My List' || listObj.listName}
+          placeholder="list name"
+          value={listObj.listName || ''}
           onChange={handleInputChange}
         />
       </FormGroup>
         <Button color='warning' type='submit'>
-          Create Your List
+          Create List
         </Button>
     </Form>
     </div>

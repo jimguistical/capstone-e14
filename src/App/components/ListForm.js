@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
-// import { editList } from '../../helpers/data/listData';
 import {
   createList,
   getList,
@@ -18,17 +17,6 @@ function ListForm({ user }) {
     uid: user.uid || user
   });
 
-  const handleClick = () => {
-    createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (listObj.listID) {
-      editList(listObj, listObj.listID, user.uid).then((response) => setListObj(response));
-    }
-  };
-
   const handleInputChange = (e) => {
     setListObj((prevState) => ({
       ...prevState,
@@ -36,9 +24,21 @@ function ListForm({ user }) {
     }));
   };
 
+  // const handleClick = () => {
+  //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (listObj.listID) {
+      editList(listObj, listObj.listID, user.uid).then((response) => setListObj(response));
+    } else {
+      createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
+    }
+  };
+
   return (
     <div>
-        <Button color='warning' onClick={() => handleClick()}>Create Your List</Button>
       <Form autoComplete='off' inline
         onSubmit={handleSubmit}
       >
@@ -50,7 +50,9 @@ function ListForm({ user }) {
           onChange={handleInputChange}
         />
       </FormGroup>
-      <Button>Edit List</Button>
+        <Button color='warning' type='submit'>
+          Create Your List
+        </Button>
     </Form>
     </div>
   );

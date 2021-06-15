@@ -67,7 +67,6 @@ function ListForm({ user, setListArray }) {
   };
   return (
     <div>
-      <Button color='primary' onClick={() => handleClick('create')}>Create</Button>
       {/* <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button> */}
       <Form autoComplete='off' inline
         // onSubmit={handleSubmit}
@@ -80,6 +79,7 @@ function ListForm({ user, setListArray }) {
           onChange={handleInputChange}
         />
       </FormGroup>
+      <Button color='primary' onClick={() => handleClick('create')}>Create Your List</Button>
         <Button color='warning' type='submit'>
           Submit Button
         </Button>

@@ -24,9 +24,7 @@ function Routes({ user, sites, setSites }) {
       <Switch>
         <Route exact path='/'
           component={() => (
-            <HomeView
-              user={user}
-            />
+            <HomeView/>
           )}
         >
         </Route>
@@ -43,8 +41,6 @@ function Routes({ user, sites, setSites }) {
           user={user}
           component={() => <ListView
             user={user}
-            // sites={sites}
-            // setSites={setSites}
             />
           }
         >

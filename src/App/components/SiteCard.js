@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -9,30 +7,17 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
-// import { addSite } from '../../helpers/data/siteData';
-// import CardModal from './forms/CardModal';
 
 function SiteCard({
   user,
   setSites,
   ...siteObj
 }) {
-  // const [site, setSite] = useState({
-  // listName: listName,
-  // firebaseKey: siteObj?.firebaseKey || null,
-  // building: siteObj?.building || '',
-  // address: siteObj?.address || '',
-  // uid: user.uid || user
-  // ...siteObj
-  // });
-  // const [editNow, setEditNow] = useState(false);
-  // const history = useHistory();
-
   const handleClick = (type) => {
     if (type === 'add') {
       // addSite(siteObj).then((sitesArray) => setSites(sitesArray));
       // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
-      // console.warn(site, setSite);
+      console.warn(siteObj.building, 'you clicked add site to list');
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');
     } else if (type === 'view') {
@@ -55,9 +40,6 @@ function SiteCard({
             onClick={() => handleClick('view')}>View Details
           </Button>
         </CardBody>
-          {/* <CardModal
-            {...siteObj}
-          /> */}
      {
       user
         ? <>

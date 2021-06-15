@@ -1,6 +1,4 @@
-import React, {
-// useState
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -10,12 +8,15 @@ import {
   CardTitle,
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
-import ListForm from './ListForm';
+// import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
 
 function ListCard({
-  setListArray, listObj
+  user, setListArray, ...listObj
 }) {
+  // useEffect(() => {
+  //   getList(user.uid).then(() => (setListArray(listArray)));
+  // }, []);
   // const [site, setSite] = useState({
   //   firebaseKey: listObj?.firebaseKey || null,
   //   buildingName: listObj?.building || '',
@@ -34,7 +35,7 @@ function ListCard({
       console.warn('you clicked VIEW card button');
     } else if (type === 'delete') {
       deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
-      console.warn('you clicked DELETE card button');
+      console.warn(listObj.listID, 'you clicked DELETE card button');
     }
   };
   return (
@@ -44,7 +45,7 @@ function ListCard({
       >
       <CardBody>
         <CardTitle tag='h4'>{listObj.listName}</CardTitle>
-        <ListForm/>
+        {/* <ListForm/> */}
         {/* <CardText tag='h5'>{siteObj.address}</CardText>
         <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
         <Button color='primary'
@@ -64,6 +65,7 @@ ListCard.propTypes = {
   setSites: PropTypes.func,
   site: PropTypes.object,
   setSite: PropTypes.func,
+  listArray: PropTypes.array,
   setListArray: PropTypes.func
 };
 

@@ -6,17 +6,19 @@ import {
 } from 'reactstrap';
 import {
   createList,
-  deleteList,
+  // deleteList,
   // editList,
-  getList
+  // getList
 } from '../../helpers/data/listData';
 
-function ListForm({ user, setListArray }) {
+function ListForm({
+  user, setListArray
+}) {
   // const [listArray, setListArray] = useState([]);
   const [listObj, setListObj] = useState({
-    // listID: listObj.firebaseKey || null,
-    // listName: listObj.listName || '',
-    // uid: user.uid || ''
+  // listID: listObj.firebaseKey || null,
+  // listName: listObj.listName || '',
+  // uid: user.uid || ''
   });
   useEffect(() => {
     setListObj({
@@ -33,10 +35,6 @@ function ListForm({ user, setListArray }) {
   //     uid: user.uid || ''
   //   });
   // };
-
-  useEffect(() => {
-    getList().then((listArray) => (setListArray(listArray)));
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +54,7 @@ function ListForm({ user, setListArray }) {
   const handleClick = (type) => {
     if (type === 'delete') {
       console.warn(listObj.listID, 'you want to delete this list');
-      deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
+      // deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
     } else if (type === 'create') {
       createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
       console.warn(listObj, 'you want to CREATE this list');

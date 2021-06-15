@@ -34,28 +34,28 @@ function ListForm({ user, setListArray }) {
   //   });
   // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //   if (listObj.listID) {
-    //     editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
-    //     console.warn('edit list');
-    //   } else if (listObj.listID === null) {
-    //     createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-    //     setListObj({
-    //       listID: listObj.firebaseKey || null,
-    //       listName: listObj.listName,
-    //       uid: user.uid || ''
-    //     });
-    console.warn(listObj, 'you created list');
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (listObj.listID) {
+  //     editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
+  //     console.warn('edit list');
+  //   } else if (listObj.listID === null) {
+  //     createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
+  //     setListObj({
+  //       listID: listObj.firebaseKey || null,
+  //       listName: listObj.listName,
+  //       uid: user.uid || ''
+  //     });
+  // console.warn(listObj, 'you created list');
   //   }
-  };
+  // };
   const handleClick = (type) => {
     if (type === 'delete') {
       console.warn(listObj.listID, 'you want to delete this list');
       // deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
     } else if (type === 'create') {
       createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-      console.warn(listObj, 'you want to CREATE this list');
+      // console.warn(listObj, 'you want to CREATE this list');
     }
   };
 
@@ -68,9 +68,9 @@ function ListForm({ user, setListArray }) {
   return (
     <div>
       <Button color='primary' onClick={() => handleClick('create')}>Create</Button>
-      <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
+      {/* <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button> */}
       <Form autoComplete='off' inline
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label for="listName" className="mr-sm-2">List Name</Label>

@@ -33,7 +33,7 @@ SitesView.propTypes = {
   user: PropTypes.any,
   sites: PropTypes.array,
   setSites: PropTypes.func,
-  list: PropTypes.object
+  // list: PropTypes.object
 };
 
 export default SitesView;

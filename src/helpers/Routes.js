@@ -43,8 +43,8 @@ function Routes({ user, sites, setSites }) {
           user={user}
           component={() => <ListView
             user={user}
-            sites={sites}
-            setSites={setSites}
+            // sites={sites}
+            // setSites={setSites}
             />
           }
         >

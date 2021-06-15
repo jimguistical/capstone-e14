@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 //   // getList
 // } from '../../helpers/data/listData';
 import ListCard from '../components/ListCard';
-import ListForm from '../components/ListForm';
+// import ListForm from '../components/ListForm';
 
 function ListView({ user }) {
   // const [listButton, setListButton] = useState(true);
@@ -42,21 +42,20 @@ function ListView({ user }) {
       <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
       <Button color='warning' onClick={() => handleClick('create')}>Create List</Button>
       </Container> */}
-      <ListForm
+      {/* <ListForm
         user={user}
         listArray={listArray}
         setListArray={setListArray}
-        // setListObj={setListObj}
-        // listObj={listObj}
-      />
+        setListObj={setListObj}
+        listObj={listObj}
+      /> */}
     <div className='cardsHolder'>
-      {listArray.map((cardListObj) => (
+      {listArray.map((listObj) => (
         <ListCard
         user={user}
-        key={cardListObj.business}
+        key={listObj.business}
         setListArray={setListArray}
-        // {...listObj}
-        {...cardListObj}
+        {...listObj}
         />
       ))}
     </div>

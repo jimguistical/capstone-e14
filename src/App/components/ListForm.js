@@ -12,6 +12,7 @@ import {
 } from '../../helpers/data/listData';
 
 function ListForm({ user, setListArray }) {
+  // const [listArray, setListArray] = useState([]);
   const [listObj, setListObj] = useState({
     // listID: listObj.firebaseKey || null,
     // listName: listObj.listName || '',

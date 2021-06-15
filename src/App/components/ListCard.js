@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
+import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
 
 function ListCard({
@@ -43,6 +44,7 @@ function ListCard({
       >
       <CardBody>
         <CardTitle tag='h4'>{listObj.listName}</CardTitle>
+        <ListForm/>
         {/* <CardText tag='h5'>{siteObj.address}</CardText>
         <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
         <Button color='primary'

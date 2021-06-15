@@ -6,14 +6,14 @@ import {
   Button,
   Card,
   CardBody,
-  CardText,
+  // CardText,
   CardTitle,
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
 // import { addSite } from '../../helpers/data/siteData';
 
 function ListCard({
-  user, setSites, setListArray, listObj, ...siteObj
+  setListArray, listObj
 }) {
   // const [site, setSite] = useState({
   //   firebaseKey: listObj?.firebaseKey || null,
@@ -26,7 +26,7 @@ function ListCard({
   const handleClick = (type) => {
     if (type === 'add') {
       // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
-      // console.warn(site, setSite);
+      console.warn('you clicked add');
     } else if (type === 'edit') {
       console.warn('you clicked EDIT card button');
     } else if (type === 'view') {
@@ -39,14 +39,12 @@ function ListCard({
   return (
     <Card body
         className='customizedCard'
-        key={siteObj.building}
-        // color='transparent'
+        key={listObj.listID}
       >
       <CardBody>
-        <CardTitle tag='h4'>{siteObj.building}</CardTitle>
-        <CardText tag='h5'>{siteObj.address}</CardText>
-        <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText>
-        {/* <CardText tag='h5'></CardText> */}
+        <CardTitle tag='h4'>{listObj.listName}</CardTitle>
+        {/* <CardText tag='h5'>{siteObj.address}</CardText>
+        <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details
         </Button>

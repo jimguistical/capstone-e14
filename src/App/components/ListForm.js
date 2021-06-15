@@ -6,10 +6,9 @@ import {
 } from 'reactstrap';
 import {
   createList,
-  // deleteList,
-  // getList,
-  editList,
-  // getList
+  deleteList,
+  // editList,
+  getList
 } from '../../helpers/data/listData';
 
 function ListForm({ user, setListArray }) {
@@ -34,26 +33,32 @@ function ListForm({ user, setListArray }) {
   //   });
   // };
 
-  const handleClick = (type) => {
-    if (type === 'delete') {
-      console.warn(listObj, 'you want to delete this list');
-      // deleteList(listObj).then((listArray) => (setListArray(listArray)));
-    }
-  };
+  useEffect(() => {
+    getList().then((listArray) => (setListArray(listArray)));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (listObj.listID) {
-      editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
-      console.warn('edit list');
-    } else if (listObj.listID === null) {
+    //   if (listObj.listID) {
+    //     editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
+    //     console.warn('edit list');
+    //   } else if (listObj.listID === null) {
+    //     createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
+    //     setListObj({
+    //       listID: listObj.firebaseKey || null,
+    //       listName: listObj.listName,
+    //       uid: user.uid || ''
+    //     });
+    console.warn(listObj, 'you created list');
+  //   }
+  };
+  const handleClick = (type) => {
+    if (type === 'delete') {
+      console.warn(listObj.listID, 'you want to delete this list');
+      deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
+    } else if (type === 'create') {
       createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-      // setListObj({
-      //   listID: listObj.firebaseKey || null,
-      //   listName: listObj.listName,
-      //   uid: user.uid || ''
-      // });
-      console.warn(listObj, 'create list');
+      console.warn(listObj, 'you want to CREATE this list');
     }
   };
 
@@ -65,6 +70,7 @@ function ListForm({ user, setListArray }) {
   };
   return (
     <div>
+      <Button color='primary' onClick={() => handleClick('create')}>Create</Button>
       <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
       <Form autoComplete='off' inline
         onSubmit={handleSubmit}
@@ -78,7 +84,7 @@ function ListForm({ user, setListArray }) {
         />
       </FormGroup>
         <Button color='warning' type='submit'>
-          Create List
+          Submit Button
         </Button>
     </Form>
     </div>

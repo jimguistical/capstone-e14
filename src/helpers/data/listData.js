@@ -28,7 +28,6 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
     .then(() => getList(uid).then(resolve))
     .catch((error) => reject(error));
 });
-
 const deleteList = (listID, uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/resourcelist/${listID}.json`)
     .then(() => getList(uid).then(resolve))

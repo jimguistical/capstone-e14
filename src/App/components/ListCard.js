@@ -34,8 +34,7 @@ function ListCard({
     } else if (type === 'view') {
       console.warn('you clicked VIEW card button');
     } else if (type === 'delete') {
-      deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
-      console.warn(listObj.listID, 'you clicked DELETE card button');
+      deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
     }
   };
   return (

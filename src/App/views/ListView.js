@@ -27,9 +27,9 @@ function ListView({ user }) {
   //   uid: user.uid || user
   // });
   useEffect(() => {
-    getList(user.uid).then((response) => (setListArray(response)));
+    getList(user.uid).then((taco) => (setListArray(taco)));
   }, []);
-  console.warn(listArray, 'ListView useeffect');
+  // console.warn(listArray, 'ListView useeffect');
   // const handleClick = () => {
   //   createList(listObj, user.uid).then((getList(user.uid).then(setListObj(listObj))));
   //   createList(listObj, user.uid).then((setListObj(listObj)));
@@ -48,6 +48,13 @@ function ListView({ user }) {
 
   return (
     <>
+      <ListForm
+        user={user}
+        listArray={listArray}
+        setListArray={setListArray}
+        // setListObj={setListObj}
+        // listObj={listObj}
+      />
     {/* <Container>
       <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
       <Button color='warning' onClick={() => handleClick('create')}>Create List</Button>
@@ -62,13 +69,6 @@ function ListView({ user }) {
         {...listObj}
         />
       ))}
-<ListForm
-        user={user}
-        // listArray={listArray}
-        // setListArray={setListArray}
-        // setListObj={setListObj}
-        // listObj={listObj}
-      />
     </div>
     </>
   );

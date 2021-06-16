@@ -79,10 +79,11 @@ function ListForm({ user, setListArray }) {
           onChange={handleInputChange}
         />
       </FormGroup>
-      <Button color='primary' onClick={() => handleClick('create')}>Create Your List</Button>
-        <Button color='warning' type='submit'>
+      <Button color='success' onClick={() => handleClick('create')}>Create List</Button>
+      <Button color='warning' onClick={() => handleClick('edit')}>Edit List Name</Button>
+        {/* <Button color='warning' type='submit'>
           Submit Button
-        </Button>
+        </Button> */}
     </Form>
     </div>
   );

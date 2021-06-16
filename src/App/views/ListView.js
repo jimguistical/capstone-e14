@@ -69,6 +69,12 @@ function ListView({ user }) {
         {...listObj}
         />
       ))}
+        <h3>
+          { listArray.length === 0
+            ? 'Please Create a List or Browse Service Sites'
+            : ''
+          }
+        </h3>
     </div>
     </>
   );

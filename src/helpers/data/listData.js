@@ -6,9 +6,8 @@ const dbUrl = firebaseConfig.databaseURL;
 const getList = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const sitesArray = Object.values(response.data);
-      resolve(sitesArray);
-      console.warn('getList', response.data);
+      const listArray = Object.values(response.data);
+      resolve(listArray);
     })
     .catch((error) => reject(error));
 });
@@ -17,8 +16,10 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
     .then((response) => {
       const body = { listID: response.data.name };
-      axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body);
-      getList(uid).then((listArray) => resolve(listArray))
+      axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body)
+        .then(() => {
+          getList(uid).then((listArray) => resolve(listArray));
+        })
         .catch((error) => reject(error));
     });
 });
@@ -29,4 +30,12 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { createList, getList, editList };
+const deleteList = (listID, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/resourcelist/${listID}.json`)
+    .then(() => getList(uid).then((listArray) => resolve(listArray))
+      .catch((error) => reject(error)));
+});
+
+export {
+  createList, getList, editList, deleteList
+};

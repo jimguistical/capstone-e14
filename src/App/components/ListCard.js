@@ -1,17 +1,22 @@
-import React, {
-// useState
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
   Card,
   CardBody,
-  CardText,
+  // CardText,
   CardTitle,
 } from 'reactstrap';
+import { deleteList } from '../../helpers/data/listData';
+// import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
 
-function ListCard({ user, setSites, ...siteObj }) {
+function ListCard({
+  user, setListArray, ...listObj
+}) {
+  // useEffect(() => {
+  //   getList(user.uid).then(() => (setListArray(listArray)));
+  // }, []);
   // const [site, setSite] = useState({
   //   firebaseKey: listObj?.firebaseKey || null,
   //   buildingName: listObj?.building || '',
@@ -23,26 +28,30 @@ function ListCard({ user, setSites, ...siteObj }) {
   const handleClick = (type) => {
     if (type === 'add') {
       // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
-      // console.warn(site, setSite);
+      console.warn('you clicked add');
     } else if (type === 'edit') {
-      console.warn('you clicked edit card button');
+      console.warn('you clicked EDIT card button');
     } else if (type === 'view') {
-      console.warn('you clicked view card button');
+      console.warn('you clicked VIEW card button');
+    } else if (type === 'delete') {
+      deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
     }
   };
   return (
     <Card body
         className='customizedCard'
-        key={siteObj.building}
-        // color='transparent'
+        key={listObj.listID}
       >
       <CardBody>
-        <CardTitle tag='h4'>{siteObj.building}</CardTitle>
-        <CardText tag='h5'>{siteObj.address}</CardText>
-        <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText>
-        {/* <CardText tag='h5'></CardText> */}
+        <CardTitle tag='h4'>{listObj.listName}</CardTitle>
+        {/* <ListForm/> */}
+        {/* <CardText tag='h5'>{siteObj.address}</CardText>
+        <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details
+        </Button>
+        <Button color='danger'
+          onClick={() => handleClick('delete')}>X
         </Button>
       </CardBody>
     </Card>
@@ -54,7 +63,9 @@ ListCard.propTypes = {
   listObj: PropTypes.object,
   setSites: PropTypes.func,
   site: PropTypes.object,
-  setSite: PropTypes.func
+  setSite: PropTypes.func,
+  listArray: PropTypes.array,
+  setListArray: PropTypes.func
 };
 
 export default ListCard;

@@ -27,7 +27,7 @@ function ListView({ user }) {
   //   uid: user.uid || user
   // });
   useEffect(() => {
-    getList(user.uid).then((taco) => (setListArray(taco)));
+    getList(user.uid).then((response) => (setListArray(response)));
   }, []);
   // console.warn(listArray, 'ListView useeffect');
   // const handleClick = () => {

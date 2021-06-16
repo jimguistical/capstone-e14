@@ -9,11 +9,14 @@ import {
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
 // import ListForm from './ListForm';
+// import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
 
 function ListCard({
   user, setListArray, ...listObj
 }) {
+  // const [editNow, setEditNow] = useState(false);
+
   // useEffect(() => {
   //   getList(user.uid).then(() => (setListArray(listArray)));
   // }, []);
@@ -26,17 +29,33 @@ function ListCard({
   // const [editNow, setEditNow] = useState(false);
   // const history = useHistory();
   const handleClick = (type) => {
-    if (type === 'add') {
-      // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
-      console.warn('you clicked add');
-    } else if (type === 'edit') {
-      console.warn('you clicked EDIT card button');
-    } else if (type === 'view') {
-      console.warn('you clicked VIEW card button');
-    } else if (type === 'delete') {
-      deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
+    switch (type) {
+      case 'delete':
+        deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
+        break;
+      // case 'edit':
+        // setEditNow((prevState) => !prevState);
+        // break;
+      case 'view':
+        console.warn('clicked View Button');
+        break;
+      default:
+        console.warn('nothing selected');
     }
   };
+
+  // const handleClick = (type) => {
+  //   if (type === 'add') {
+  //     addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
+  //     console.warn('you clicked add');
+  //   } else if (type === 'edit') {
+  //     console.warn('you clicked EDIT card button');
+  //   } else if (type === 'view') {
+  //     console.warn('you clicked VIEW card button');
+  //   } else if (type === 'delete') {
+  //     deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
+  //   }
+  // };
   return (
     <Card body
         className='customizedCard'
@@ -53,6 +72,10 @@ function ListCard({
         <Button color='danger'
           onClick={() => handleClick('delete')}>X
         </Button>
+        {/* {
+          editNow && <ListForm
+          />
+        } */}
       </CardBody>
     </Card>
   );

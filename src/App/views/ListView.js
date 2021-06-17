@@ -5,16 +5,16 @@ import React, {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Button } from 'reactstrap';
+// import { Container, Button } from 'reactstrap';
 import {
-  createList,
+  // createList,
   getList,
   // createList,
   // deleteList,
   // editList,
 } from '../../helpers/data/listData';
 import ListCard from '../components/ListCard';
-// import ListForm from '../components/ListForm';
+import ListForm from '../components/ListForm';
 // import ListForm from '../components/ListForm';
 // import { getList } from '../../helpers/data/listData';
 // import ListForm from '../components/ListForm';
@@ -22,7 +22,7 @@ import ListCard from '../components/ListCard';
 function ListView({ user }) {
   // const [listButton, setListButton] = useState(true);
   const [listArray, setListArray] = useState([]);
-  const [listObj, setListObj] = useState({});
+  // const [listObj, setListObj] = useState({});
   // const [listObj, setListObj] = useState({
   //   listID: listObj.firebaseKey || null,
   //   listName: listObj.listName || '',
@@ -36,19 +36,19 @@ function ListView({ user }) {
   //   console.warn(listObj);
   // };
 
-  const handleClick = (type) => {
-    if (type === 'create') {
-      createList(listObj, user.uid).then((response) => (setListArray(response)));
-      setListObj(listObj);
-      console.warn(listObj, 'you want to CREATE this list');
+  // const handleClick = (type) => {
+  //   if (type === 'create') {
+  //     createList(listObj, user.uid).then((response) => (setListArray(response)));
+  //     setListObj(listObj);
+  //     console.warn(listObj, 'you want to CREATE this list');
 
-    //     console.warn(listObj.listID, 'you want to delete this list');
-    //     deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
-    //   } else if (type === 'create') {
-    //     createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-    //     console.warn(listObj, 'you want to CREATE this list');
-    }
-  };
+  //     console.warn(listObj.listID, 'you want to delete this list');
+  //     deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
+  //   } else if (type === 'create') {
+  //     createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
+  //     console.warn(listObj, 'you want to CREATE this list');
+  //   }
+  // };
   useEffect(() => {
     getList(user.uid).then((response) => (setListArray(response)));
 
@@ -62,16 +62,16 @@ function ListView({ user }) {
 
   return (
     <>
-      {/* <ListForm
+      <ListForm
         user={user}
         listArray={listArray}
         setListArray={setListArray}
-        setListObj={setListObj}
-        listObj={listObj}
-      /> */}
-    <Container>
+        // setListObj={setListObj}
+        // listObj={listObj}
+      />
+    {/* <Container>
       <Button color='success' onClick={() => handleClick('create')}>Create Your List</Button>
-      </Container>
+      </Container> */}
 
     <div className='cardsHolder'>
       {listArray.map((listInfo) => (
@@ -80,8 +80,8 @@ function ListView({ user }) {
           key={listInfo.listID}
           listArray={listArray}
           setListArray={setListArray}
-          listObj={listObj}
-          setListObj={setListObj}
+          // listObj={listObj}
+          // setListObj={setListObj}
           {...listInfo}
         />
       ))}
@@ -100,8 +100,8 @@ ListView.propTypes = {
   user: PropTypes.any,
   listArray: PropTypes.array,
   setListArray: PropTypes.func,
-  listObj: PropTypes.object,
-  setListObj: PropTypes.func
+  // listObj: PropTypes.object,
+  // setListObj: PropTypes.func
 
 };
 

@@ -65,6 +65,7 @@ function ListCard({
           editNow && <ListForm
           // setListObj={setListObj}
           user={user}
+          key={listInfo.listID}
           setListArray={setListArray}
             {...listInfo}
           />

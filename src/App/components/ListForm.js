@@ -1,33 +1,44 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect } from 'react';
+import React, {
+  // useEffect,
+  useState
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Input
 } from 'reactstrap';
 import {
-  // createList,
-  // deleteList,
+  createList,
   editList,
+  // deleteList,
   // getList
 } from '../../helpers/data/listData';
 
 function ListForm({
-  user, listArray, setListArray, setListObj, listObj, ...listInfo
+  user, listArray, setListArray, ...listInfo
 }) {
   // const [listArray, setListArray] = useState([]);
-  // const [listObj, setListObj] = useState({
-  // listID: listObj.firebaseKey || null,
-  // listName: listObj.listName || '',
-  // uid: user.uid || ''
+  const [listObj, setListObj] = useState({
+    listID: listInfo.firebaseKey || null,
+    listName: listInfo.listName || '',
+    uid: user.uid || user
+  });
+
+  const handleInputChange = (e) => {
+    setListObj((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  // useEffect(() => {
+  // setListObj({
+  //   listID: listInfo.firebaseKey || null,
+  //   listName: listInfo.listName || 'My List',
+  //   uid: user.uid || user
   // });
-  useEffect(() => {
-    setListObj({
-      listID: listInfo.firebaseKey || null,
-      listName: listInfo.listName || 'My List',
-      uid: user.uid || user
-    });
-    console.warn(listObj, 'useEffect on ListFOrm');
-  }, []);
+  // console.warn(listObj, 'useEffect on ListFOrm');
+  // }, []);
   // const handleClick = () => {
   //   createList(listObj, user.uid).then(((listArray) => (setListArray(listArray))));
   //   setListObj({
@@ -40,24 +51,17 @@ function ListForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (listInfo.listID) {
-      editList(listInfo, listInfo.listID, user.uid).then((response) => setListArray(response));
+      editList(listObj, listInfo.listID, user.uid).then((response) => setListArray(response));
       console.warn(listInfo.listName, 'edit list');
-      // } else if (listObj.listID === null) {
-      //   createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-      //   setListObj({
-      //     listID: listObj.firebaseKey || null,
-      //     listName: listObj.listName,
-      //     uid: user.uid || ''
-      //   });
+    } else {
+      createList(listObj, user.uid).then((response) => (setListArray(response)));
+      setListObj({
+        listID: '',
+        listName: '',
+        uid: ''
+      });
       console.warn(listInfo, 'you created list');
     }
-  };
-
-  const handleInputChange = (e) => {
-    setListObj((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value
-    }));
   };
 
   // const handleClick = (type) => {
@@ -78,7 +82,7 @@ function ListForm({
       <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         {/* <Label for="listName" className="mr-sm-2">List Name</Label> */}
         <Input type="text" name="listName" id="listName"
-          placeholder="placeholding list name"
+          placeholder="Create your list"
           value={listInfo.listName}
           onChange={handleInputChange}
         />

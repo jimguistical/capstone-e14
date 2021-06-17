@@ -62,7 +62,7 @@ function ListForm({ user, listArray, setListArray }) {
       editList(listObj, listObj.listID, user.uid).then((response) => setListArray(response));
       console.warn(listObj.listID, 'you clicked EDIT');
     } else if (type === 'create') {
-      debugger;
+      // debugger;
       createList(listObj, user.uid).then((response) => (setListArray(response)));
       console.warn(listObj, 'you want to CREATE this list');
     }

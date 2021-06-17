@@ -13,13 +13,14 @@ import {
 } from '../../helpers/data/listData';
 import ListCard from '../components/ListCard';
 import ListForm from '../components/ListForm';
+// import ListForm from '../components/ListForm';
 // import { getList } from '../../helpers/data/listData';
 // import ListForm from '../components/ListForm';
 
 function ListView({ user }) {
   // const [listButton, setListButton] = useState(true);
   const [listArray, setListArray] = useState([]);
-  // const [listObj, setListObj] = useState({});
+  const [listObj, setListObj] = useState({});
   // const [listObj, setListObj] = useState({});
   // const [listObj, setListObj] = useState({
   //   listID: listObj.firebaseKey || null,
@@ -28,6 +29,7 @@ function ListView({ user }) {
   // });
   useEffect(() => {
     getList(user.uid).then((response) => (setListArray(response)));
+    console.warn(setListObj(listObj));
   }, []);
   // console.warn(listArray, 'ListView useeffect');
   // const handleClick = () => {
@@ -60,13 +62,13 @@ function ListView({ user }) {
       <Button color='warning' onClick={() => handleClick('create')}>Create List</Button>
       </Container> */}
     <div className='cardsHolder'>
-      {listArray.map((listObj) => (
+      {listArray.map((listCardObj) => (
         <ListCard
         user={user}
-        key={listObj.listID}
+        key={listCardObj.listID}
         setListArray={setListArray}
         listArray={listArray}
-        {...listObj}
+        {...listCardObj}
         />
       ))}
         <h3>
@@ -84,6 +86,7 @@ ListView.propTypes = {
   user: PropTypes.any,
   listArray: PropTypes.array,
   setListArray: PropTypes.func,
+  listObj: PropTypes.object,
   setListObj: PropTypes.func
 
 };

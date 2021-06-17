@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
+import ListForm from './ListForm';
 // import ListForm from './ListForm';
 // import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
@@ -26,16 +27,16 @@ function ListCard({
   //   address: listObj?.address || '',
   //   uid: user.uid || user
   // });
-  // const [editNow, setEditNow] = useState(false);
+  const [editNow, setEditNow] = useState(false);
   // const history = useHistory();
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
         break;
-      // case 'edit':
-        // setEditNow((prevState) => !prevState);
-        // break;
+      case 'edit':
+        setEditNow((prevState) => !prevState);
+        break;
       case 'view':
         console.warn('clicked View Button');
         break;
@@ -72,10 +73,11 @@ function ListCard({
         <Button color='danger'
           onClick={() => handleClick('delete')}>X
         </Button>
-        {/* {
+        {
           editNow && <ListForm
+            {...listObj}
           />
-        } */}
+        }
       </CardBody>
     </Card>
   );

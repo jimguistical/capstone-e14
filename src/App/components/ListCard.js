@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -7,38 +7,35 @@ import {
   // CardText,
   CardTitle,
 } from 'reactstrap';
-import { deleteList } from '../../helpers/data/listData';
+import { deleteList, getList } from '../../helpers/data/listData';
 import ListForm from './ListForm';
-// import ListForm from './ListForm';
-// import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
 
 function ListCard({
-  user, setListArray, ...listObj
+  user, setListArray, listObj, ...listInfo
 }) {
-  // const [editNow, setEditNow] = useState(false);
+  const [editNow, setEditNow] = useState(false);
 
-  // useEffect(() => {
-  //   getList(user.uid).then(() => (setListArray(listArray)));
-  // }, []);
+  useEffect(() => {
+    getList(user.uid).then((response) => (setListArray(response)));
+  }, []);
   // const [site, setSite] = useState({
   //   firebaseKey: listObj?.firebaseKey || null,
   //   buildingName: listObj?.building || '',
   //   address: listObj?.address || '',
   //   uid: user.uid || user
   // });
-  const [editNow, setEditNow] = useState(false);
   // const history = useHistory();
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteList(listObj.listID, user.uid).then((listArray) => (setListArray(listArray)));
+        deleteList(listInfo.listID, user.uid).then((response) => (setListArray(response)));
         break;
       case 'edit':
         setEditNow((prevState) => !prevState);
         break;
       case 'view':
-        console.warn('clicked View Button');
+        console.warn(listInfo, 'clicked View Button');
         break;
       default:
         console.warn('nothing selected');
@@ -60,24 +57,30 @@ function ListCard({
   return (
     <Card body
         className='customizedCard'
-        key={listObj.listID}
+        key={listInfo.listID}
       >
       <CardBody>
-        <CardTitle tag='h4'>{listObj.listName}</CardTitle>
-        {/* <ListForm/> */}
+        <CardTitle tag='h4'>{listInfo.listName}</CardTitle>
+        {
+          editNow && <ListForm
+          // setListObj={setListObj}
+          user={user}
+          setListArray={setListArray}
+            {...listInfo}
+          />
+        }
         {/* <CardText tag='h5'>{siteObj.address}</CardText>
         <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
+        <Button color='warning'
+          onClick={() => handleClick('edit')}>
+            {editNow ? 'Close' : 'Edit'}
+        </Button>
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details
         </Button>
         <Button color='danger'
           onClick={() => handleClick('delete')}>X
         </Button>
-        {
-          editNow && <ListForm
-            {...listObj}
-          />
-        }
       </CardBody>
     </Card>
   );
@@ -90,7 +93,9 @@ ListCard.propTypes = {
   site: PropTypes.object,
   setSite: PropTypes.func,
   listArray: PropTypes.array,
-  setListArray: PropTypes.func
+  setListArray: PropTypes.func,
+  listInfo: PropTypes.object,
+  setListObj: PropTypes.func
 };
 
 export default ListCard;

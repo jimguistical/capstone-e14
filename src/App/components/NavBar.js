@@ -18,14 +18,6 @@ function NavBar({ user }) {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  // const authShowList = () => {
-  //   <>
-  //     <NavItem>
-  //       <Link className='nav-link' to='/my-list'>My List</Link>
-  //     </NavItem>
-  //   </>;
-  // };
-
   const authButtons = () => (
     <>
       <NavItem>
@@ -59,7 +51,6 @@ function NavBar({ user }) {
           <NavItem>
             <Link className='nav-link' to='/my-list'>My List</Link>
           </NavItem>
-            {/* { user && authShowList() } */}
             { authButtons() }
           </Nav>
         </Collapse>

@@ -1,63 +1,24 @@
-/* eslint-disable no-use-before-define */
-import React, { useEffect, useState } from 'react';
+import React, {
+  // useEffect,
+  useState
+} from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Form, FormGroup, Label, Input
+  Button, Form, FormGroup, Input
 } from 'reactstrap';
 import {
   createList,
-  // deleteList,
-  // editList,
-  // getList
+  editList
 } from '../../helpers/data/listData';
 
-function ListForm({ user, setListArray }) {
-  // const [listArray, setListArray] = useState([]);
+function ListForm({
+  user, setListArray, listArray, ...listInfo
+}) {
   const [listObj, setListObj] = useState({
-  // listID: listObj.firebaseKey || null,
-  // listName: listObj.listName || '',
-  // uid: user.uid || ''
+    listID: listInfo?.listID || null,
+    listName: listInfo?.listName || 'My List',
+    uid: user.uid || user
   });
-  useEffect(() => {
-    setListObj({
-      listID: listObj.firebaseKey || null,
-      listName: listObj.listName || '',
-      uid: user.uid || user
-    });
-  }, []);
-  // const handleClick = () => {
-  //   createList(listObj, user.uid).then(((listArray) => (setListArray(listArray))));
-  //   setListObj({
-  //     listID: listObj.firebaseKey || null,
-  //     listName: 'My List' || listObj.listName,
-  //     uid: user.uid || ''
-  //   });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (listObj.listID) {
-  //     editList(listObj, listObj.listID, user.uid).then((listArray) => setListArray(listArray));
-  //     console.warn('edit list');
-  //   } else if (listObj.listID === null) {
-  //     createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-  //     setListObj({
-  //       listID: listObj.firebaseKey || null,
-  //       listName: listObj.listName,
-  //       uid: user.uid || ''
-  //     });
-  // console.warn(listObj, 'you created list');
-  //   }
-  // };
-  const handleClick = (type) => {
-    if (type === 'delete') {
-      console.warn(listObj.listID, 'you want to delete this list');
-      // deleteList(listObj.listID).then((listArray) => (setListArray(listArray)));
-    } else if (type === 'create') {
-      createList(listObj, user.uid).then((listArray) => (setListArray(listArray)));
-      // console.warn(listObj, 'you want to CREATE this list');
-    }
-  };
 
   const handleInputChange = (e) => {
     setListObj((prevState) => ({
@@ -65,25 +26,31 @@ function ListForm({ user, setListArray }) {
       [e.target.name]: e.target.value
     }));
   };
+
+  const handleClick = (type) => {
+    if (type === 'editList') {
+      editList(listObj, listObj.listID, user.uid).then((response) => setListArray(response));
+    } else if (type === 'create') {
+      createList(listObj, user.uid).then((response) => (setListArray(response)));
+    }
+  };
+
   return (
     <div>
-      {/* <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button> */}
-      <Form autoComplete='off' inline
-        // onSubmit={handleSubmit}
-      >
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Label for="listName" className="mr-sm-2">List Name</Label>
-        <Input type="text" name="listName" id="listName"
-          placeholder="list name"
-          value={listObj.listName || ''}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <Button color='success' onClick={() => handleClick('create')}>Create List</Button>
-      <Button color='warning' onClick={() => handleClick('edit')}>Edit List Name</Button>
-        {/* <Button color='warning' type='submit'>
-          Submit Button
-        </Button> */}
+      <Form autoComplete='off' inline>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Input type="text" name="listName" id="listName"
+            // placeholder="Create your list"
+            value={listObj.listName}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        {
+          listArray.length === 0
+            ? <Button color='success' onClick={() => handleClick('create')}
+            >Create List</Button>
+            : <Button color='warning' onClick={() => handleClick('editList')}>Submit Changes</Button>
+        }
     </Form>
     </div>
   );
@@ -94,7 +61,8 @@ ListForm.propTypes = {
   listObj: PropTypes.object,
   setListObj: PropTypes.func,
   listArray: PropTypes.array,
-  setListArray: PropTypes.func
+  setListArray: PropTypes.func,
+  listInfo: PropTypes.object
 };
 
 export default ListForm;

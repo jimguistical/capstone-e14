@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
+  ButtonGroup,
   Card,
   CardBody,
   CardText,
@@ -34,24 +35,21 @@ function SiteCard({
           <CardText tag='h5'>{siteObj.address}</CardText>
           <CardText tag='h5'>{siteObj.city}, TN {siteObj.zip_code}</CardText>
           <CardText tag='h5'></CardText>
-          <Button color='primary'
-            onClick={() => handleClick('view')}>View Details
-          </Button>
-        </CardBody>
-     {
-      user
-        ? <>
-            {/* <Button color='success' onClick={() => handleClick('edit')}
-            >Edit
-              {editNow ? 'Close Form' : 'Edit Form'}
-              </Button> */}
-            <Button color='success'
-              onClick={() => handleClick('add')}>Add to List
+          <ButtonGroup>
+            <Button color='primary'
+              onClick={() => handleClick('view')}>View Details
             </Button>
-            {/* <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button> */}
-          </>
-        : ''
-    }
+            {
+              user
+                ? <>
+                    <Button color='success'
+                      onClick={() => handleClick('add')}>Add to List
+                    </Button>
+                  </>
+                : ''
+            }
+          </ButtonGroup>
+        </CardBody>
       </Card>
   );
 }

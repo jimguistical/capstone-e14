@@ -6,11 +6,11 @@ import './App.scss';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import Routes from '../helpers/Routes';
-// import { getAllSites } from '../helpers/data/siteData';
+import { getAllSites } from '../helpers/data/siteData';
 
 function App() {
   const [user, setUser] = useState(null);
-  // const [sites, setSites] = useState([]);
+  const [sites, setSites] = useState([]);
   // const [list, setListObj] = useState({});
 
   useEffect(() => {
@@ -22,12 +22,12 @@ function App() {
           userName: userInState.email.split('@')[0]
         };
         setUser(userInfoObject);
-        // setSites([]);
-        // getAllSites().then((sitesArray) => setSites(sitesArray));
+        setSites([]);
+        getAllSites().then((sitesArray) => setSites(sitesArray));
       } else if (user || user === null) {
         setUser(false);
-        // setSites([]);
-        // getAllSites().sthen((sitesArray) => (setSites(sitesArray)));
+        setSites([]);
+        getAllSites().then((sitesArray) => (setSites(sitesArray)));
       }
     });
   }, []);
@@ -38,8 +38,8 @@ function App() {
         <NavBar user={user}/>
         <Routes
           user={user}
-          // sites={sites}
-          // setSites={setSites}
+          sites={sites}
+          setSites={setSites}
         />
         <Footer/>
       </Router>

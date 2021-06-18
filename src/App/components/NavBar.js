@@ -18,14 +18,6 @@ function NavBar({ user }) {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  // const authShowList = () => {
-  //   <>
-  //     <NavItem>
-  //       <Link className='nav-link' to='/my-list'>My List</Link>
-  //     </NavItem>
-  //   </>;
-  // };
-
   const authButtons = () => (
     <>
       <NavItem>

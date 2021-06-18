@@ -15,8 +15,6 @@ function SiteCard({
 }) {
   const handleClick = (type) => {
     if (type === 'add') {
-      // addSite(siteObj).then((sitesArray) => setSites(sitesArray));
-      // addSite(site, user.uid).then((sitesArray) => setSites(sitesArray));
       console.warn(siteObj.building, 'you clicked add site to list');
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');

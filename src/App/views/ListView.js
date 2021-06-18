@@ -64,13 +64,17 @@ function ListView({ user }) {
       {/* <Container>
       <Button color='success' onClick={() => handleClick('create')}>Create Your List</Button>
     </Container> */}
-    <ListForm
-      user={user}
-      listArray={listArray}
-      setListArray={setListArray}
-      // setListObj={setListObj}
-      // listObj={listObj}
-    />
+    {
+        listArray.length === 0
+          ? <ListForm
+            user={user}
+            listArray={listArray}
+            setListArray={setListArray}
+            // setListObj={setListObj}
+            // listObj={listObj}
+          />
+          : ''
+        }
 
     <div className='cardsHolder'>
       {listArray.map((listInfo) => (

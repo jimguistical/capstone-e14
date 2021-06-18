@@ -93,7 +93,7 @@ function ListForm({
         {
         listArray.length === 0
           ? <Button color='success' onClick={() => handleClick('create')}>Create List</Button>
-          : <Button color='warning' onClick={() => handleClick('editList')}>Edit List Name</Button>
+          : <Button color='warning' onClick={() => handleClick('editList')}>Submit Changes</Button>
         }
         {/* <Button color='secondary' type='submit'>
           Create

@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  Card,
-  CardBody,
-  // CardText,
-  CardTitle,
+  ButtonGroup,
+  Container,
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
 import ListForm from './ListForm';
@@ -54,35 +52,35 @@ function ListCard({
   //   }
   // };
   return (
-    <Card body
-        className='customizedCard'
-        key={listInfo.listID}
-      >
-      <CardBody>
-        <CardTitle tag='h4'>{listInfo.listName}
-        </CardTitle>
-        {
-          editNow && <ListForm
-          // setListObj={setListObj}
-          user={user}
-          setListArray={setListArray}
-          {...listInfo}
-          />
-        }
-        {/* <CardText tag='h5'>{siteObj.address}</CardText>
-        <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
+    <>
+     <ButtonGroup>
         <Button color='secondary'
           onClick={() => handleClick('toggleEdit')}>
             {editNow ? 'Close' : 'Edit'}
         </Button>
         <Button color='primary'
-          onClick={() => handleClick('view')}>View Details
+            onClick={() => handleClick('view')}>Details
         </Button>
         <Button color='danger'
-          onClick={() => handleClick('delete')}>X
+            onClick={() => handleClick('delete')}>X
         </Button>
-      </CardBody>
-    </Card>
+      </ButtonGroup>
+      {
+          editNow && <ListForm
+          user={user}
+          setListArray={setListArray}
+          {...listInfo}
+          />
+        }
+          <Container
+            className="listContainer"
+            fluid={true}
+            key={listInfo.listID}
+
+          >
+          {<h3>{ listInfo.listName }</h3> }
+          </Container>
+    </>
   );
 }
 

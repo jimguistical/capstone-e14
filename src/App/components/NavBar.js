@@ -59,7 +59,6 @@ function NavBar({ user }) {
           <NavItem>
             <Link className='nav-link' to='/my-list'>My List</Link>
           </NavItem>
-            {/* { user && authShowList() } */}
             { authButtons() }
           </Nav>
         </Collapse>

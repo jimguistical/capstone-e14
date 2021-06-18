@@ -70,8 +70,6 @@ function ListView({ user }) {
             user={user}
             listArray={listArray}
             setListArray={setListArray}
-            // setListObj={setListObj}
-            // listObj={listObj}
           />
           : ''
         }
@@ -83,8 +81,6 @@ function ListView({ user }) {
           key={listInfo.listID}
           listArray={listArray}
           setListArray={setListArray}
-          // listObj={listObj}
-          // setListObj={setListObj}
           {...listInfo}
         />
       ))}
@@ -102,10 +98,7 @@ function ListView({ user }) {
 ListView.propTypes = {
   user: PropTypes.any,
   listArray: PropTypes.array,
-  setListArray: PropTypes.func,
-  // listObj: PropTypes.object,
-  // setListObj: PropTypes.func
-
+  setListArray: PropTypes.func
 };
 
 export default ListView;

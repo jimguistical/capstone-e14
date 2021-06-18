@@ -53,14 +53,15 @@ function ListCard({
   // };
   return (
     <>
+       {<h3>{ listInfo.listName }</h3> }
      <ButtonGroup>
         <Button color='secondary'
           onClick={() => handleClick('toggleEdit')}>
             {editNow ? 'Close' : 'Edit'}
         </Button>
-        <Button color='primary'
+        {/* <Button color='primary'
             onClick={() => handleClick('view')}>Details
-        </Button>
+        </Button> */}
         <Button color='danger'
             onClick={() => handleClick('delete')}>X
         </Button>
@@ -78,7 +79,6 @@ function ListCard({
             key={listInfo.listID}
 
           >
-          {<h3>{ listInfo.listName }</h3> }
           </Container>
     </>
   );

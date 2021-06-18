@@ -32,10 +32,6 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   getAllSites().then((sitesArray) => (setSites(sitesArray)));
-  // }, []);
-
   return (
     <div className='App'>
       <Router>

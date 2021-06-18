@@ -1,7 +1,5 @@
 import React, {
   useEffect,
-  // useEffect,
-  // useEffect,
   useState
 } from 'react';
 import PropTypes from 'prop-types';
@@ -15,6 +13,7 @@ import {
 } from '../../helpers/data/listData';
 import ListCard from '../components/ListCard';
 import ListForm from '../components/ListForm';
+// import ListForm from '../components/ListForm';
 // import ListForm from '../components/ListForm';
 // import { getList } from '../../helpers/data/listData';
 // import ListForm from '../components/ListForm';
@@ -62,16 +61,16 @@ function ListView({ user }) {
 
   return (
     <>
-      <ListForm
-        user={user}
-        listArray={listArray}
-        setListArray={setListArray}
-        // setListObj={setListObj}
-        // listObj={listObj}
-      />
-    {/* <Container>
+      {/* <Container>
       <Button color='success' onClick={() => handleClick('create')}>Create Your List</Button>
-      </Container> */}
+    </Container> */}
+    <ListForm
+      user={user}
+      listArray={listArray}
+      setListArray={setListArray}
+      // setListObj={setListObj}
+      // listObj={listObj}
+    />
 
     <div className='cardsHolder'>
       {listArray.map((listInfo) => (

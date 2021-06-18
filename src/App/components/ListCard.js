@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -7,31 +7,30 @@ import {
   // CardText,
   CardTitle,
 } from 'reactstrap';
-import { deleteList, getList } from '../../helpers/data/listData';
+import { deleteList } from '../../helpers/data/listData';
 import ListForm from './ListForm';
 // import { addSite } from '../../helpers/data/siteData';
 
 function ListCard({
-  user, setListArray, listObj, ...listInfo
+  user, setListArray, ...listInfo
 }) {
   const [editNow, setEditNow] = useState(false);
 
-  useEffect(() => {
-    getList(user.uid).then((response) => (setListArray(response)));
-  }, []);
+  // useEffect(() => {
+  //   getList(user.uid).then((response) => (setListArray(response)));
+  // }, []);
   // const [site, setSite] = useState({
   //   firebaseKey: listObj?.firebaseKey || null,
   //   buildingName: listObj?.building || '',
   //   address: listObj?.address || '',
   //   uid: user.uid || user
   // });
-  // const history = useHistory();
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteList(listInfo.listID, user.uid).then((response) => (setListArray(response)));
         break;
-      case 'edit':
+      case 'toggleEdit':
         setEditNow((prevState) => !prevState);
         break;
       case 'view':
@@ -60,21 +59,21 @@ function ListCard({
         key={listInfo.listID}
       >
       <CardBody>
-        <CardTitle tag='h4'>{listInfo.listName}</CardTitle>
+        <CardTitle tag='h4'>{listInfo.listName}
+        </CardTitle>
         {
           editNow && <ListForm
           // setListObj={setListObj}
           user={user}
-          key={listInfo.listID}
           setListArray={setListArray}
-            {...listInfo}
+          {...listInfo}
           />
         }
         {/* <CardText tag='h5'>{siteObj.address}</CardText>
         <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
         <Button color='warning'
-          onClick={() => handleClick('edit')}>
-            {editNow ? 'Close' : 'Edit'}
+          onClick={() => handleClick('toggleEdit')}>
+            {editNow ? 'Close' : 'toggleEdit'}
         </Button>
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details
@@ -89,14 +88,14 @@ function ListCard({
 
 ListCard.propTypes = {
   user: PropTypes.any,
-  listObj: PropTypes.object,
-  setSites: PropTypes.func,
-  site: PropTypes.object,
-  setSite: PropTypes.func,
-  listArray: PropTypes.array,
   setListArray: PropTypes.func,
+  listObj: PropTypes.object,
   listInfo: PropTypes.object,
-  setListObj: PropTypes.func
+  // setSites: PropTypes.func,
+  // site: PropTypes.object,
+  // setSite: PropTypes.func,
+  // listArray: PropTypes.array,
+  // setListObj: PropTypes.func
 };
 
 export default ListCard;

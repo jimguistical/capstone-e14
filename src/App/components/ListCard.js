@@ -71,9 +71,9 @@ function ListCard({
         }
         {/* <CardText tag='h5'>{siteObj.address}</CardText>
         <CardText tag='h5'>{siteObj.city}{siteObj.zip_code}</CardText> */}
-        <Button color='warning'
+        <Button color='secondary'
           onClick={() => handleClick('toggleEdit')}>
-            {editNow ? 'Close' : 'toggleEdit'}
+            {editNow ? 'Close' : 'Edit'}
         </Button>
         <Button color='primary'
           onClick={() => handleClick('view')}>View Details

@@ -15,12 +15,12 @@ import {
 } from '../../helpers/data/listData';
 
 function ListForm({
-  user, setListArray, ...listInfo
+  user, setListArray, listArray, ...listInfo
 }) {
   // const [listArray, setListArray] = useState([]);
   const [listObj, setListObj] = useState({
     listID: listInfo?.listID || null,
-    listName: listInfo?.listName || '',
+    listName: listInfo?.listName || 'My List',
     uid: user.uid || user
   });
 
@@ -62,15 +62,14 @@ function ListForm({
   const handleClick = (type) => {
     if (type === 'editList') {
       editList(listObj, listObj.listID, user.uid).then((response) => setListArray(response));
-      console.warn(listObj, 'you clicked EDIT');
     } else if (type === 'create') {
       createList(listObj, user.uid).then((response) => (setListArray(response)));
 
-      setListObj({
-        listID: '',
-        listName: '',
-        uid: ''
-      });
+      // setListObj({
+      //   listID: '',
+      //   listName: '',
+      //   uid: ''
+      // });
       // console.warn(listObj, 'you want to CREATE this list');
     }
   };
@@ -88,14 +87,14 @@ function ListForm({
           onChange={handleInputChange}
         />
       </FormGroup>
-      <Button color='success' onClick={() => handleClick('create')}>Create List</Button>
-      <Button color='warning' onClick={() => handleClick('editList')}>Edit List Name</Button>
+      {/* <Button color='success' onClick={() => handleClick('create')}>Create List</Button>
+      <Button color='warning' onClick={() => handleClick('editList')}>Edit List Name</Button> */}
         {/* <Button color='warning' onClick={() => handleClick('edit')}>Edit List Name</Button> */}
-        {/* {
+        {
         listArray.length === 0
           ? <Button color='success' onClick={() => handleClick('create')}>Create List</Button>
-          : <Button color='warning' onClick={() => handleClick('edit')}>Edit List Name</Button>
-        } */}
+          : <Button color='warning' onClick={() => handleClick('editList')}>Edit List Name</Button>
+        }
         {/* <Button color='secondary' type='submit'>
           Create
         </Button> */}

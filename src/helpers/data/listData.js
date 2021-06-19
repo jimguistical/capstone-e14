@@ -11,6 +11,14 @@ const getList = (uid) => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
+const getListNameObj = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      const listArray = Object.values(response.data);
+      resolve(listArray);
+    })
+    .catch((error) => reject(error));
+});
 
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
@@ -37,5 +45,5 @@ const deleteList = (listID, uid) => new Promise((resolve, reject) => {
 });
 
 export {
-  createList, getList, editList, deleteList
+  getList, getListNameObj, createList, editList, deleteList
 };

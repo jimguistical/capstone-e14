@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
   ButtonGroup,
   // Container,
 } from 'reactstrap';
-import { deleteList } from '../../helpers/data/listData';
+import { deleteList, getList } from '../../helpers/data/listData';
 import ListForm from './ListForm';
 
 function ListCard({ user, setListObj, ...listObj }) {
   const [editNow, setEditNow] = useState(false);
+
+  useEffect(() => {
+    getList(user.uid).then((response) => (setListObj(response)));
+  });
 
   const handleClick = (type) => {
     switch (type) {
@@ -18,9 +22,6 @@ function ListCard({ user, setListObj, ...listObj }) {
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);
-        break;
-      case 'view':
-        console.warn(listObj, 'clicked View Button');
         break;
       default:
         console.warn('nothing selected');

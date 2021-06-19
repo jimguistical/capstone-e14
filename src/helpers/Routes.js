@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
-// import PrivateRoute from './PrivateRoute';
 import SitesView from '../App/views/SitesView';
 import ListView from '../App/views/ListView';
 import HomeView from '../App/views/HomeView';

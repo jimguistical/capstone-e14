@@ -31,7 +31,7 @@ function ListForm({
     if (type === 'editList') {
       editList(listObj, listObj.listID, user.uid).then((response) => setListArray(response));
     } else if (type === 'create') {
-      createList(listObj, user.uid).then((response) => (setListArray(response)));
+      createList(listObj, user.uid).then((response) => (setListObj(response)));
     }
   };
 
@@ -40,13 +40,12 @@ function ListForm({
       <Form autoComplete='off' inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Input type="text" name="listName" id="listName"
-            // placeholder="Create your list"
             value={listObj.listName}
             onChange={handleInputChange}
           />
         </FormGroup>
         {
-          listArray.length === 0
+          listObj.listID === null
             ? <Button color='success' onClick={() => handleClick('create')}
             >Create List</Button>
             : <Button color='warning' onClick={() => handleClick('editList')}>Submit Changes</Button>

@@ -5,46 +5,40 @@ import React, {
 import PropTypes from 'prop-types';
 // import { Container, Button } from 'reactstrap';
 import { getList } from '../../helpers/data/listData';
-import ListCard from '../components/ListCard';
+// import ListCard from '../components/ListCard';
 import ListForm from '../components/ListForm';
 
 function ListView({ user }) {
-  const [listArray, setListArray] = useState([]);
+  // const [listObj, setListObj] = useState({});
+  const [siteArray, setSiteArray] = useState([]);
 
   useEffect(() => {
-    getList(user.uid).then((response) => (setListArray(response)));
+    getList(user.uid).then((response) => (setSiteArray(response)));
+    // need to use Promise.All to get sites with user & ListID
   }, []);
 
   return (
     <>
-    {
-        listArray.length === 0
-          ? <ListForm
-            user={user}
-            listArray={listArray}
-            setListArray={setListArray}
-          />
-          : ''
-        }
+    <div>
+      <ListForm
+        user={user}
+        // listObj={listObj}
+        // setListObj={setListObj}
+      />
+    </div>
 
     <div className='cardsHolder'>
-      {listArray.map((listInfo) => (
-        // this ListCard is going to be SiteCard here
+      {/* {siteArray.map((siteInfo) => (
+        console.warn(setSiteArray(siteInfo))
         // pass listInfo.listID instead of just having it as key
-        <ListCard
-          user={user}
-          key={listInfo.listID}
-          listArray={listArray}
-          setListArray={setListArray}
-          {...listInfo}
-        />
-      ))}
-        <h3>
-          { listArray.length === 0
+        // SiteCard here
+      ))} */}
+        {<h3>
+          { siteArray.length === 0
             ? 'Please Create a List or Browse Service Sites'
             : ''
           }
-        </h3>
+        </h3>}
     </div>
     </>
   );
@@ -52,8 +46,8 @@ function ListView({ user }) {
 
 ListView.propTypes = {
   user: PropTypes.any,
-  listArray: PropTypes.array,
-  setListArray: PropTypes.func
+  siteArray: PropTypes.array,
+  setSiteArray: PropTypes.func
 };
 
 export default ListView;

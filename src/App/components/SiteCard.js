@@ -8,6 +8,7 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
+// import { addSite } from '../../helpers/data/siteData';
 
 function SiteCard({
   user,
@@ -15,7 +16,7 @@ function SiteCard({
   ...siteObj
 }) {
   const [siteCardObj, setSiteCardObj] = useState({
-    buildingName: siteObj?.building,
+    building: siteObj?.building,
     address: siteObj?.address,
     city: siteObj?.city,
     zipCode: siteObj,
@@ -24,8 +25,8 @@ function SiteCard({
 
   const handleClick = (type) => {
     if (type === 'add') {
-      // this is where I call addSite to post new Object to FB
-      console.warn(siteObj, 'you clicked add site to list');
+      // addSite(siteCardObj, user.uid).then((response) => (setSiteCardObj(response)));
+      console.warn(setSiteCardObj(siteCardObj), 'you clicked add site to list');
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');
     } else if (type === 'view') {
@@ -36,16 +37,16 @@ function SiteCard({
   return (
       <Card body
         className='customizedCard'
-        key={siteObj.building}
+        key={siteCardObj.building}
       >
         <CardBody>
           <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <ButtonGroup>
-            <Button color='primary'
+            {/* <Button color='primary'
               onClick={() => handleClick('view')}>View Details
-            </Button>
+            </Button> */}
             {
               user
                 ? <>

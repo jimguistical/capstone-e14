@@ -9,7 +9,7 @@ import { getList } from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
 
 function ListView({ user }) {
-  // const [listObj, setListObj] = useState({});
+  const [listObj, setListObj] = useState({});
   const [siteArray, setSiteArray] = useState([]);
 
   useEffect(() => {
@@ -22,10 +22,12 @@ function ListView({ user }) {
     <div>
       <ListForm
         user={user}
-        // listObj={listObj}
-        // setListObj={setListObj}
+        listObj={listObj}
+        setListObj={setListObj}
       />
     </div>
+
+{/* where should I put list card? */}
 
     <div className='cardsHolder'>
       {/* {siteArray.map((siteInfo) => (

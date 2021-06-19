@@ -1,5 +1,6 @@
 import React, {
   // useEffect,
+  // useEffect,
   useState
 } from 'react';
 import PropTypes from 'prop-types';
@@ -12,16 +13,20 @@ import {
 } from '../../helpers/data/listData';
 
 function ListForm({
-  user, setListArray, listArray, ...listInfo
+  user, ...listObj
 }) {
-  const [listObj, setListObj] = useState({
-    listID: listInfo?.listID || null,
-    listName: listInfo?.listName || 'My List',
+  const [listFormObj, setListFormObj] = useState({
+    listID: listObj?.listID || null,
+    listName: listObj?.listName || 'My List',
     uid: user.uid || user
   });
 
+  // useEffect(() => {
+
+  // });
+
   const handleInputChange = (e) => {
-    setListObj((prevState) => ({
+    setListFormObj((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }));
@@ -29,9 +34,9 @@ function ListForm({
 
   const handleClick = (type) => {
     if (type === 'editList') {
-      editList(listObj, listObj.listID, user.uid).then((response) => setListArray(response));
+      editList(listFormObj, listFormObj.listID, user.uid).then((response) => setListFormObj(response));
     } else if (type === 'create') {
-      createList(listObj, user.uid).then((response) => (setListObj(response)));
+      createList(listFormObj, user.uid).then((response) => (setListFormObj(response)));
     }
   };
 
@@ -45,12 +50,13 @@ function ListForm({
           />
         </FormGroup>
         {
-          listObj.listID === null
+          listFormObj.listID === null
             ? <Button color='success' onClick={() => handleClick('create')}
             >Create List</Button>
             : <Button color='warning' onClick={() => handleClick('editList')}>Submit Changes</Button>
         }
     </Form>
+
     </div>
   );
 }
@@ -59,9 +65,9 @@ ListForm.propTypes = {
   user: PropTypes.any,
   listObj: PropTypes.object,
   setListObj: PropTypes.func,
-  listArray: PropTypes.array,
-  setListArray: PropTypes.func,
-  listInfo: PropTypes.object
+  // listArray: PropTypes.array,
+  // setListArray: PropTypes.func,
+  // listInfo: PropTypes.object
 };
 
 export default ListForm;

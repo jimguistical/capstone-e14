@@ -14,8 +14,13 @@ const getList = (uid) => new Promise((resolve, reject) => {
 const getListNameObj = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const listArray = Object.values(response.data);
-      resolve(listArray);
+      const listNameObj = Object.values(response.data);
+      if (response.data.includes('listName')) {
+        // const d = Object.values(response.data);
+        resolve(listNameObj);
+      } else {
+        resolve({});
+      }
     })
     .catch((error) => reject(error));
 });

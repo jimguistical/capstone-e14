@@ -33,8 +33,9 @@ function ListForm({
   };
 
   const handleClick = (type) => {
-    if (type === 'editList') {
-      editList(listFormObj, listFormObj.listID, user.uid).then((response) => setListFormObj(response));
+    if (type === 'editList' && listFormObj.listID) {
+      editList(listFormObj, listFormObj.listID, user.uid).then((response) => console.warn(response));
+      // setListFormObj(response));
     } else if (type === 'create') {
       createList(listFormObj, user.uid).then((response) => (setListFormObj(response)));
     }
@@ -45,7 +46,7 @@ function ListForm({
       <Form autoComplete='off' inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Input type="text" name="listName" id="listName"
-            value={listObj.listName}
+            value={listFormObj.listName}
             onChange={handleInputChange}
           />
         </FormGroup>

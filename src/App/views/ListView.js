@@ -1,36 +1,37 @@
 import React, {
-  useEffect,
-  useState
+// useEffect,
+// useState
 } from 'react';
 import PropTypes from 'prop-types';
 // import { Container, Button } from 'reactstrap';
 // import { getList } from '../../helpers/data/listData';
-import ListForm from '../components/ListForm';
+// import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
 
 function ListView({ user }) {
-  const [listObj, setListObj] = useState({});
+  // const [listObj, setListObj] = useState({});
   // const [siteArray, setSiteArray] = useState([]);
 
-  useEffect(() => {
-    // getList(user.uid).then((response) => (setSiteArray(response)));
-    // need to use Promise.All to get sites with user & ListID
-  }, []);
+  // useEffect(() => {
+  //   getList(user.uid).then((response) => (setListObj(response)));
+  //   console.warn(listObj);
+  // }, []);
+  // need to use Promise.All to get sites with user & ListID
 
   return (
     <>
     <div>
-      <ListForm
+      {/* <ListForm
         user={user}
         listObj={listObj}
         setListObj={setListObj}
-      />
+      /> */}
 
       {/* need a className for this div ^^ for List + site card map */}
       <ListCard
         user={user}
-        listObj={listObj}
-        setListObj={setListObj}
+        // listObj={listObj}
+        // setListObj={setListObj}
       />
       {/* <div className='cardsHolder'>
         {siteArray.map((siteInfo) => (
@@ -39,12 +40,12 @@ function ListView({ user }) {
           // SiteCard here
         ))}
       </div> */}
-          {<h3>
+          {/* {<h3>
             { listObj.Name === null
               ? 'Please Create a List or Browse Service Sites'
               : ''
             }
-          </h3>}
+          </h3>} */}
     </div>
     </>
   );

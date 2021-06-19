@@ -5,20 +5,26 @@ import {
   ButtonGroup,
   // Container,
 } from 'reactstrap';
-import { deleteList, getList } from '../../helpers/data/listData';
+import {
+  deleteList,
+  getListNameObj
+} from '../../helpers/data/listData';
 import ListForm from './ListForm';
 
-function ListCard({ user, setListObj, ...listObj }) {
+function ListCard({ user }) {
   const [editNow, setEditNow] = useState(false);
+  const [listObj, setListObj] = useState({});
 
   useEffect(() => {
-    getList(user.uid).then((response) => (setListObj(response)));
+    getListNameObj(user.uid).then((response) => (setListObj(response)));
+    console.warn(listObj);
   });
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteList(listObj.listID, user.uid).then((response) => (setListObj(response)));
+        // deleteList(listObj.listID, user.uid).then((response) => (setListObj(response)));
+        console.warn(deleteList(listObj.listID));
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);

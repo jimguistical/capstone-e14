@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { getList } from '../../helpers/data/listData';
 // import ListCard from '../components/ListCard';
 import ListForm from '../components/ListForm';
+// import ListCard from '../components/ListCard';
 
 function ListView({ user }) {
   const [listObj, setListObj] = useState({});
@@ -27,21 +28,29 @@ function ListView({ user }) {
       />
     </div>
 
+    <div>
+      {/* need a className for this div ^^ for List + site card map */}
+      {/* <ListCard
+        user={user}
+        listObj={listObj}
+        setListObj={setListObj}
+      /> */}
+      <div className='cardsHolder'>
+        {/* {siteArray.map((siteInfo) => (
+          console.warn(setSiteArray(siteInfo))
+          // pass listInfo.listID instead of just having it as key
+          // SiteCard here
+        ))} */}
+          {<h3>
+            { siteArray.length === 0
+              ? 'Please Create a List or Browse Service Sites'
+              : ''
+            }
+          </h3>}
+      </div>
+    </div>
 {/* where should I put list card? */}
 
-    <div className='cardsHolder'>
-      {/* {siteArray.map((siteInfo) => (
-        console.warn(setSiteArray(siteInfo))
-        // pass listInfo.listID instead of just having it as key
-        // SiteCard here
-      ))} */}
-        {<h3>
-          { siteArray.length === 0
-            ? 'Please Create a List or Browse Service Sites'
-            : ''
-          }
-        </h3>}
-    </div>
     </>
   );
 }

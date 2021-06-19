@@ -3,25 +3,24 @@ import PropTypes from 'prop-types';
 import {
   Button,
   ButtonGroup,
-  Container,
+  // Container,
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
 import ListForm from './ListForm';
-// import SiteCard from './SiteCard';
 
-function ListCard({ user, setListArray, ...listInfo }) {
+function ListCard({ user, setListObj, ...listObj }) {
   const [editNow, setEditNow] = useState(false);
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteList(listInfo.listID, user.uid).then((response) => (setListArray(response)));
+        deleteList(listObj.listID, user.uid).then((response) => (setListObj(response)));
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);
         break;
       case 'view':
-        console.warn(listInfo, 'clicked View Button');
+        console.warn(listObj, 'clicked View Button');
         break;
       default:
         console.warn('nothing selected');
@@ -30,7 +29,7 @@ function ListCard({ user, setListArray, ...listInfo }) {
 
   return (
     <>
-       {<h3>{ listInfo.listName }</h3> }
+       {<h3>{ listObj.listName }</h3> }
      <ButtonGroup>
         <Button color='secondary'
           onClick={() => handleClick('toggleEdit')}>
@@ -40,8 +39,8 @@ function ListCard({ user, setListArray, ...listInfo }) {
         {
             editNow && <ListForm
             user={user}
-            setListArray={setListArray}
-            {...listInfo}
+            setListObj={setListObj}
+            {...listObj}
             />
           }
 
@@ -49,22 +48,20 @@ function ListCard({ user, setListArray, ...listInfo }) {
             onClick={() => handleClick('delete')}>X
         </Button>
       </ButtonGroup>
-          <Container
+          {/* <Container
             className="listContainer"
             fluid={true}
-            key={listInfo.listID}
+            key={listObj.listID}
           >
-            {/* <SiteCard
-            /> */}
-          </Container>
+          </Container> */}
     </>
   );
 }
 
 ListCard.propTypes = {
   user: PropTypes.any,
-  setListArray: PropTypes.func,
-  listInfo: PropTypes.object,
+  setListObj: PropTypes.func,
+  listObj: PropTypes.object,
 };
 
 export default ListCard;

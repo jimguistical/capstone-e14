@@ -29,6 +29,8 @@ function ListView({ user }) {
 
     <div className='cardsHolder'>
       {listArray.map((listInfo) => (
+        // this ListCard is going to be SiteCard here
+        // pass listInfo.listID instead of just having it as key
         <ListCard
           user={user}
           key={listInfo.listID}

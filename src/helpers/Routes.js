@@ -37,6 +37,7 @@ function Routes({ user, sites, setSites }) {
         >
         </Route>
         <PrivateRoute exact path='/my-list'
+        // /my-list/:listID with useParams
           user={user}
           component={() => <ListView
             user={user}

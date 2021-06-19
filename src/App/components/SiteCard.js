@@ -16,7 +16,7 @@ function SiteCard({
 }) {
   const handleClick = (type) => {
     if (type === 'add') {
-      console.warn(siteObj.building, 'you clicked add site to list');
+      console.warn(siteObj, 'you clicked add site to list');
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');
     } else if (type === 'view') {

@@ -34,7 +34,7 @@ function SiteCard({
           <CardTitle tag='h4'>{siteObj.building}</CardTitle>
           <CardText tag='h5'>{siteObj.address}</CardText>
           <CardText tag='h5'>{siteObj.city}, TN {siteObj.zip_code}</CardText>
-          <CardText tag='h5'></CardText>
+          {/* <CardText tag='h5'></CardText> */}
           <ButtonGroup>
             <Button color='primary'
               onClick={() => handleClick('view')}>View Details

@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 import { deleteList } from '../../helpers/data/listData';
 import ListForm from './ListForm';
+import SiteCard from './SiteCard';
 
 function ListCard({ user, setListArray, ...listInfo }) {
   const [editNow, setEditNow] = useState(false);
@@ -52,7 +53,10 @@ function ListCard({ user, setListArray, ...listInfo }) {
             className="listContainer"
             fluid={true}
             key={listInfo.listID}
-          ></Container>
+          >
+            <SiteCard
+            />
+          </Container>
     </>
   );
 }

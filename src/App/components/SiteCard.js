@@ -12,7 +12,6 @@ import {
 
 function SiteCard({
   user,
-  setSites,
   ...siteObj
 }) {
   const [siteCardObj, setSiteCardObj] = useState({
@@ -65,7 +64,7 @@ function SiteCard({
 SiteCard.propTypes = {
   user: PropTypes.any,
   siteObj: PropTypes.object,
-  setSites: PropTypes.func,
+  // setSites: PropTypes.func,
   // site: PropTypes.object,
   // setSite: PropTypes.func,
   // sites: PropTypes.array,

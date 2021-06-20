@@ -38,8 +38,7 @@ function ListView({ user }) {
               <ListCard
               user={user}
               key={listNameInfo.listID}
-            setListNameArray={setListNameArray}
-
+              setListNameArray={setListNameArray}
               {...listNameInfo}
               />
             ))}
@@ -48,9 +47,9 @@ function ListView({ user }) {
           {listSites.map((siteObj) => (
             <SiteCard
             user={user}
-            key={siteObj.building}
+            key={siteObj.listID}
             setListSites={setListSites}
-            {...siteObj}
+            // {...siteObj}
             // pass listInfo.listID instead of just having it as key
             />
           ))}

@@ -24,8 +24,8 @@ const getAllSites = () => new Promise((resolve, reject) => {
 const addSite = (site) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, site)
     .then((response) => {
-      const body = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/list/${response.data.name}.json`, body);
+      const body = { listID: response.data.name };
+      axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body);
       getList().then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });

@@ -9,7 +9,6 @@ const getList = (uid) => new Promise((resolve, reject) => {
       const listArray = Object.values(response.data);
       const withoutListNameArray = listArray.filter((listObj) => !listObj.listName);
       resolve(withoutListNameArray);
-      debugger;
     })
     .catch((error) => reject(error));
 });

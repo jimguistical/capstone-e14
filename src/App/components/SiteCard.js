@@ -8,23 +8,24 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
-// import { addSite } from '../../helpers/data/siteData';
+import { addSite } from '../../helpers/data/siteData';
 
 function SiteCard({
   user,
   ...siteObj
 }) {
   const [siteCardObj, setSiteCardObj] = useState({
-    building: siteObj?.building,
+    listID: siteObj?.listID || null,
+    buildingName: siteObj?.building,
     address: siteObj?.address,
     city: siteObj?.city,
-    zipCode: siteObj,
+    zipCode: siteObj?.zip_code,
     uid: user.uid || user
   });
 
   const handleClick = (type) => {
     if (type === 'add') {
-      // addSite(siteCardObj, user.uid).then((response) => (setSiteCardObj(response)));
+      addSite(siteCardObj, user.uid).then((response) => (console.warn(response)));
       console.warn(setSiteCardObj(siteCardObj), 'you clicked add site to list');
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');

@@ -38,10 +38,10 @@ function SiteCard({
   return (
       <Card body
         className='customizedCard'
-        key={siteCardObj.buildingName}
+        key={siteCardObj.building}
       >
         <CardBody>
-          <CardTitle tag='h4'>{siteCardObj.buildingName}</CardTitle>
+          <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <ButtonGroup>
@@ -66,6 +66,7 @@ function SiteCard({
 SiteCard.propTypes = {
   user: PropTypes.any,
   siteObj: PropTypes.object,
+  setSiteCardObj: PropTypes.func
   // setSites: PropTypes.func,
   // site: PropTypes.object,
   // setSite: PropTypes.func,

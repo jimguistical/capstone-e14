@@ -3,7 +3,6 @@ import React, {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-// import { Container, Button } from 'reactstrap';
 // import { getList } from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
@@ -24,6 +23,7 @@ function ListView({ user }) {
   return (
     <>
       <div>
+        {/* ListFOrm isn't currently wrapped in it's own div */}
         {
           listNameArray.length === 0
             ? <ListForm
@@ -64,10 +64,6 @@ ListView.propTypes = {
   user: PropTypes.any,
   listNameArray: PropTypes.array,
   setListNameArray: PropTypes.func
-  // setListObj: PropTypes.func,
-  // listObj: PropTypes.object,
-  // siteArray: PropTypes.array,
-  // setSiteArray: PropTypes.func
 };
 
 export default ListView;

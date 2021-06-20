@@ -8,10 +8,11 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
-import { addSite } from '../../helpers/data/siteData';
+import { addSite, deleteSite } from '../../helpers/data/siteData';
 
 function SiteCard({
   user,
+  setListSites,
   ...siteObj
 }) {
   const [siteCardObj, setSiteCardObj] = useState({
@@ -27,7 +28,9 @@ function SiteCard({
     if (type === 'add') {
       addSite(siteCardObj, user.uid)
         .then((response) => (setSiteCardObj(response)));
-      // console.warn(setSiteCardObj(siteCardObj), 'you clicked add site to list');
+    } else if (type === 'delete') {
+      deleteSite(siteCardObj.listID, user.uid)
+        .then((response) => (setListSites(response)));
     } else if (type === 'view') {
       console.warn('you clicked view card button');
     }
@@ -44,13 +47,18 @@ function SiteCard({
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <ButtonGroup>
             <Button color='primary'
-              onClick={() => handleClick('view')}>View Details
+              onClick={() => handleClick('view')}>Details
             </Button>
             {
               user
                 ? <>
                     <Button color='success'
-                      onClick={() => handleClick('add')}>Add to List
+                      onClick={() => handleClick('add')}>
+                        Add to List
+                    </Button>
+                    <Button color='danger'
+                      onClick={() => handleClick('delete')}>
+                        X
                     </Button>
                   </>
                 : ''
@@ -64,11 +72,8 @@ function SiteCard({
 SiteCard.propTypes = {
   user: PropTypes.any,
   siteObj: PropTypes.object,
-  setSiteCardObj: PropTypes.func
-  // setSites: PropTypes.func,
-  // site: PropTypes.object,
-  // setSite: PropTypes.func,
-  // sites: PropTypes.array,
+  setSiteCardObj: PropTypes.func,
+  setListSites: PropTypes.func
 };
 
 export default SiteCard;

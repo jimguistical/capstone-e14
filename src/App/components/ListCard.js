@@ -12,15 +12,16 @@ import {
 } from '../../helpers/data/listData';
 import ListForm from './ListForm';
 
-function ListCard({ user, setListObj, ...listObj }) {
+function ListCard({ user, setListNameArray, ...listNameInfo }) {
   const [editNow, setEditNow] = useState(false);
-  // const [listObj, setListObj] = useState({});
+  // const [listNameInfo, setListNameArray] = useState({});
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        // deleteList(listObj.listID, user.uid).then((response) => (setListObj(response)));
-        console.warn(deleteList(listObj.listID));
+        deleteList(listNameInfo.listID, user.uid).then((response) => (setListNameArray(response)));
+        // deleteList(listNameInfo.listID, user.uid).then((response) => (console.warn(response)));
+        // console.warn(deleteList(listNameInfo.listID));
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);
@@ -32,7 +33,7 @@ function ListCard({ user, setListObj, ...listObj }) {
 
   return (
     <>
-       {<h3>{ listObj.listName }</h3> }
+       {<h3>{ listNameInfo.listName }</h3> }
      <ButtonGroup>
         <Button color='secondary'
           onClick={() => handleClick('toggleEdit')}>
@@ -42,8 +43,8 @@ function ListCard({ user, setListObj, ...listObj }) {
         {
             editNow && <ListForm
             user={user}
-            setListObj={setListObj}
-            {...listObj}
+            setListNameArray={setListNameArray}
+            {...listNameInfo}
             />
           }
 
@@ -54,7 +55,7 @@ function ListCard({ user, setListObj, ...listObj }) {
           {/* <Container
             className="listContainer"
             fluid={true}
-            key={listObj.listID}
+            key={listNameInfo.listID}
           >
           </Container> */}
     </>
@@ -63,8 +64,8 @@ function ListCard({ user, setListObj, ...listObj }) {
 
 ListCard.propTypes = {
   user: PropTypes.any,
-  setListObj: PropTypes.func,
-  listObj: PropTypes.object,
+  setListNameArray: PropTypes.func,
+  listNameInfo: PropTypes.object,
 };
 
 export default ListCard;

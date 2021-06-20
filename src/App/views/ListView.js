@@ -7,15 +7,15 @@ import PropTypes from 'prop-types';
 // import { getList } from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
-import { getListNameObj } from '../../helpers/data/listData';
+import { getListByListName } from '../../helpers/data/listData';
 
 function ListView({ user }) {
-  const [listObj, setListObj] = useState({});
+  // const [listObj, setListObj] = useState({});
+  const [listNameArray, setListNameArray] = useState([]);
   // const [siteArray, setSiteArray] = useState([]);
 
   useEffect(() => {
-    // getListNameObj(user.uid).then((response) => (setListObj(response)));
-    getListNameObj(user.uid).then((response) => (console.warn(response)));
+    getListByListName(user.uid).then((response) => (setListNameArray(response)));
     // debugger;
     // setListObj(listObj);
     // console.warn(listObj);
@@ -32,16 +32,20 @@ function ListView({ user }) {
     <div>
       <ListForm
         user={user}
-        listObj={listObj}
-        setListObj={setListObj}
+        setListNameArray={setListNameArray}
       />
 
-      {/* need a className for this div ^^ for List + site card map */}
-      <ListCard
-        user={user}
-        // listObj={listObj}
-        // setListObj={setListObj}
-      />
+<div className='cardsHolder'>
+        {listNameArray.map((listNameInfo) => (
+          <ListCard
+          // listName as key only works if I have on List Obj
+          user={user}
+          key={listNameInfo.listID}
+          setListNameArray={setListNameArray}
+          {...listNameInfo}
+          />
+        ))}
+      </div>
       {/* <div className='cardsHolder'>
         {siteArray.map((siteInfo) => (
           console.warn(setSiteArray(siteInfo))
@@ -62,8 +66,10 @@ function ListView({ user }) {
 
 ListView.propTypes = {
   user: PropTypes.any,
-  setListObj: PropTypes.func,
-  listObj: PropTypes.object,
+  listNameArray: PropTypes.array,
+  setListNameArray: PropTypes.func
+  // setListObj: PropTypes.func,
+  // listObj: PropTypes.object,
   // siteArray: PropTypes.array,
   // setSiteArray: PropTypes.func
 };

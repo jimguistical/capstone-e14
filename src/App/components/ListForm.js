@@ -13,11 +13,11 @@ import {
 } from '../../helpers/data/listData';
 
 function ListForm({
-  user, ...listObj
+  user, setListNameArray, ...listNameInfo
 }) {
   const [listFormObj, setListFormObj] = useState({
-    listID: listObj?.listID || null,
-    listName: listObj?.listName || 'My List',
+    listID: listNameInfo?.listID || null,
+    listName: listNameInfo?.listName || 'My List',
     uid: user.uid || user
   });
 
@@ -29,11 +29,10 @@ function ListForm({
   };
 
   const handleClick = (type) => {
-    if (type === 'editList' && listFormObj.listID) {
-      editList(listFormObj, listFormObj.listID, user.uid).then((response) => console.warn(response));
-      // setListFormObj(response));
+    if (type === 'editList') {
+      editList(listFormObj, listFormObj.listID, user.uid).then((response) => setListNameArray(response));
     } else if (type === 'create') {
-      createList(listFormObj, user.uid).then((response) => (setListFormObj(response)));
+      createList(listFormObj, user.uid).then((response) => (setListNameArray(response)));
     }
   };
 
@@ -61,8 +60,8 @@ ListForm.propTypes = {
   user: PropTypes.any,
   listObj: PropTypes.object,
   setListObj: PropTypes.func,
+  setListNameArray: PropTypes.func,
   // listArray: PropTypes.array,
-  // setListArray: PropTypes.func,
   // listInfo: PropTypes.object
 };
 

@@ -11,17 +11,12 @@ const getList = (uid) => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
-const getListNameObj = (uid) => new Promise((resolve, reject) => {
+const getListByListName = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      debugger;
-      // const listNameObj = Object.create(response.data);
-      const listNameObj = response.data;
-      // if (listNameObj.includes('My')) {
-      resolve(listNameObj);
-      // } else {
-      // resolve({});
-      // }
+      const listArray = Object.values(response.data);
+      const withListNameArray = listArray.filter((listNameObj) => !!listNameObj.listName);
+      resolve(withListNameArray);
     })
     .catch((error) => reject(error));
 });
@@ -32,7 +27,7 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
       const body = { listID: response.data.name };
       axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body)
         .then(() => {
-          getList(uid).then((listArray) => resolve(listArray));
+          getListByListName(uid).then((listArray) => resolve(listArray));
         })
         .catch((error) => reject(error));
     });
@@ -40,16 +35,16 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
 
 const editList = (list, listID, uid) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/resourcelist/${listID}.json`, list)
-    .then(() => getList(uid).then(resolve))
+    .then(() => getListByListName(uid).then(resolve))
     .catch((error) => reject(error));
 });
 
 const deleteList = (listID, uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/resourcelist/${listID}.json`)
-    .then(() => getList(uid).then((listArray) => resolve(listArray))
+    .then(() => getListByListName(uid).then((listArray) => resolve(listArray))
       .catch((error) => reject(error)));
 });
 
 export {
-  getList, getListNameObj, createList, editList, deleteList
+  getList, getListByListName, createList, editList, deleteList
 };

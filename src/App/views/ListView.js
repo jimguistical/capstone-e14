@@ -23,35 +23,39 @@ function ListView({ user }) {
 
   return (
     <>
-    <div>
-      <ListForm
-        user={user}
-        setListNameArray={setListNameArray}
-      />
+      <div>
+        {
+          listNameArray.length === 0
+            ? <ListForm
+              user={user}
+              setListNameArray={setListNameArray}
+            />
+            : ''
+        }
 
-<div className='cardsHolder'>
-        {listNameArray.map((listNameInfo) => (
-          <ListCard
-          user={user}
-          key={listNameInfo.listID}
-        setListNameArray={setListNameArray}
+        <div>
+            {listNameArray.map((listNameInfo) => (
+              <ListCard
+              user={user}
+              key={listNameInfo.listID}
+            setListNameArray={setListNameArray}
 
-          {...listNameInfo}
-          />
-        ))}
+              {...listNameInfo}
+              />
+            ))}
+        </div>
+        <div className='cardsHolder'>
+          {userSites.map((siteObj) => (
+            <SiteCard
+            user={user}
+            key={siteObj.building}
+            setUserSites={setUserSites}
+            {...siteObj}
+            // pass listInfo.listID instead of just having it as key
+            />
+          ))}
+        </div>
       </div>
-      <div className='cardsHolder'>
-        {userSites.map((siteObj) => (
-          <SiteCard
-          user={user}
-          key={siteObj.building}
-          setUserSites={setUserSites}
-          {...siteObj}
-          // pass listInfo.listID instead of just having it as key
-          />
-        ))}
-      </div>
-    </div>
     </>
   );
 }

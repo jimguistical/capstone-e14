@@ -1,8 +1,4 @@
-import React, {
-  // useEffect,
-  // useEffect,
-  useState
-} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Input
@@ -49,7 +45,7 @@ function ListForm({
           listFormObj.listID === null
             ? <Button color='success' onClick={() => handleClick('create')}
             >Create List</Button>
-            : <Button color='warning' onClick={() => handleClick('editList')}>Submit Changes</Button>
+            : <Button color='warning' onClick={() => handleClick('editList')}>Update</Button>
         }
     </Form>
     </>
@@ -61,8 +57,6 @@ ListForm.propTypes = {
   listObj: PropTypes.object,
   setListObj: PropTypes.func,
   setListNameArray: PropTypes.func,
-  // listArray: PropTypes.array,
-  // listInfo: PropTypes.object
 };
 
 export default ListForm;

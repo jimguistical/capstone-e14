@@ -3,25 +3,19 @@ import PropTypes from 'prop-types';
 import {
   Button,
   ButtonGroup,
-  // Container,
 } from 'reactstrap';
 import {
   deleteList,
-  // getList
-  // getListNameObj
 } from '../../helpers/data/listData';
 import ListForm from './ListForm';
 
 function ListCard({ user, setListNameArray, ...listNameInfo }) {
   const [editNow, setEditNow] = useState(false);
-  // const [listNameInfo, setListNameArray] = useState({});
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteList(listNameInfo.listID, user.uid).then((response) => (setListNameArray(response)));
-        // deleteList(listNameInfo.listID, user.uid).then((response) => (console.warn(response)));
-        // console.warn(deleteList(listNameInfo.listID));
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);
@@ -39,7 +33,6 @@ function ListCard({ user, setListNameArray, ...listNameInfo }) {
           onClick={() => handleClick('toggleEdit')}>
             {editNow ? 'Close' : 'Edit'}
         </Button>
-
         {
             editNow && <ListForm
             user={user}
@@ -52,12 +45,6 @@ function ListCard({ user, setListNameArray, ...listNameInfo }) {
             onClick={() => handleClick('delete')}>X
         </Button>
       </ButtonGroup>
-          {/* <Container
-            className="listContainer"
-            fluid={true}
-            key={listNameInfo.listID}
-          >
-          </Container> */}
     </>
   );
 }

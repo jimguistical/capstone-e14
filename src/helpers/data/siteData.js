@@ -19,14 +19,14 @@ const getAllSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getUserSites = () => new Promise((resolve, reject) => {
-  getAllSites()
-    .then((response) => {
-      const sitesArray = Object.values(response.data);
-      resolve(sitesArray);
-    })
-    .catch((error) => reject(error));
-});
+// const getUserSites = () => new Promise((resolve, reject) => {
+//   getAllSites()
+//     .then((response) => {
+//       const sitesArray = Object.values(response.data);
+//       resolve(sitesArray);
+//     })
+//     .catch((error) => reject(error));
+// });
 
 // new FB call use Promise.All to 1) getList 2 getSites with same ListID
 
@@ -42,6 +42,6 @@ const addSite = (site) => new Promise((resolve, reject) => {
 
 export {
   getAllSites,
-  getUserSites,
+  // getUserSites,
   addSite
 };

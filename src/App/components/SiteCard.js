@@ -25,7 +25,8 @@ function SiteCard({
 
   const handleClick = (type) => {
     if (type === 'add') {
-      addSite(siteCardObj, user.uid).then((response) => (console.warn(response)));
+      addSite(siteCardObj, user.uid);
+      // .then((response) => (setSiteCardObj(response)));
       console.warn(setSiteCardObj(siteCardObj), 'you clicked add site to list');
     } else if (type === 'edit') {
       console.warn('you clicked edit card button');
@@ -37,10 +38,10 @@ function SiteCard({
   return (
       <Card body
         className='customizedCard'
-        key={siteCardObj.building}
+        key={siteCardObj.buildingName}
       >
         <CardBody>
-          <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
+          <CardTitle tag='h4'>{siteCardObj.buildingName}</CardTitle>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <ButtonGroup>

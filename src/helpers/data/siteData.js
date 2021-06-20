@@ -21,12 +21,12 @@ const getAllSites = () => new Promise((resolve, reject) => {
 
 // new FB call use Promise.All to 1) getList 2 getSites with same ListID
 
-const addSite = (site) => new Promise((resolve, reject) => {
+const addSite = (site, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, site)
     .then((response) => {
-      const body = { listID: response.data.name };
+      const body = { listID: response.data.name, uid };
       axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body);
-      getList().then((listArray) => resolve(listArray))
+      getList(uid).then((listArray) => resolve(listArray))
         .catch((error) => reject(error));
     });
 });

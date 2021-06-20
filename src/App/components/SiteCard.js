@@ -16,10 +16,10 @@ function SiteCard({
 }) {
   const [siteCardObj, setSiteCardObj] = useState({
     listID: siteObj?.listID || null,
-    buildingName: siteObj?.building,
+    building: siteObj?.building,
     address: siteObj?.address,
     city: siteObj?.city,
-    zipCode: siteObj?.zip_code,
+    zip_code: siteObj?.zip_code,
     uid: user.uid || user
   });
 

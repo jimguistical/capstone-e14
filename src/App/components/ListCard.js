@@ -15,7 +15,7 @@ function ListCard({ user, setListNameArray, ...listNameInfo }) {
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteList(listNameInfo.listID, user.uid).then((response) => (setListNameArray(response)));
+        deleteList(user.uid).then((response) => (setListNameArray(response)));
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);
@@ -52,6 +52,7 @@ function ListCard({ user, setListNameArray, ...listNameInfo }) {
 ListCard.propTypes = {
   user: PropTypes.any,
   setListNameArray: PropTypes.func,
+  setListSites: PropTypes.func,
   listNameInfo: PropTypes.object,
 };
 

@@ -19,8 +19,6 @@ const getAllSites = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// new FB call use Promise.All to 1) getList 2 getSites with same ListID
-
 const addSite = (site, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, site)
     .then((response) => {

@@ -19,13 +19,11 @@ function ListView({ user }) {
     getList(user.uid).then((response) => (setListSites(response)));
 
     console.warn(listSites);
-  // need to use Promise.All to get sites with user & ListID
   }, []);
 
   return (
     <>
       <div>
-        {/* ListFOrm isn't currently wrapped in it's own div */}
         {
           listNameArray.length === 0
             ? <ListForm
@@ -40,6 +38,7 @@ function ListView({ user }) {
               <ListCard
               user={user}
               key={listNameInfo.listID}
+              setListSites={setListSites}
               setListNameArray={setListNameArray}
               {...listNameInfo}
               />
@@ -49,9 +48,7 @@ function ListView({ user }) {
           {listSites.map((siteObj) => (
             <SiteCard
             user={user}
-            key={siteObj.building}
-            // listID={siteObj.listID}
-            // pass listInfo.listID instead of just having it as key - complete on 6/20
+            key={siteObj.listID}
             setListSites={setListSites}
             {...siteObj}
             />

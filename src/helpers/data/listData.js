@@ -6,9 +6,13 @@ const dbUrl = firebaseConfig.databaseURL;
 const getList = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const listArray = Object.values(response.data);
-      const withoutListNameArray = listArray.filter((listObj) => !listObj.listName);
-      resolve(withoutListNameArray);
+      if (response.data) {
+        const listArray = Object.values(response.data);
+        const withoutListNameArray = listArray.filter((listObj) => !listObj.listName);
+        resolve(withoutListNameArray);
+      } else {
+        resolve([]);
+      }
     })
     .catch((error) => reject(error));
 });
@@ -21,6 +25,8 @@ const getListByListName = (uid) => new Promise((resolve, reject) => {
     })
     .catch((error) => reject(error));
 });
+
+// new FB call use Promise.All to getList + getSites with same ListID
 
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
@@ -40,9 +46,9 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteList = (listID, uid) => new Promise((resolve, reject) => {
+const deleteList = (uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/resourcelist.json`)
-    .then(() => getListByListName(uid).then((listArray) => resolve(listArray))
+    .then(() => getListByListName(uid).then((response) => resolve(response))
       .catch((error) => reject(error)));
 });
 

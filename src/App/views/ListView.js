@@ -14,9 +14,11 @@ function ListView({ user }) {
   // const [siteArray, setSiteArray] = useState([]);
 
   useEffect(() => {
-    getListNameObj(user.uid).then((response) => (setListObj(response)));
-    setListObj(listObj);
-    console.warn(listObj);
+    // getListNameObj(user.uid).then((response) => (setListObj(response)));
+    getListNameObj(user.uid).then((response) => (console.warn(response)));
+    // debugger;
+    // setListObj(listObj);
+    // console.warn(listObj);
   }, []);
 
   // useEffect(() => {

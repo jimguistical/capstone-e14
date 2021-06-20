@@ -14,9 +14,9 @@ const getList = (uid) => new Promise((resolve, reject) => {
 const getListNameObj = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      // debugger;
-
-      const listNameObj = Object.values(response.data);
+      debugger;
+      // const listNameObj = Object.create(response.data);
+      const listNameObj = response.data;
       // if (listNameObj.includes('My')) {
       resolve(listNameObj);
       // } else {

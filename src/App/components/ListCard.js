@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -7,18 +7,14 @@ import {
 } from 'reactstrap';
 import {
   deleteList,
-  getListNameObj
+  // getList
+  // getListNameObj
 } from '../../helpers/data/listData';
 import ListForm from './ListForm';
 
-function ListCard({ user }) {
+function ListCard({ user, setListObj, ...listObj }) {
   const [editNow, setEditNow] = useState(false);
-  const [listObj, setListObj] = useState({});
-
-  useEffect(() => {
-    getListNameObj(user.uid).then((response) => (setListObj(response)));
-    console.warn(listObj);
-  });
+  // const [listObj, setListObj] = useState({});
 
   const handleClick = (type) => {
     switch (type) {

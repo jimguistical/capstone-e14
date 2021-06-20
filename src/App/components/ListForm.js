@@ -21,10 +21,6 @@ function ListForm({
     uid: user.uid || user
   });
 
-  // useEffect(() => {
-
-  // });
-
   const handleInputChange = (e) => {
     setListFormObj((prevState) => ({
       ...prevState,

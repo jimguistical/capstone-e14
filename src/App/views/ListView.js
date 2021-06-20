@@ -1,16 +1,23 @@
 import React, {
-// useEffect,
-// useState
+  useEffect,
+  useState
 } from 'react';
 import PropTypes from 'prop-types';
 // import { Container, Button } from 'reactstrap';
 // import { getList } from '../../helpers/data/listData';
-// import ListForm from '../components/ListForm';
+import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
+import { getListNameObj } from '../../helpers/data/listData';
 
 function ListView({ user }) {
-  // const [listObj, setListObj] = useState({});
+  const [listObj, setListObj] = useState({});
   // const [siteArray, setSiteArray] = useState([]);
+
+  useEffect(() => {
+    getListNameObj(user.uid).then((response) => (setListObj(response)));
+    setListObj(listObj);
+    console.warn(listObj);
+  }, []);
 
   // useEffect(() => {
   //   getList(user.uid).then((response) => (setListObj(response)));
@@ -21,11 +28,11 @@ function ListView({ user }) {
   return (
     <>
     <div>
-      {/* <ListForm
+      <ListForm
         user={user}
         listObj={listObj}
         setListObj={setListObj}
-      /> */}
+      />
 
       {/* need a className for this div ^^ for List + site card map */}
       <ListCard

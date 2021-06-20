@@ -7,15 +7,17 @@ const getList = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const listArray = Object.values(response.data);
-      resolve(listArray);
+      const withoutListNameArray = listArray.filter((listObj) => !listObj.listName);
+      resolve(withoutListNameArray);
+      debugger;
     })
     .catch((error) => reject(error));
 });
 const getListByListName = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const listArray = Object.values(response.data);
-      const withListNameArray = listArray.filter((listNameObj) => !!listNameObj.listName);
+      const listNameArray = Object.values(response.data);
+      const withListNameArray = listNameArray.filter((listNameObj) => !!listNameObj.listName);
       resolve(withListNameArray);
     })
     .catch((error) => reject(error));

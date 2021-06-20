@@ -11,12 +11,12 @@ import SiteCard from '../components/SiteCard';
 
 function ListView({ user }) {
   const [listNameArray, setListNameArray] = useState([]);
-  const [userSites, setUserSites] = useState([]);
+  const [listSites, setListSites] = useState([]);
 
   useEffect(() => {
     getListByListName(user.uid).then((response) => (setListNameArray(response)));
 
-    console.warn(setUserSites);
+    // console.warn(setListSites);
   // need to use Promise.All to get sites with user & ListID
   }, []);
 
@@ -45,11 +45,11 @@ function ListView({ user }) {
             ))}
         </div>
         <div className='cardsHolder'>
-          {userSites.map((siteObj) => (
+          {listSites.map((siteObj) => (
             <SiteCard
             user={user}
             key={siteObj.building}
-            setUserSites={setUserSites}
+            setListSites={setListSites}
             {...siteObj}
             // pass listInfo.listID instead of just having it as key
             />

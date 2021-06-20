@@ -29,7 +29,14 @@ const addSite = (site, uid) => new Promise((resolve, reject) => {
     });
 });
 
+const deleteSite = (listID, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/resourcelist/${listID}.json`)
+    .then(() => getList(uid).then((response) => resolve(response))
+      .catch((error) => reject(error)));
+});
+
 export {
   getAllSites,
-  addSite
+  addSite,
+  deleteSite
 };

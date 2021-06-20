@@ -27,7 +27,6 @@ function SiteCard({
     if (type === 'add') {
       addSite(siteCardObj, user.uid)
         .then((response) => (setSiteCardObj(response)));
-      // console.warn(setSiteCardObj(siteCardObj), 'you clicked add site to list');
     } else if (type === 'view') {
       console.warn('you clicked view card button');
     }

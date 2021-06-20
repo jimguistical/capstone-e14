@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
+  ButtonGroup,
   Card,
   CardBody,
   CardText,
   CardTitle,
 } from 'reactstrap';
+import { addSite } from '../../helpers/data/siteData';
 
 function SiteCard({
   user,
-  setSites,
   ...siteObj
 }) {
+  const [siteCardObj, setSiteCardObj] = useState({
+    listID: siteObj?.listID || null,
+    building: siteObj?.building,
+    address: siteObj?.address,
+    city: siteObj?.city,
+    zip_code: siteObj?.zip_code,
+    uid: user.uid || user
+  });
+
   const handleClick = (type) => {
     if (type === 'add') {
-      console.warn(siteObj.building, 'you clicked add site to list');
-    } else if (type === 'edit') {
-      console.warn('you clicked edit card button');
+      addSite(siteCardObj, user.uid)
+        .then((response) => (setSiteCardObj(response)));
+      // console.warn(setSiteCardObj(siteCardObj), 'you clicked add site to list');
     } else if (type === 'view') {
       console.warn('you clicked view card button');
     }
@@ -26,32 +36,27 @@ function SiteCard({
   return (
       <Card body
         className='customizedCard'
-        key={siteObj.building}
-        // color='transparent'
+        key={siteCardObj.building}
       >
         <CardBody>
-          <CardTitle tag='h4'>{siteObj.building}</CardTitle>
-          <CardText tag='h5'>{siteObj.address}</CardText>
-          <CardText tag='h5'>{siteObj.city}, TN {siteObj.zip_code}</CardText>
-          <CardText tag='h5'></CardText>
-          <Button color='primary'
-            onClick={() => handleClick('view')}>View Details
-          </Button>
-        </CardBody>
-     {
-      user
-        ? <>
-            {/* <Button color='success' onClick={() => handleClick('edit')}
-            >Edit
-              {editNow ? 'Close Form' : 'Edit Form'}
-              </Button> */}
-            <Button color='success'
-              onClick={() => handleClick('add')}>Add to List
+          <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
+          <CardText tag='h5'>{siteCardObj.address}</CardText>
+          <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
+          <ButtonGroup>
+            <Button color='primary'
+              onClick={() => handleClick('view')}>View Details
             </Button>
-            {/* <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button> */}
-          </>
-        : ''
-    }
+            {
+              user
+                ? <>
+                    <Button color='success'
+                      onClick={() => handleClick('add')}>Add to List
+                    </Button>
+                  </>
+                : ''
+            }
+          </ButtonGroup>
+        </CardBody>
       </Card>
   );
 }
@@ -59,7 +64,8 @@ function SiteCard({
 SiteCard.propTypes = {
   user: PropTypes.any,
   siteObj: PropTypes.object,
-  setSites: PropTypes.func,
+  setSiteCardObj: PropTypes.func
+  // setSites: PropTypes.func,
   // site: PropTypes.object,
   // setSite: PropTypes.func,
   // sites: PropTypes.array,

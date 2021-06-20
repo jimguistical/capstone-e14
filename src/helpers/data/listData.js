@@ -6,11 +6,27 @@ const dbUrl = firebaseConfig.databaseURL;
 const getList = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const listArray = Object.values(response.data);
-      resolve(listArray);
+      if (response.data) {
+        const listArray = Object.values(response.data);
+        const withoutListNameArray = listArray.filter((listObj) => !listObj.listName);
+        resolve(withoutListNameArray);
+      } else {
+        resolve([]);
+      }
     })
     .catch((error) => reject(error));
 });
+const getListByListName = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      const listNameArray = Object.values(response.data);
+      const withListNameArray = listNameArray.filter((listNameObj) => !!listNameObj.listName);
+      resolve(withListNameArray);
+    })
+    .catch((error) => reject(error));
+});
+
+// new FB call use Promise.All to getList + getSites with same ListID
 
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
@@ -18,7 +34,7 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
       const body = { listID: response.data.name };
       axios.patch(`${dbUrl}/resourcelist/${response.data.name}.json`, body)
         .then(() => {
-          getList(uid).then((listArray) => resolve(listArray));
+          getListByListName(uid).then((listArray) => resolve(listArray));
         })
         .catch((error) => reject(error));
     });
@@ -26,16 +42,16 @@ const createList = (list, uid) => new Promise((resolve, reject) => {
 
 const editList = (list, listID, uid) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/resourcelist/${listID}.json`, list)
-    .then(() => getList(uid).then(resolve))
+    .then(() => getListByListName(uid).then(resolve))
     .catch((error) => reject(error));
 });
 
-const deleteList = (listID, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/resourcelist/${listID}.json`)
-    .then(() => getList(uid).then((listArray) => resolve(listArray))
+const deleteList = (uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/resourcelist.json`)
+    .then(() => getListByListName(uid).then((response) => resolve(response))
       .catch((error) => reject(error)));
 });
 
 export {
-  createList, getList, editList, deleteList
+  getList, getListByListName, createList, editList, deleteList
 };

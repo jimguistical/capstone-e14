@@ -1,7 +1,4 @@
-import React, {
-  // useEffect,
-  useState
-} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Input
@@ -12,16 +9,16 @@ import {
 } from '../../helpers/data/listData';
 
 function ListForm({
-  user, setListArray, listArray, ...listInfo
+  user, setListNameArray, ...listNameInfo
 }) {
-  const [listObj, setListObj] = useState({
-    listID: listInfo?.listID || null,
-    listName: listInfo?.listName || 'My List',
+  const [listFormObj, setListFormObj] = useState({
+    listID: listNameInfo?.listID || null,
+    listName: listNameInfo?.listName || 'My List',
     uid: user.uid || user
   });
 
   const handleInputChange = (e) => {
-    setListObj((prevState) => ({
+    setListFormObj((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }));
@@ -29,30 +26,29 @@ function ListForm({
 
   const handleClick = (type) => {
     if (type === 'editList') {
-      editList(listObj, listObj.listID, user.uid).then((response) => setListArray(response));
+      editList(listFormObj, listFormObj.listID, user.uid).then((response) => setListNameArray(response));
     } else if (type === 'create') {
-      createList(listObj, user.uid).then((response) => (setListArray(response)));
+      createList(listFormObj, user.uid).then((response) => (setListNameArray(response)));
     }
   };
 
   return (
-    <div>
+      <>
       <Form autoComplete='off' inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Input type="text" name="listName" id="listName"
-            // placeholder="Create your list"
-            value={listObj.listName}
+            value={listFormObj.listName}
             onChange={handleInputChange}
           />
         </FormGroup>
         {
-          listArray.length === 0
+          listFormObj.listID === null
             ? <Button color='success' onClick={() => handleClick('create')}
             >Create List</Button>
-            : <Button color='warning' onClick={() => handleClick('editList')}>Submit Changes</Button>
+            : <Button color='warning' onClick={() => handleClick('editList')}>Update</Button>
         }
     </Form>
-    </div>
+    </>
   );
 }
 
@@ -60,9 +56,7 @@ ListForm.propTypes = {
   user: PropTypes.any,
   listObj: PropTypes.object,
   setListObj: PropTypes.func,
-  listArray: PropTypes.array,
-  setListArray: PropTypes.func,
-  listInfo: PropTypes.object
+  setListNameArray: PropTypes.func,
 };
 
 export default ListForm;

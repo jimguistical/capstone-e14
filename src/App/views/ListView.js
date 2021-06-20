@@ -3,55 +3,63 @@ import React, {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-// import { Container, Button } from 'reactstrap';
-import { getList } from '../../helpers/data/listData';
-import ListCard from '../components/ListCard';
+import { getList, getListByListName } from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
+import ListCard from '../components/ListCard';
+import SiteCard from '../components/SiteCard';
 
 function ListView({ user }) {
-  const [listArray, setListArray] = useState([]);
+  const [listNameArray, setListNameArray] = useState([]);
+  const [listSites, setListSites] = useState([]);
 
   useEffect(() => {
-    getList(user.uid).then((response) => (setListArray(response)));
+    getListByListName(user.uid).then((response) => (setListNameArray(response)));
+    getList(user.uid).then((response) => (setListSites(response)));
+    // need to create a Promise.all for these two
   }, []);
 
   return (
     <>
-    {
-        listArray.length === 0
-          ? <ListForm
-            user={user}
-            listArray={listArray}
-            setListArray={setListArray}
-          />
-          : ''
+      <div>
+        {
+          listNameArray.length === 0
+            ? <ListForm
+              user={user}
+              setListNameArray={setListNameArray}
+            />
+            : ''
         }
 
-    <div className='cardsHolder'>
-      {listArray.map((listInfo) => (
-        <ListCard
-          user={user}
-          key={listInfo.listID}
-          listArray={listArray}
-          setListArray={setListArray}
-          {...listInfo}
-        />
-      ))}
-        <h3>
-          { listArray.length === 0
-            ? 'Please Create a List or Browse Service Sites'
-            : ''
-          }
-        </h3>
-    </div>
+        <div>
+            {listNameArray.map((listNameInfo) => (
+              <ListCard
+              user={user}
+              key={listNameInfo.listID}
+              setListSites={setListSites}
+              setListNameArray={setListNameArray}
+              {...listNameInfo}
+              />
+            ))}
+        </div>
+        <div className='cardsHolder'>
+          {listSites.map((siteObj) => (
+            <SiteCard
+            user={user}
+            key={siteObj.listID}
+            setListSites={setListSites}
+            {...siteObj}
+            />
+          ))}
+        </div>
+      </div>
     </>
   );
 }
 
 ListView.propTypes = {
   user: PropTypes.any,
-  listArray: PropTypes.array,
-  setListArray: PropTypes.func
+  listNameArray: PropTypes.array,
+  setListNameArray: PropTypes.func
 };
 
 export default ListView;

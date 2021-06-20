@@ -27,6 +27,8 @@ function SiteCard({
     if (type === 'add') {
       addSite(siteCardObj, user.uid)
         .then((response) => (setSiteCardObj(response)));
+    } else if (type === 'delete') {
+      console.warn('delete this card');
     } else if (type === 'view') {
       console.warn('you clicked view card button');
     }
@@ -49,7 +51,12 @@ function SiteCard({
               user
                 ? <>
                     <Button color='success'
-                      onClick={() => handleClick('add')}>Add to List
+                      onClick={() => handleClick('add')}>
+                        Add to List
+                    </Button>
+                    <Button color='danger'
+                      onClick={() => handleClick('delete')}>
+                        X
                     </Button>
                   </>
                 : ''

@@ -26,6 +26,15 @@ const getListByListName = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAllListData = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`);
+
+  Promise.all([getList, getListByListName])
+    .then(() => {
+      getAllListData(uid).then((response) => resolve(response));
+    })
+    .catch((error) => reject(error));
+});
 // new FB call use Promise.All to getList + getSites with same ListID
 
 const createList = (list, uid) => new Promise((resolve, reject) => {
@@ -53,5 +62,5 @@ const deleteList = (uid) => new Promise((resolve, reject) => {
 });
 
 export {
-  getList, getListByListName, createList, editList, deleteList
+  getList, getListByListName, createList, editList, deleteList, getAllListData
 };

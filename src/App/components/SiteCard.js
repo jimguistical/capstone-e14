@@ -26,8 +26,9 @@ function SiteCard({
 
   const handleClick = (type) => {
     if (type === 'add') {
-      addSite(siteCardObj, user.uid)
-        .then((response) => (setSiteCardObj(response)));
+      addSite(siteCardObj, user.uid);
+      console.warn(setSiteCardObj);
+      // .then((response) => (setSiteCardObj(response)));
     } else if (type === 'delete') {
       deleteSite(siteCardObj.listID, user.uid)
         .then((response) => (setListSites(response)));

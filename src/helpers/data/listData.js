@@ -26,17 +26,6 @@ const getListByListName = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getAllListData = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`);
-
-  Promise.all([getList, getListByListName])
-    .then(() => {
-      getAllListData(uid).then((response) => resolve(response));
-    })
-    .catch((error) => reject(error));
-});
-// new FB call use Promise.All to getList + getSites with same ListID
-
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
     .then((response) => {
@@ -55,12 +44,18 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteList = (uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/resourcelist.json`)
-    .then(() => getListByListName(uid).then((response) => resolve(response))
-      .catch((error) => reject(error)));
+const getAllListData = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`);
+  const getListNameArray = getListByListName(uid);
+  const getSitesList = getList(uid);
+  Promise.all([getListNameArray, getSitesList])
+    .then((listNameResponse, siteListResponse) => resolve(
+      { listNameArray: listNameResponse, sitesList: siteListResponse }
+    ))
+    .catch((error) => reject(error));
 });
+// new FB call use Promise.All to getList + getSites with same ListID
 
 export {
-  getList, getListByListName, createList, editList, deleteList, getAllListData
+  getList, getListByListName, createList, editList, getAllListData
 };

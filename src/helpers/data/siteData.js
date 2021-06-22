@@ -1,6 +1,6 @@
 import axios from 'axios';
 import firebaseConfig from '../apiKeys';
-import { getList } from './listData';
+import { getAllListData, getList } from './listData';
 
 const dbUrl = firebaseConfig.databaseURL;
 const apiUrl = `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token=${firebaseConfig.appToken}`;
@@ -35,8 +35,22 @@ const deleteSite = (listID, uid) => new Promise((resolve, reject) => {
       .catch((error) => reject(error)));
 });
 
+const deleteListSites = (uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/resourcelist.json`)
+    .then(() => getAllListData(uid).then((response) => resolve(response))
+      .catch((error) => reject(error)));
+
+  //   getAllListData(uid).then((listSitesArray) => {
+
+  //   const deleteAllObjs = listSitesArray.map((obj) => deleteSite(obj.listID));
+
+  //   Promise.all(deleteAllObjs).then((response) => resolve(response));
+  // })
+});
+
 export {
   getAllSites,
   addSite,
-  deleteSite
+  deleteSite,
+  deleteListSites
 };

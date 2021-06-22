@@ -3,7 +3,11 @@ import React, {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-import { getList, getListByListName } from '../../helpers/data/listData';
+import {
+  // getAllListData,
+  getList,
+  getListByListName
+} from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
 import SiteCard from '../components/SiteCard';
@@ -13,6 +17,10 @@ function ListView({ user }) {
   const [listSites, setListSites] = useState([]);
 
   useEffect(() => {
+    // getAllListData(user.uid).then((response) => {
+    //   getListByListName(response.listNameResponse).then((burrito) => (setListNameArray(burrito)));
+    //   getList(response.siteListResponse).then((siteListResponse) => (setListSites(siteListResponse)));
+    // });
     getListByListName(user.uid).then((response) => (setListNameArray(response)));
     getList(user.uid).then((response) => (setListSites(response)));
     // need to create a Promise.all for these two

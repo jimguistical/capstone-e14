@@ -18,12 +18,9 @@ function ListView({ user }) {
 
   useEffect(() => {
     getAllListData(user.uid).then((response) => {
-      console.warn('All responses', response);
-      // console.warn('test', response.getListNameArray);
+      console.warn('test listNameArray', response.getListNameArray);
       // setListSites(response.getListNameArray);
-      // console.warn('test get sites', response.getSitesList);
-    // getList(response.siteListResponse);
-    // .then((siteListResponse) => (setListSites(siteListResponse)));
+      console.warn('test getSitesList', response.getSitesList);
     });
     // getListByListName(user.uid).then((response) => (setListNameArray(response)));
     // getList(user.uid).then((response) => (setListSites(response)));

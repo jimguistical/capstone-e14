@@ -49,20 +49,18 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
 });
 
 const getAllListData = (uid) => new Promise((resolve, reject) => {
-  // axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`);
   // const getListNameArray = getListByListName(uid);
   // const getSitesList = getList(uid);
   Promise.all([getListByListName(uid), getList(uid)])
     .then((response) => {
       const getListNameArray = response[0];
       const getSitesList = response[1];
-      console.warn(getListNameArray, getSitesList);
-      // return (getListNameArray, getSitesList);
+      console.warn('in promise', getListNameArray, getSitesList);
+      Promise.all([getListNameArray, getSitesList])
+        .then((listNameResponse, siteListResponse) => resolve(
+          { getListNameArray: listNameResponse, getSitesList: siteListResponse }
+        ));
     })
-  // resolve(getListNameArray, getSitesList);
-    .then((listNameResponse, siteListResponse) => resolve(
-      { getListNameArray: listNameResponse, getSitesList: siteListResponse }
-    ))
     .catch((error) => reject(error));
 });
 // new FB call use Promise.All to getList + getSites with same ListID

@@ -49,21 +49,16 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
 });
 
 const getAllListData = (uid) => new Promise((resolve, reject) => {
-  // const getListNameArray = getListByListName(uid);
-  // const getSitesList = getList(uid);
-  Promise.all([getListByListName(uid), getList(uid)])
-    .then((response) => {
-      const getListNameArray = response[0];
-      const getSitesList = response[1];
-      console.warn('in promise', getListNameArray, getSitesList);
-      Promise.all([getListNameArray, getSitesList])
-        .then((listNameResponse, siteListResponse) => resolve(
-          { getListNameArray: listNameResponse, getSitesList: siteListResponse }
-        ));
-    })
+  const getListNameArray = getListByListName(uid);
+  const getSitesList = getList(uid);
+  Promise.all([getListNameArray, getSitesList]);
+  console.warn(getListNameArray, getSitesList)
+    .then((listNameResponse, siteListResponse) => resolve(
+      { getListNameArray: listNameResponse, getSitesList: siteListResponse }
+    ))
     .catch((error) => reject(error));
 });
-// new FB call use Promise.All to getList + getSites with same ListID
+// new FB call use Promise.All to get list array + sites array with same ListID
 
 export {
   getList, getListByListName, createList, editList, getAllListData

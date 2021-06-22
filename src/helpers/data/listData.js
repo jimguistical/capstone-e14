@@ -51,8 +51,8 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
 const getAllListData = (uid) => new Promise((resolve, reject) => {
   const getListNameArray = getListByListName(uid);
   const getSitesList = getList(uid);
-  Promise.all([getListNameArray, getSitesList]);
-  console.warn(getListNameArray, getSitesList)
+  Promise.all([getListNameArray, getSitesList])
+  // console.warn(getListNameArray, getSitesList)
     .then((listNameResponse, siteListResponse) => resolve(
       { getListNameArray: listNameResponse, getSitesList: siteListResponse }
     ))

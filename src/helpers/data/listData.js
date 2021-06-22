@@ -56,9 +56,10 @@ const getAllListData = (uid) => new Promise((resolve, reject) => {
     .then((response) => {
       const getListNameArray = response[0];
       const getSitesList = response[1];
-      return Promise.all(getListNameArray, getSitesList);
+      console.warn(getListNameArray, getSitesList);
+      // return (getListNameArray, getSitesList);
     })
-    // resolve(getListNameArray, getSitesList);
+  // resolve(getListNameArray, getSitesList);
     .then((listNameResponse, siteListResponse) => resolve(
       { getListNameArray: listNameResponse, getSitesList: siteListResponse }
     ))

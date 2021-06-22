@@ -18,16 +18,15 @@ function ListView({ user }) {
 
   useEffect(() => {
     getAllListData(user.uid).then((response) => {
-      console.warn(response);
-      console.warn('test', response.getListNameArray);
-      setListNameArray(response.getListNameArray);
-      console.warn('test get sites', response.getSitesList);
+      console.warn('All responses', response);
+      // console.warn('test', response.getListNameArray);
+      // setListSites(response.getListNameArray);
+      // console.warn('test get sites', response.getSitesList);
     // getList(response.siteListResponse);
     // .then((siteListResponse) => (setListSites(siteListResponse)));
     });
     // getListByListName(user.uid).then((response) => (setListNameArray(response)));
     // getList(user.uid).then((response) => (setListSites(response)));
-    // need to create a Promise.all for these two
   }, []);
 
   return (

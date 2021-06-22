@@ -1,9 +1,15 @@
- # Social Service Explorer
+ # Social Services Explorer [![Netlify Status](https://api.netlify.com/api/v1/badges/aa872c7a-9d6a-4286-8734-9399c65272a2/deploy-status)](https://app.netlify.com/sites/social-services-explorer/deploys)
+## [Deployed App](https://social-services-explorer.netlify.app/)
 
 ## Project Overview
-- This app enables the user to search for local services/resources and save a list of relevant Service Sites.
+Social Services Explorer showcases skills honed while a student at Nashville Software School.
+This app enables the user to search for local services/resources and save a list of relevant Service Sites.
 
-## About the User
+### Motivation/Context
+Nonprofit and government service providers provide a wealth of resources on their websites, but often the resources are static data or basic URLs to other sites, which don't allow the user to organize and save their data for later reference.  
+The challenge then is presenting the data as accessible information for the user to manipulate in real-time.  
+
+### About the User
 - Ideal user is a resident of Nashville/Davidson Co. who is seeking community services/resources relevant to their needs. 
 
 ## Features 
@@ -13,16 +19,16 @@
 - User can CREATE a List to save relevant Service Sites after logging in
 - User can update Service Sites on their list
 - User can delete their entire list
-#### STRETCH:
+### STRETCH:
 - User add contact number & zip code on a form to filter Service Sites from their list by distance from user (using zip code or use browser location data)
 - User can select preferred days of the week to visit Service Site on form to filter for Service Sites that are not closed on the given day(s).
 - User can view a map of all Service Sites avaiable pinned to a Google Map view of Davidson Co.
-- User can view a map of Davidson County with their selected sites only
 
-## Relevant Links:
+## Planning Docs:
 - [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
 - [Project Board](https://github.com/jim-conner/capstone-e14/projects/1)
 - [Wireframes/WorkFlows on Google Slides](https://docs.google.com/presentation/d/1A5SCPPLKYg6TkFqRbmKZ4inmh-UfrmH2fbheuLv-Zm4/edit#slide=id.gdf1d490e82_0_173)
+- [Demo Day Presentation Slides](https://docs.google.com/presentation/d/1dg38g_EPlypge3pvFkFWYHu847aunqBH9o_c4ewJ3A0/edit)
 
 ## Code Snippet
 - example of GET request from Postman: `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token={{MSS_APP_KEY}}&building=Cohn Community Center`
@@ -77,12 +83,6 @@
 ## Deployed Personal Bio Site [![Netlify Status](https://api.netlify.com/api/v1/badges/1b4bfa03-03a1-4e40-ab79-f85ffed56070/deploy-status)](https://app.netlify.com/sites/jim-conner/deploys)
 - [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
 - [Bio Site Repo](https://github.com/jim-conner/personal-bio-react)
-
-<!-- ## Video Walkthrough of APP NAME -->
-
-<!-- ## Project Screenshots These can be inside of your project. -->
-<!-- <img width="1148" alt="Your Alt" src="your-link.png"> -->
-<!-- ![Alt Text Here](https://www.yourlinkhere.com) -->
 
 ## Contributors
 - [JIM CONNER](https://github.com/jim-conner)

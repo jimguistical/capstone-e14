@@ -6,7 +6,8 @@ import {
 } from 'reactstrap';
 import { deleteListSites } from '../../helpers/data/siteData';
 import ListForm from './ListForm';
-import { getAllListData } from '../../helpers/data/listData';
+// import { getListByListName } from '../../helpers/data/listData';
+// import { getAllListData } from '../../helpers/data/listData';
 
 function ListCard({ user, setListNameArray, ...listNameInfo }) {
   const [editNow, setEditNow] = useState(false);
@@ -14,7 +15,8 @@ function ListCard({ user, setListNameArray, ...listNameInfo }) {
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteListSites(user.uid).then((response) => (getAllListData(response)));
+        console.warn(deleteListSites(user.uid));
+        // deleteList(user.uid).then((response) => (setListNameArray(response)));
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);

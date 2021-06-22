@@ -39,13 +39,6 @@ const deleteListSites = (uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/resourcelist.json`)
     .then(() => getAllListData(uid).then((response) => resolve(response))
       .catch((error) => reject(error)));
-
-  //   getAllListData(uid).then((listSitesArray) => {
-
-  //   const deleteAllObjs = listSitesArray.map((obj) => deleteSite(obj.listID));
-
-  //   Promise.all(deleteAllObjs).then((response) => resolve(response));
-  // })
 });
 
 export {

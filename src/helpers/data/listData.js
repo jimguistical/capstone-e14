@@ -10,8 +10,8 @@ const getList = (uid) => new Promise((resolve, reject) => {
         const listArray = Object.values(response.data);
         const withoutListNameArray = listArray.filter((listObj) => !listObj.listName);
         resolve(withoutListNameArray);
-      // } else {
-      //   resolve([]);
+      } else {
+        resolve([]);
       }
     })
     .catch((error) => reject(error));
@@ -23,8 +23,8 @@ const getListByListName = (uid) => new Promise((resolve, reject) => {
         const listNameArray = Object.values(response.data);
         const withListNameArray = listNameArray.filter((listNameObj) => !!listNameObj.listName);
         resolve(withListNameArray);
-      // } else {
-      //   resolve([]);
+      } else {
+        resolve([]);
       }
     })
     .catch((error) => reject(error));
@@ -49,10 +49,16 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
 });
 
 const getAllListData = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`);
-  const getListNameArray = getListByListName(uid);
-  const getSitesList = getList(uid);
-  Promise.all([getListNameArray, getSitesList])
+  // axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`);
+  // const getListNameArray = getListByListName(uid);
+  // const getSitesList = getList(uid);
+  Promise.all([getListByListName(uid), getList(uid)])
+    .then((response) => {
+      const getListNameArray = response[0];
+      const getSitesList = response[1];
+      return Promise.all(getListNameArray, getSitesList);
+    })
+    // resolve(getListNameArray, getSitesList);
     .then((listNameResponse, siteListResponse) => resolve(
       { getListNameArray: listNameResponse, getSitesList: siteListResponse }
     ))

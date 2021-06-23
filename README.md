@@ -1,5 +1,6 @@
- # Social Services Explorer [![Netlify Status](https://api.netlify.com/api/v1/badges/aa872c7a-9d6a-4286-8734-9399c65272a2/deploy-status)](https://app.netlify.com/sites/social-services-explorer/deploys)
-## [Deployed App](https://social-services-explorer.netlify.app/)
+ # Social Services Explorer 
+### [Deployed App](https://social-services-explorer.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/aa872c7a-9d6a-4286-8734-9399c65272a2/deploy-status)](https://app.netlify.com/sites/social-services-explorer/deploys)
+### [Loom Video Walkthrough](https://www.loom.com/share/c2c675dd294d4dc0a579010a60a18afb)
 
 ## Project Overview
 Social Services Explorer showcases skills honed while a student at Nashville Software School.
@@ -12,25 +13,38 @@ The challenge then is presenting the data as accessible information for the user
 ### About the User
 - Ideal user is a resident of Nashville/Davidson Co. who is seeking community services/resources relevant to their needs. 
 
-## Features 
+### Features 
 - Google Authentication
 - User can READ all Service Sites on App load
 - User who is authenticated can READ Service Sites on their own list
 - User can CREATE a List to save relevant Service Sites after logging in
-- User can update Service Sites on their list
-- User can delete their entire list
+- User can UPDATE Service Sites on their list and edit List Name
+- User can DELETE their entire list
 ### STRETCH:
 - User add contact number & zip code on a form to filter Service Sites from their list by distance from user (using zip code or use browser location data)
 - User can select preferred days of the week to visit Service Site on form to filter for Service Sites that are not closed on the given day(s).
 - User can view a map of all Service Sites avaiable pinned to a Google Map view of Davidson Co.
 
-## Planning Docs:
+### Planning Docs:
 - [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
 - [Project Board](https://github.com/jim-conner/capstone-e14/projects/1)
 - [Wireframes/WorkFlows on Google Slides](https://docs.google.com/presentation/d/1A5SCPPLKYg6TkFqRbmKZ4inmh-UfrmH2fbheuLv-Zm4/edit#slide=id.gdf1d490e82_0_173)
 - [Demo Day Presentation Slides](https://docs.google.com/presentation/d/1dg38g_EPlypge3pvFkFWYHu847aunqBH9o_c4ewJ3A0/edit)
 
-## Code Snippet
+### Technologies
+- Javascript ES6, HTML5, CSS, React.js, Reactstrap
+- npm, react-router-dom, Firebase, axios, Postman, Nashville API via Socrata
+- dbdiagram, VSCode, Netlify
+
+### Deployed Personal Bio Site
+- [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
+- [Bio Site Repo](https://github.com/jim-conner/personal-bio-react)
+
+### Contributors
+- [Jim Conner](https://github.com/jim-conner)
+
+### Code Snippet
+(Link to API){https://dev.socrata.com/foundry/data.nashville.gov/797j-5xh2}
 - example of GET request from Postman: `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token={{MSS_APP_KEY}}&building=Cohn Community Center`
 ```[
     {
@@ -79,10 +93,3 @@ The challenge then is presenting the data as accessible information for the user
     }
 ]
 ```
-
-## Deployed Personal Bio Site [![Netlify Status](https://api.netlify.com/api/v1/badges/1b4bfa03-03a1-4e40-ab79-f85ffed56070/deploy-status)](https://app.netlify.com/sites/jim-conner/deploys)
-- [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
-- [Bio Site Repo](https://github.com/jim-conner/personal-bio-react)
-
-## Contributors
-- [JIM CONNER](https://github.com/jim-conner)

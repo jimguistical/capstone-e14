@@ -52,13 +52,12 @@ const getAllListData = (uid) => new Promise((resolve, reject) => {
   const getListNameArray = getListByListName(uid);
   const getSitesList = getList(uid);
   Promise.all([getListNameArray, getSitesList])
-  // console.warn(getListNameArray, getSitesList)
-    .then((listNameResponse, siteListResponse) => resolve(
+  // destructure after Promise.all returns [] of []s to get seperate []s
+    .then(([listNameResponse, siteListResponse]) => resolve(
       { getListNameArray: listNameResponse, getSitesList: siteListResponse }
     ))
     .catch((error) => reject(error));
 });
-// new FB call use Promise.All to get list array + sites array with same ListID
 
 export {
   getList, getListByListName, createList, editList, getAllListData

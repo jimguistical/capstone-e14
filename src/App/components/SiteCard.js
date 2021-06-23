@@ -47,9 +47,9 @@ function SiteCard({
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <ButtonGroup>
-            <Button color='primary'
+            {/* <Button color='primary'
               onClick={() => handleClick('view')}>Details
-            </Button>
+            </Button> */}
             {
               user
                 ? <>

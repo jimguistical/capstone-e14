@@ -15,7 +15,7 @@ function ListCard({ user, setListNameArray, ...listNameInfo }) {
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        console.warn(deleteListSites(user.uid));
+        console.warn(deleteListSites(listNameInfo.listID, user.uid));
         // deleteList(user.uid).then((response) => (setListNameArray(response)));
         break;
       case 'toggleEdit':

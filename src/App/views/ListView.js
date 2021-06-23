@@ -29,17 +29,21 @@ function ListView({ user }) {
   return (
     <>
       <div>
-        {
-          listNameArray.length === 0
+        <ListForm
+          user={user}
+          setListNameArray={setListNameArray}
+        />
+        {/* {
+          listNameArray
             ? <ListForm
               user={user}
               setListNameArray={setListNameArray}
             />
             : ''
-        }
+        } */}
 
         <div>
-            {listNameArray.map((listNameInfo) => (
+            {listNameArray?.map((listNameInfo) => (
               <ListCard
               user={user}
               key={listNameInfo.listID}
@@ -50,7 +54,7 @@ function ListView({ user }) {
             ))}
         </div>
         <div className='cardsHolder'>
-          {listSites.map((siteObj) => (
+          {listSites?.map((siteObj) => (
             <SiteCard
             user={user}
             key={siteObj.listID}
@@ -67,6 +71,8 @@ function ListView({ user }) {
 ListView.propTypes = {
   user: PropTypes.any,
   listNameArray: PropTypes.array,
+  // am i using listNameArray anywhere?
+  setListSites: PropTypes.func,
   setListNameArray: PropTypes.func
 };
 

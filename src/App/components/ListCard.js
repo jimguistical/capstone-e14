@@ -9,14 +9,19 @@ import ListForm from './ListForm';
 // import { getListByListName } from '../../helpers/data/listData';
 // import { getAllListData } from '../../helpers/data/listData';
 
-function ListCard({ user, setListNameArray, ...listNameInfo }) {
+function ListCard({
+  user, setListSites, setListNameArray, ...listNameInfo
+}) {
   const [editNow, setEditNow] = useState(false);
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        console.warn(deleteListSites(listNameInfo.listID, user.uid));
-        // deleteList(user.uid).then((response) => (setListNameArray(response)));
+        deleteListSites(user.uid)
+          .then((response) => {
+            (setListNameArray(response.getListNameArray));
+            (setListSites(response.getSitesList));
+          });
         break;
       case 'toggleEdit':
         setEditNow((prevState) => !prevState);

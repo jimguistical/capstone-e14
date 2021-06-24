@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Jumbo from '../components/Jumbo';
+import homeBackground from '../../../public/austin-wills--qKP-eGqTw0-unsplash.jpg';
 
 function HomeView() {
   // const [listArray, setListArray] = useState([]);
@@ -9,13 +10,9 @@ function HomeView() {
     <div>
         <Jumbo
         />
-         {/* <ListForm
-        user={user}
-        listArray={listArray}
-        setListArray={setListArray}
-        setListObj={setListObj}
-        listObj={listObj}
-      /> */}
+        <div>
+          <img src={homeBackground} ></img>
+        </div>
     </div>
   );
 }

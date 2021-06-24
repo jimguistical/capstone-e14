@@ -46,7 +46,7 @@ function NavBar({ user }) {
           <Nav className="mr-auto" navbar>
             <NavItem>
             <Link className="nav-link" to="/">
-              Social Services Explorer
+              SOCIAL SERVICES EXPLORER
             </Link>
           </NavItem>
             <NavItem>

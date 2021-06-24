@@ -38,12 +38,16 @@ function NavBar({ user }) {
     <div>
       <div>
       <Navbar dark color="dark" expand="sm">
-        <NavbarBrand className="nav-brand">Social Services Explorer</NavbarBrand>
+        <NavbarBrand className="nav-brand">
+        <i className="fab fa-wpexplorer fa-3x"></i>
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/">
+              Social Services Explorer
+            </Link>
           </NavItem>
             <NavItem>
             <Link className="nav-link" to="/service-sites">Browse Service Sites</Link>

@@ -19,14 +19,16 @@ const getList = (uid) => new Promise((resolve, reject) => {
 const getListByListName = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/resourcelist.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const listNameArray = Object.values(response.data);
-      const withListNameArray = listNameArray.filter((listNameObj) => !!listNameObj.listName);
-      resolve(withListNameArray);
+      if (response.data) {
+        const listNameArray = Object.values(response.data);
+        const withListNameArray = listNameArray.filter((listNameObj) => !!listNameObj.listName);
+        resolve(withListNameArray);
+      } else {
+        resolve([]);
+      }
     })
     .catch((error) => reject(error));
 });
-
-// new FB call use Promise.All to getList + getSites with same ListID
 
 const createList = (list, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/resourcelist.json`, list)
@@ -46,12 +48,17 @@ const editList = (list, listID, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteList = (uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/resourcelist.json`)
-    .then(() => getListByListName(uid).then((response) => resolve(response))
-      .catch((error) => reject(error)));
+const getAllListData = (uid) => new Promise((resolve, reject) => {
+  const getListNameArray = getListByListName(uid);
+  const getSitesList = getList(uid);
+  Promise.all([getListNameArray, getSitesList])
+  // Promise.all returns [[0], [1]], then destructure  nested []s to access seperate []s in response
+    .then(([listNameResponse, siteListResponse]) => resolve(
+      { getListNameArray: listNameResponse, getSitesList: siteListResponse }
+    ))
+    .catch((error) => reject(error));
 });
 
 export {
-  getList, getListByListName, createList, editList, deleteList
+  getList, getListByListName, createList, editList, getAllListData
 };

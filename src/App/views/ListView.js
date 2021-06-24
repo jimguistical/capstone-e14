@@ -3,7 +3,11 @@ import React, {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-import { getList, getListByListName } from '../../helpers/data/listData';
+import {
+  getAllListData,
+  // getList,
+  // getListByListName
+} from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
 import SiteCard from '../components/SiteCard';
@@ -13,25 +17,30 @@ function ListView({ user }) {
   const [listSites, setListSites] = useState([]);
 
   useEffect(() => {
-    getListByListName(user.uid).then((response) => (setListNameArray(response)));
-    getList(user.uid).then((response) => (setListSites(response)));
-    // need to create a Promise.all for these two
+    getAllListData(user.uid).then((response) => {
+      (setListNameArray(response.getListNameArray));
+      (setListSites(response.getSitesList));
+    });
   }, []);
 
   return (
     <>
       <div>
-        {
-          listNameArray.length === 0
+        <ListForm
+          user={user}
+          setListNameArray={setListNameArray}
+        />
+        {/* {
+          listNameArray
             ? <ListForm
               user={user}
               setListNameArray={setListNameArray}
             />
             : ''
-        }
+        } */}
 
         <div>
-            {listNameArray.map((listNameInfo) => (
+            {listNameArray?.map((listNameInfo) => (
               <ListCard
               user={user}
               key={listNameInfo.listID}
@@ -42,7 +51,7 @@ function ListView({ user }) {
             ))}
         </div>
         <div className='cardsHolder'>
-          {listSites.map((siteObj) => (
+          {listSites?.map((siteObj) => (
             <SiteCard
             user={user}
             key={siteObj.listID}
@@ -59,6 +68,8 @@ function ListView({ user }) {
 ListView.propTypes = {
   user: PropTypes.any,
   listNameArray: PropTypes.array,
+  // am i using listNameArray anywhere?
+  setListSites: PropTypes.func,
   setListNameArray: PropTypes.func
 };
 

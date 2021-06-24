@@ -54,9 +54,8 @@ function ListForm({
 
 ListForm.propTypes = {
   user: PropTypes.any,
-  listObj: PropTypes.object,
-  setListObj: PropTypes.func,
   setListNameArray: PropTypes.func,
+  sitObj: PropTypes.object
 };
 
 export default ListForm;

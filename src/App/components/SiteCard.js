@@ -26,12 +26,14 @@ function SiteCard({
 
   const handleClick = (type) => {
     if (type === 'add') {
-      addSite(siteCardObj, user.uid)
-        .then((response) => (setSiteCardObj(response)));
+      addSite(siteCardObj, user.uid);
+      console.warn(setSiteCardObj);
+      // .then((response) => (setSiteCardObj(response)));
     } else if (type === 'delete') {
       deleteSite(siteCardObj.listID, user.uid)
         .then((response) => (setListSites(response)));
     } else if (type === 'view') {
+      // add view here
       console.warn('you clicked view card button');
     }
   };
@@ -46,9 +48,9 @@ function SiteCard({
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <ButtonGroup>
-            <Button color='primary'
+            {/* <Button color='primary'
               onClick={() => handleClick('view')}>Details
-            </Button>
+            </Button> */}
             {
               user
                 ? <>

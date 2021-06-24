@@ -6,8 +6,6 @@ import {
 } from 'reactstrap';
 import { deleteListSites } from '../../helpers/data/siteData';
 import ListForm from './ListForm';
-// import { getListByListName } from '../../helpers/data/listData';
-// import { getAllListData } from '../../helpers/data/listData';
 
 function ListCard({
   user, setListSites, setListNameArray, ...listNameInfo
@@ -27,7 +25,6 @@ function ListCard({
         setEditNow((prevState) => !prevState);
         break;
       default:
-        console.warn('nothing selected');
     }
   };
 

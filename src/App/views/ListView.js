@@ -20,9 +20,6 @@ function ListView({ user }) {
     getAllListData(user.uid).then((response) => {
       (setListNameArray(response.getListNameArray));
       (setListSites(response.getSitesList));
-
-      console.warn('test listNameArray', response.getListNameArray);
-      console.warn('test getSitesList', response.getSitesList);
     });
   }, []);
 

@@ -52,7 +52,7 @@ const getAllListData = (uid) => new Promise((resolve, reject) => {
   const getListNameArray = getListByListName(uid);
   const getSitesList = getList(uid);
   Promise.all([getListNameArray, getSitesList])
-  // destructure after Promise.all returns [] of []s to get seperate []s
+  // Promise.all returns [[0], [1]], then destructure  nested []s to access seperate []s in response
     .then(([listNameResponse, siteListResponse]) => resolve(
       { getListNameArray: listNameResponse, getSitesList: siteListResponse }
     ))

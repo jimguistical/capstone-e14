@@ -33,6 +33,7 @@ function SiteCard({
       deleteSite(siteCardObj.listID, user.uid)
         .then((response) => (setListSites(response)));
     } else if (type === 'view') {
+      // add view here
       console.warn('you clicked view card button');
     }
   };

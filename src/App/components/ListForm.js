@@ -40,13 +40,13 @@ function ListForm({
             value={listFormObj.listName}
             onChange={handleInputChange}
           />
-        </FormGroup>
         {
           listFormObj.listID === null
-            ? <Button color='success' onClick={() => handleClick('create')}
-            >Create List</Button>
+            ? <Button outline color='success' onClick={() => handleClick('create')}
+            ><i className="fas fa-plus fa-2x"></i></Button>
             : <Button color='warning' onClick={() => handleClick('editList')}>Update</Button>
         }
+        </FormGroup>
     </Form>
     </>
   );

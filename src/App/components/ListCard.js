@@ -30,20 +30,20 @@ function ListCard({
 
   return (
     <>
-       {<h3>{ listNameInfo.listName }</h3> }
+    <h1 className="display-3">{ listNameInfo.listName }</h1>
+          <h5 className="display-5">Browse services sites or sign in to create your own resource list.</h5>
      <ButtonGroup>
-        <Button color='secondary'
+      {
+           editNow && <ListForm
+           user={user}
+           setListNameArray={setListNameArray}
+           {...listNameInfo}
+           />
+         }
+        <Button color='none'
           onClick={() => handleClick('toggleEdit')}>
-            {editNow ? 'Close' : 'Edit'}
+            {editNow ? <i className="far fa-window-close fa-2x"></i> : <i className="fas fa-edit fa-2x"></i>}
         </Button>
-        {
-            editNow && <ListForm
-            user={user}
-            setListNameArray={setListNameArray}
-            {...listNameInfo}
-            />
-          }
-
         <Button color='danger'
             onClick={() => handleClick('delete')}>X
         </Button>

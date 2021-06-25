@@ -1,7 +1,7 @@
 // .App {
 //   text-align: center;
 // }
-.cardsHolder {
+.siteCardsHolder {
   // background-color: #90b0b6;
   display: flex;
   flex-wrap: wrap;
@@ -9,6 +9,11 @@
   margin-top: 10%;
   justify-content: center;
   // margin-bottom: 10%;
+}
+
+.listCardsHolder {
+text-align: right;
+margin-right: 5%;
 }
 .customizedCard {
   max-width: 300px;

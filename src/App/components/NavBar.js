@@ -26,8 +26,8 @@ function NavBar({ user }) {
               <NavItem className="ml-auto">
             {
               user
-                ? <Button outline color='danger' onClick={signOutUser}>SIGN OUT</Button>
-                : <Button outline color='info' onClick={signInUser}>SIGN IN</Button>
+                ? <Button outline color='danger' size="lg" onClick={signOutUser}>SIGN OUT</Button>
+                : <Button outline color='info' size="lg" onClick={signInUser}>SIGN IN</Button>
             }
               </NavItem>
             </Nav>
@@ -50,7 +50,7 @@ function NavBar({ user }) {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav pills className="mr-auto" navbar>
             <NavItem>
             <Link className="nav-link" to="/">
               SOCIAL SERVICES EXPLORER

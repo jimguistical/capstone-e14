@@ -20,22 +20,29 @@ function NavBar({ user }) {
 
   const authButtons = () => (
     <>
-      <NavItem>
         {
           user !== null
-          && <div>
+          && <Nav>
+              <NavItem className="ml-auto">
             {
               user
-                ? <Button color='danger' onClick={signOutUser}>SIGN OUT</Button>
-                : <Button color='info' onClick={signInUser}>SIGN IN</Button>
+                ? <Button outline color='danger' onClick={signOutUser}>SIGN OUT</Button>
+                : <Button outline color='info' onClick={signInUser}>SIGN IN</Button>
             }
-          </div>
+              </NavItem>
+            </Nav>
         }
-        </NavItem>
     </>
   );
+
+  const authMyList = () => (
+    <NavItem>
+      <Link className='nav-link' to='/my-list'>My List</Link>
+    </NavItem>
+  );
+
   return (
-    <div>
+    <>
       <div>
       <Navbar dark color="dark" expand="sm">
         <NavbarBrand className="nav-brand">
@@ -52,15 +59,13 @@ function NavBar({ user }) {
             <NavItem>
             <Link className="nav-link" to="/service-sites">Browse Service Sites</Link>
           </NavItem>
-          <NavItem>
-            <Link className='nav-link' to='/my-list'>My List</Link>
-          </NavItem>
-            { authButtons() }
+          {user && authMyList() }
           </Nav>
+            { authButtons() }
         </Collapse>
       </Navbar>
     </div>
-    </div>
+    </>
   );
 }
 

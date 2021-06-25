@@ -1,19 +1,23 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import Jumbo from '../components/Jumbo';
-import homeBackground from '../../../public/austin-wills--qKP-eGqTw0-unsplash.jpg';
+// import styled from 'styled-components';
+// import Jumbo from '../components/Jumbo';
+// import homeBackground from '../../assets/austin-wills--qKP-eGqTw0-unsplash.jpg';
+
+// const BackgroundImg = styled.img`
+//   backgroundImage: url(${homeBackground})
+//   width: 100%;
+//   height: 100%;
+//   background-position: center;
+// `;
 
 function HomeView() {
-  // const [listArray, setListArray] = useState([]);
-
   return (
-    <div>
-        <Jumbo
-        />
-        <div>
-          <img src={homeBackground} ></img>
-        </div>
-    </div>
+  <div>
+      {/* <Jumbo/> */}
+      {/* <BackgroundImg src={homeBackground}>
+      </BackgroundImg> */}
+  </div>
   );
 }
 

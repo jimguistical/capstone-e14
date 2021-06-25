@@ -1,18 +1,19 @@
 import React from 'react';
-import { Button, Container, Jumbotron } from 'reactstrap';
+import { Container, Jumbotron } from 'reactstrap';
 
 function Jumbo() {
   return (
     <div>
-       <Jumbotron fluid >
-        <Container fluid transparent>
+       <Jumbotron fluid
+        style={{
+          background: 'none',
+          textAlign: 'right'
+        }}>
+        <Container fluid style={{
+          alignContent: 'right'
+        }}>
           <h1 className="display-3">Find Help in Nashville</h1>
-          <p className="lead">Browse services sites or sign in to create your own resource list.</p>
-          <hr className="my-2" />
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p className="lead">
-          <Button color="primary">Learn More</Button>
-        </p>
+          <h5 className="display-5">Browse services sites or sign in to create your own resource list.</h5>
         </Container>
       </Jumbotron>
     </div>

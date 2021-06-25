@@ -1,7 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Jumbo from '../components/Jumbo';
+// import styled from 'styled-components';
 // import homeBackground from '../../assets/austin-wills--qKP-eGqTw0-unsplash.jpg';
 
 // const BackgroundImg = styled.img`
@@ -11,18 +11,17 @@ import Jumbo from '../components/Jumbo';
 //   background-position: center;
 // `;
 
-function HomeView() {
+function HomeView({ user }) {
   return (
   <div>
-      <Jumbo/>
-      {/* <BackgroundImg src={homeBackground}>
-      </BackgroundImg> */}
+      <Jumbo user={user}
+      />
   </div>
   );
 }
 
-// HomeView.propTypes = {
-//   user: PropTypes.any,
-// };
+HomeView.propTypes = {
+  user: PropTypes.any,
+};
 
 export default HomeView;

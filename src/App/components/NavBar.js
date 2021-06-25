@@ -37,7 +37,7 @@ function NavBar({ user }) {
 
   const authMyList = () => (
     <NavItem>
-      <Link className='nav-link' to='/my-list'>My List</Link>
+      <Link className='nav-link' to='/my-list'><i className="fas fa-list"></i> My List</Link>
     </NavItem>
   );
 
@@ -46,7 +46,7 @@ function NavBar({ user }) {
       <div>
       <Navbar dark color="dark" expand="sm">
         <NavbarBrand className="nav-brand">
-        <i className="fab fa-wpexplorer fa-3x"></i>
+        <i className="fas fa-hands-helping fa-2x"></i>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

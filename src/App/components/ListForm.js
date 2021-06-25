@@ -44,7 +44,7 @@ function ListForm({
           listFormObj.listID === null
             ? <Button outline color='success' onClick={() => handleClick('create')}
             ><i className="fas fa-plus fa-2x"></i></Button>
-            : <Button color='warning' onClick={() => handleClick('editList')}>Update</Button>
+            : <Button onClick={() => handleClick('editList')}>Submit</Button>
         }
         </FormGroup>
     </Form>

@@ -30,8 +30,7 @@ function ListCard({
 
   return (
     <>
-    <h1 className="display-3">{ listNameInfo.listName }</h1>
-          <h5 className="display-5">Browse services sites or sign in to create your own resource list.</h5>
+    <h1 className="display-4">{ listNameInfo.listName }</h1>
      <ButtonGroup>
       {
            editNow && <ListForm
@@ -42,12 +41,12 @@ function ListCard({
          }
         <Button color='none'
           onClick={() => handleClick('toggleEdit')}>
-            {editNow ? <i className="far fa-window-close fa-2x"></i> : <i className="fas fa-edit fa-2x"></i>}
-        </Button>
-        <Button color='danger'
-            onClick={() => handleClick('delete')}>X
+            <i className="fas fa-edit fa-2x"></i>
         </Button>
       </ButtonGroup>
+        <Button color='none'
+            onClick={() => handleClick('delete')}><i className="far fa-trash-alt fa-2x"></i>
+        </Button>
     </>
   );
 }

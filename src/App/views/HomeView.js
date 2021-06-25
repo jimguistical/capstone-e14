@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-// import Jumbo from '../components/Jumbo';
+import Jumbo from '../components/Jumbo';
 // import homeBackground from '../../assets/austin-wills--qKP-eGqTw0-unsplash.jpg';
 
 // const BackgroundImg = styled.img`
@@ -14,7 +14,7 @@ import React from 'react';
 function HomeView() {
   return (
   <div>
-      {/* <Jumbo/> */}
+      <Jumbo/>
       {/* <BackgroundImg src={homeBackground}>
       </BackgroundImg> */}
   </div>

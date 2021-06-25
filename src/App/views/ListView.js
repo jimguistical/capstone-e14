@@ -25,7 +25,7 @@ function ListView({ user }) {
 
   return (
     <>
-      <div>
+      <div className='listCardsHolder'>
         <ListForm
           user={user}
           setListNameArray={setListNameArray}

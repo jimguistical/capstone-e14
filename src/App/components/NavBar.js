@@ -20,43 +20,52 @@ function NavBar({ user }) {
 
   const authButtons = () => (
     <>
-      <NavItem>
         {
           user !== null
-          && <div>
+          && <Nav>
+              <NavItem className="ml-auto">
             {
               user
-                ? <Button color='danger' onClick={signOutUser}>SIGN OUT</Button>
-                : <Button color='info' onClick={signInUser}>SIGN IN</Button>
+                ? <Button outline color='danger' size="lg" onClick={signOutUser}>SIGN OUT</Button>
+                : <Button outline color='info' size="lg" onClick={signInUser}>SIGN IN</Button>
             }
-          </div>
+              </NavItem>
+            </Nav>
         }
-        </NavItem>
     </>
   );
+
+  const authMyList = () => (
+    <NavItem>
+      <Link className='nav-link' to='/my-list'><i className="fas fa-list"></i> My List</Link>
+    </NavItem>
+  );
+
   return (
-    <div>
+    <>
       <div>
       <Navbar dark color="dark" expand="sm">
-        <NavbarBrand className="nav-brand">Social Services Explorer</NavbarBrand>
+        <NavbarBrand className="nav-brand">
+        <i className="fas fa-hands-helping fa-2x"></i>
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav pills className="mr-auto" navbar>
             <NavItem>
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/">
+              SOCIAL SERVICES EXPLORER
+            </Link>
           </NavItem>
             <NavItem>
             <Link className="nav-link" to="/service-sites">Browse Service Sites</Link>
           </NavItem>
-          <NavItem>
-            <Link className='nav-link' to='/my-list'>My List</Link>
-          </NavItem>
-            { authButtons() }
+          {user && authMyList() }
           </Nav>
+            { authButtons() }
         </Collapse>
       </Navbar>
     </div>
-    </div>
+    </>
   );
 }
 

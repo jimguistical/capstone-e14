@@ -22,10 +22,10 @@ function Routes({ user, sites, setSites }) {
     <div>
       <Switch>
         <Route exact path='/'
-          component={() => (
-            <HomeView
+          component={() => <HomeView
+            user={user}
             />
-          )}
+          }
         >
         </Route>
         <Route exact path='/service-sites'
@@ -36,7 +36,6 @@ function Routes({ user, sites, setSites }) {
         >
         </Route>
         <PrivateRoute exact path='/my-list'
-        // /my-list/:listID with useParams
           user={user}
           component={() => <ListView
             user={user}

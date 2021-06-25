@@ -10,8 +10,6 @@ import Routes from '../helpers/Routes';
 
 function App() {
   const [user, setUser] = useState(null);
-  // const [sites, setSites] = useState([]);
-  // const [list, setListObj] = useState({});
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInState) => {
@@ -22,12 +20,8 @@ function App() {
           userName: userInState.email.split('@')[0]
         };
         setUser(userInfoObject);
-        // setSites([]);
-        // getAllSites().then((sitesArray) => setSites(sitesArray));
       } else if (user || user === null) {
         setUser(false);
-        // setSites([]);
-        // getAllSites().then((sitesArray) => (setSites(sitesArray)));
       }
     });
   }, []);
@@ -36,11 +30,7 @@ function App() {
     <div className='App'>
       <Router>
         <NavBar user={user}/>
-        <Routes
-          user={user}
-          // sites={sites}
-          // setSites={setSites}
-        />
+        <Routes user={user}/>
         <Footer/>
       </Router>
     </div>

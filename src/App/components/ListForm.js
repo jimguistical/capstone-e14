@@ -33,7 +33,7 @@ function ListForm({
   };
 
   return (
-      <>
+      <div className='listCardsHolder'>
       <Form autoComplete='off' inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Input type="text" name="listName" id="listName" bsSize="lg"
@@ -48,7 +48,7 @@ function ListForm({
         }
         </FormGroup>
     </Form>
-    </>
+    </div>
   );
 }
 

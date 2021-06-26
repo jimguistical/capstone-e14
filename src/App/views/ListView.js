@@ -3,7 +3,6 @@ import React, {
   useState
 } from 'react';
 import PropTypes from 'prop-types';
-import { CardDeck } from 'reactstrap';
 import {
   getAllListData
 } from '../../helpers/data/listData';
@@ -24,7 +23,7 @@ function ListView({ user }) {
 
   return (
     <>
-      <div className='listCardsHolder'>
+      <div>
         {
           listNameArray?.length === 1
             ? ''
@@ -34,8 +33,7 @@ function ListView({ user }) {
           />
         }
       </div>
-
-      <CardDeck>
+      <div className='listCardsHolder'>
           {listNameArray?.map((listNameInfo) => (
             <ListCard
             user={user}
@@ -45,8 +43,8 @@ function ListView({ user }) {
             {...listNameInfo}
             />
           ))}
-      </CardDeck>
-      <div className='cardsHolder'>
+      </div>
+      <div className='siteCardsHolder'>
         {listSites?.map((siteObj) => (
           <SiteCard
           user={user}

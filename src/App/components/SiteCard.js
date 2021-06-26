@@ -51,6 +51,7 @@ function SiteCard({
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
           <CardText tag='h5'>{siteCardObj.phone_number}</CardText>
 
+        </CardBody>
           <ButtonGroup>
             {/* <Button color='primary'
               onClick={() => handleClick('view')}>Details
@@ -58,19 +59,18 @@ function SiteCard({
             {
               user
                 ? <>
-                    <Button color='success'
+                    <Button color='none'
                       onClick={() => handleClick('add')}>
-                        Add to List
+                        <i className="fas fa-plus-square fa-2x"></i>
                     </Button>
-                    <Button color='danger'
+                    <Button color='none'
                       onClick={() => handleClick('delete')}>
-                        <i className="far fa-trash-alt"></i>
+                        <i className="fas fa-trash fa-2x"></i>
                     </Button>
                   </>
                 : ''
             }
           </ButtonGroup>
-        </CardBody>
       </Card>
   );
 }

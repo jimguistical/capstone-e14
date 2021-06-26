@@ -36,13 +36,13 @@ function ListForm({
       <>
       <Form autoComplete='off' inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input type="text" name="listName" id="listName"
+          <Input type="text" name="listName" id="listName" bsSize="lg"
             value={listFormObj.listName}
             onChange={handleInputChange}
           />
         {
           listFormObj.listID === null
-            ? <Button outline color='success' onClick={() => handleClick('create')}
+            ? <Button outline onClick={() => handleClick('create')}
             ><i className="fas fa-plus fa-2x"></i></Button>
             : <Button onClick={() => handleClick('editList')}>Submit</Button>
         }

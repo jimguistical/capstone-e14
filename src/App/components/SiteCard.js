@@ -41,7 +41,7 @@ function SiteCard({
 
   return (
       <Card body
-        style={{ backgroundColor: 'rgba(242, 241, 239, .6)' }}
+        style={{ backgroundColor: 'rgba(242, 241, 239, .9)' }}
         className='customizedCard'
         key={siteCardObj.building}
       >

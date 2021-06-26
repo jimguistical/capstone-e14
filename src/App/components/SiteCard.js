@@ -40,8 +40,8 @@ function SiteCard({
   };
 
   return (
-      <Card body color='secondary'
-        style={{ background: 'none' }}
+      <Card body
+        style={{ backgroundColor: 'rgba(242, 241, 239, .6)' }}
         className='customizedCard'
         key={siteCardObj.building}
       >
@@ -64,7 +64,7 @@ function SiteCard({
                     </Button>
                     <Button color='danger'
                       onClick={() => handleClick('delete')}>
-                        X
+                        <i className="far fa-trash-alt"></i>
                     </Button>
                   </>
                 : ''

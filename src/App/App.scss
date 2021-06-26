@@ -2,25 +2,27 @@
 //   text-align: center;
 // }
 .siteCardsHolder {
-  // background-color: #90b0b6;
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
-  margin-top: 10%;
+  margin-top: 5%;
   justify-content: center;
-  // margin-bottom: 10%;
+  margin-bottom: 10%;
 }
 
 .listCardsHolder {
-text-align: right;
-margin-right: 5%;
+  justify-content: right;
+  text-align: right;
+  padding-right: 5%;
 }
 .customizedCard {
-  max-width: 300px;
+  max-width: 250px;
+  max-height: auto;
+  justify-content: center;
   overflow: hidden;
-  margin-top: auto;
+  margin: 5px;
+  text-align: center;
 }
 
-// .nav-link {
-  
-// }
+.nav-link {
+  font-size: larger;
+}

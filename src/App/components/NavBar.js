@@ -57,7 +57,9 @@ function NavBar({ user }) {
             </Link>
           </NavItem>
             <NavItem>
-            <Link className="nav-link" to="/service-sites">Browse Service Sites</Link>
+            <Link className="nav-link" to="/service-sites">
+            <i className="far fa-address-book"></i> Browse Service Sites
+            </Link>
           </NavItem>
           {user && authMyList() }
           </Nav>

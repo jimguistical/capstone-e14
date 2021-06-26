@@ -4,9 +4,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import {
-  getAllListData,
-  // getList,
-  // getListByListName
+  getAllListData
 } from '../../helpers/data/listData';
 import ListForm from '../components/ListForm';
 import ListCard from '../components/ListCard';
@@ -25,41 +23,36 @@ function ListView({ user }) {
 
   return (
     <>
-      <div className='listCardsHolder'>
-        <ListForm
-          user={user}
-          setListNameArray={setListNameArray}
-        />
-        {/* {
-          listNameArray
-            ? <ListForm
-              user={user}
-              setListNameArray={setListNameArray}
-            />
-            : ''
-        } */}
-
-        <div>
-            {listNameArray?.map((listNameInfo) => (
-              <ListCard
-              user={user}
-              key={listNameInfo.listID}
-              setListSites={setListSites}
-              setListNameArray={setListNameArray}
-              {...listNameInfo}
-              />
-            ))}
-        </div>
-        <div className='cardsHolder'>
-          {listSites?.map((siteObj) => (
-            <SiteCard
+      <div>
+        {
+          listNameArray?.length === 1
+            ? ''
+            : <ListForm
             user={user}
-            key={siteObj.listID}
+            setListNameArray={setListNameArray}
+          />
+        }
+      </div>
+      <div className='listCardsHolder'>
+          {listNameArray?.map((listNameInfo) => (
+            <ListCard
+            user={user}
+            key={listNameInfo.listID}
             setListSites={setListSites}
-            {...siteObj}
+            setListNameArray={setListNameArray}
+            {...listNameInfo}
             />
           ))}
-        </div>
+      </div>
+      <div className='siteCardsHolder'>
+        {listSites?.map((siteObj) => (
+          <SiteCard
+          user={user}
+          key={siteObj.listID}
+          setListSites={setListSites}
+          {...siteObj}
+          />
+        ))}
       </div>
     </>
   );
@@ -68,7 +61,6 @@ function ListView({ user }) {
 ListView.propTypes = {
   user: PropTypes.any,
   listNameArray: PropTypes.array,
-  // am i using listNameArray anywhere?
   setListSites: PropTypes.func,
   setListNameArray: PropTypes.func
 };

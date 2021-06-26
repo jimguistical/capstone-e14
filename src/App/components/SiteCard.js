@@ -21,6 +21,7 @@ function SiteCard({
     address: siteObj?.address,
     city: siteObj?.city,
     zip_code: siteObj?.zip_code,
+    phone_number: siteObj?.phone_number,
     uid: user.uid || user
   });
 
@@ -40,6 +41,7 @@ function SiteCard({
 
   return (
       <Card body
+        style={{ backgroundColor: 'rgba(242, 241, 239, .6)' }}
         className='customizedCard'
         key={siteCardObj.building}
       >
@@ -47,6 +49,9 @@ function SiteCard({
           <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
+          <CardText tag='h5'>{siteCardObj.phone_number}</CardText>
+
+        </CardBody>
           <ButtonGroup>
             {/* <Button color='primary'
               onClick={() => handleClick('view')}>Details
@@ -54,19 +59,18 @@ function SiteCard({
             {
               user
                 ? <>
-                    <Button color='success'
+                    <Button color='none'
                       onClick={() => handleClick('add')}>
-                        Add to List
+                        <i className="fas fa-plus-square fa-2x"></i>
                     </Button>
-                    <Button color='danger'
+                    <Button color='none'
                       onClick={() => handleClick('delete')}>
-                        X
+                        <i className="fas fa-trash fa-2x"></i>
                     </Button>
                   </>
                 : ''
             }
           </ButtonGroup>
-        </CardBody>
       </Card>
   );
 }

@@ -12,7 +12,7 @@ function SitesView({ user }) {
 
   return (
     <>
-      <div className='cardsHolder' id='sites'>
+      <div className='siteCardsHolder' id='sites'>
       {sites.map((siteObj) => (
         <SiteCard
         user={user}

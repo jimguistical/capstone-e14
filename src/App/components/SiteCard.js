@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  ButtonGroup,
+  // ButtonGroup,
   Card,
   CardBody,
   CardFooter,
@@ -56,17 +56,17 @@ function SiteCard({
           <CardText tag='h5'>{siteCardObj.zip_code}</CardText>
         </CardBody>
 
-          <ButtonGroup>
+          {/* <ButtonGroup> */}
             {/* <Button color='primary'
               onClick={() => handleClick('view')}>Details
             </Button> */}
             {
               user
                 ? <>
-                    <Button color='none'
+                    {/* <Button color='none'
                       onClick={() => handleClick('add')}>
                         <i className="fas fa-plus-square fa-2x"></i>
-                    </Button>
+                    </Button> */}
                     <Button color='none'
                       onClick={() => handleClick('delete')}>
                         <i className="fas fa-trash fa-2x"></i>
@@ -74,7 +74,7 @@ function SiteCard({
                   </>
                 : ''
             }
-          </ButtonGroup>
+          {/* </ButtonGroup> */}
         <CardFooter tag='h5'>{siteCardObj.phone_number}</CardFooter>
       </Card>
   );

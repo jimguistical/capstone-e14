@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  // ButtonGroup,
   Card,
   CardBody,
   CardFooter,
@@ -23,7 +22,6 @@ function SiteCard({
     building: siteObj?.building,
     address: siteObj?.address,
     city: siteObj?.city,
-    state: siteObj?.state,
     zip_code: siteObj?.zip_code,
     phone_number: siteObj?.phone_number,
     uid: user.uid || user
@@ -49,33 +47,30 @@ function SiteCard({
         className='customizedCard'
         key={siteCardObj.building}
       >
-        <CardHeader tag='h4'>{siteCardObj.building}</CardHeader>
+        <CardHeader tag='h4'>{siteCardObj.building}
+        </CardHeader>
         <CardBody>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
-          <CardText tag='h5'>{siteCardObj.city}, TN</CardText>
-          <CardText tag='h5'>{siteCardObj.zip_code}</CardText>
+          <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
+          <CardText tag='h5'></CardText>
+          <CardText tag='h5'>{siteCardObj.phone_number}</CardText>
         </CardBody>
 
-          {/* <ButtonGroup> */}
-            {/* <Button color='primary'
-              onClick={() => handleClick('view')}>Details
-            </Button> */}
             {
               user
-                ? <>
-                    {/* <Button color='none'
+                ? <CardFooter>
+                    <Button color='success' outline
                       onClick={() => handleClick('add')}>
-                        <i className="fas fa-plus-square fa-2x"></i>
-                    </Button> */}
-                    <Button color='none'
-                      onClick={() => handleClick('delete')}>
-                        <i className="fas fa-trash fa-2x"></i>
+                        <i className="fas fa-plus fa-2x"></i>
                     </Button>
-                  </>
+                    <Button color='danger' outline
+                      onClick={() => handleClick('delete')}>
+                        <i className="fas fa-minus fa-2x"></i>
+                    </Button>
+                  </CardFooter>
                 : ''
             }
-          {/* </ButtonGroup> */}
-        <CardFooter tag='h5'>{siteCardObj.phone_number}</CardFooter>
+        {/* <CardFooter tag='h5'>{siteCardObj.phone_number}</CardFooter> */}
       </Card>
   );
 }

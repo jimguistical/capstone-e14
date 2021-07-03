@@ -5,8 +5,11 @@ import {
   ButtonGroup,
   Card,
   CardBody,
+  CardFooter,
+  CardHeader,
+  // CardSubtitle,
   CardText,
-  CardTitle,
+  // CardTitle,
 } from 'reactstrap';
 import { addSite, deleteSite } from '../../helpers/data/siteData';
 
@@ -20,6 +23,7 @@ function SiteCard({
     building: siteObj?.building,
     address: siteObj?.address,
     city: siteObj?.city,
+    state: siteObj?.state,
     zip_code: siteObj?.zip_code,
     phone_number: siteObj?.phone_number,
     uid: user.uid || user
@@ -40,18 +44,18 @@ function SiteCard({
   };
 
   return (
-      <Card body
+      <Card
         style={{ backgroundColor: 'rgba(242, 241, 239, .9)' }}
         className='customizedCard'
         key={siteCardObj.building}
       >
+        <CardHeader tag='h4'>{siteCardObj.building}</CardHeader>
         <CardBody>
-          <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
-          <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
-          <CardText tag='h5'>{siteCardObj.phone_number}</CardText>
-
+          <CardText tag='h5'>{siteCardObj.city}, TN</CardText>
+          <CardText tag='h5'>{siteCardObj.zip_code}</CardText>
         </CardBody>
+
           <ButtonGroup>
             {/* <Button color='primary'
               onClick={() => handleClick('view')}>Details
@@ -71,6 +75,7 @@ function SiteCard({
                 : ''
             }
           </ButtonGroup>
+        <CardFooter tag='h5'>{siteCardObj.phone_number}</CardFooter>
       </Card>
   );
 }

@@ -44,7 +44,7 @@ function NavBar({ user }) {
   return (
     <>
       <div>
-      <Navbar dark color="dark" expand="sm">
+      <Navbar dark color="dark" expand="sm" fixed="top">
         <NavbarBrand className="nav-brand">
         <i className="fas fa-hands-helping fa-2x"></i>
         </NavbarBrand>

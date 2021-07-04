@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  ButtonGroup,
   Card,
   CardBody,
+  CardFooter,
+  CardHeader,
+  // CardSubtitle,
   CardText,
-  CardTitle,
+  // CardTitle,
 } from 'reactstrap';
 import { addSite, deleteSite } from '../../helpers/data/siteData';
 
@@ -40,37 +42,35 @@ function SiteCard({
   };
 
   return (
-      <Card body
+      <Card
         style={{ backgroundColor: 'rgba(242, 241, 239, .9)' }}
         className='customizedCard'
         key={siteCardObj.building}
       >
+        <CardHeader tag='h4'>{siteCardObj.building}
+        </CardHeader>
         <CardBody>
-          <CardTitle tag='h4'>{siteCardObj.building}</CardTitle>
           <CardText tag='h5'>{siteCardObj.address}</CardText>
           <CardText tag='h5'>{siteCardObj.city}, TN {siteCardObj.zip_code}</CardText>
+          <CardText tag='h5'></CardText>
           <CardText tag='h5'>{siteCardObj.phone_number}</CardText>
-
         </CardBody>
-          <ButtonGroup>
-            {/* <Button color='primary'
-              onClick={() => handleClick('view')}>Details
-            </Button> */}
+
             {
               user
-                ? <>
-                    <Button color='none'
+                ? <CardFooter>
+                    <Button color='success' outline
                       onClick={() => handleClick('add')}>
-                        <i className="fas fa-plus-square fa-2x"></i>
+                        <i className="fas fa-plus fa-2x"></i>
                     </Button>
-                    <Button color='none'
+                    <Button color='danger' outline
                       onClick={() => handleClick('delete')}>
-                        <i className="fas fa-trash fa-2x"></i>
+                        <i className="fas fa-minus fa-2x"></i>
                     </Button>
-                  </>
+                  </CardFooter>
                 : ''
             }
-          </ButtonGroup>
+        {/* <CardFooter tag='h5'>{siteCardObj.phone_number}</CardFooter> */}
       </Card>
   );
 }

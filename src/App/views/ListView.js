@@ -49,6 +49,7 @@ function ListView({ user }) {
           <SiteCard
           user={user}
           key={siteObj.listID}
+          listNameArray={listNameArray}
           setListSites={setListSites}
           {...siteObj}
           />

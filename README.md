@@ -1,5 +1,5 @@
  # Social Services Explorer 
-### [Deployed App](https://social-services-explorer.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/aa872c7a-9d6a-4286-8734-9399c65272a2/deploy-status)](https://app.netlify.com/sites/social-services-explorer/deploys)
+### [Deployed App](https://social-services-explorer.netlify.app/)
 ### [Loom Video Walkthrough](https://www.loom.com/share/c2c675dd294d4dc0a579010a60a18afb)
 
 ## Project Overview
@@ -20,7 +20,7 @@ The challenge then is presenting the data as accessible information for the user
 - User can CREATE a List to save relevant Service Sites after logging in
 - User can UPDATE Service Sites on their list and edit List Name
 - User can DELETE their entire list
-### STRETCH:
+### Stretch:
 - User add contact number & zip code on a form to filter Service Sites from their list by distance from user (using zip code or use browser location data)
 - User can select preferred days of the week to visit Service Site on form to filter for Service Sites that are not closed on the given day(s).
 - User can view a map of all Service Sites avaiable pinned to a Google Map view of Davidson Co.
@@ -29,12 +29,15 @@ The challenge then is presenting the data as accessible information for the user
 - [ERD](https://dbdiagram.io/d/60b66194b29a09603d178256)
 - [Project Board](https://github.com/jim-conner/capstone-e14/projects/1)
 - [Wireframes/WorkFlows on Google Slides](https://docs.google.com/presentation/d/1A5SCPPLKYg6TkFqRbmKZ4inmh-UfrmH2fbheuLv-Zm4/edit#slide=id.gdf1d490e82_0_173)
-- [Demo Day Presentation Slides](https://docs.google.com/presentation/d/1dg38g_EPlypge3pvFkFWYHu847aunqBH9o_c4ewJ3A0/edit)
+- [Presentation Slides](https://docs.google.com/presentation/d/1dg38g_EPlypge3pvFkFWYHu847aunqBH9o_c4ewJ3A0/edit)
 
 ### Technologies
 - Javascript ES6, HTML5, CSS, React.js, Reactstrap
 - npm, react-router-dom, Firebase, axios, Postman, Nashville API via Socrata
 - dbdiagram, VSCode, Netlify
+
+![App Screenshot](https://github.com/jim-conner/capstone-e14/blob/development/public/capstone1.jpg)
+![App Screenshot](https://github.com/jim-conner/capstone-e14/blob/development/public/capstone2.jpg)
 
 ### Deployed Personal Bio Site
 - [Netlify Link to Bio Site](https://jim-conner.netlify.app/)
@@ -44,8 +47,8 @@ The challenge then is presenting the data as accessible information for the user
 - [Jim Conner](https://github.com/jim-conner)
 
 ### Code Snippet
-(Link to API){https://dev.socrata.com/foundry/data.nashville.gov/797j-5xh2}
-- example of GET request from Postman: `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token={{MSS_APP_KEY}}&building=Cohn Community Center`
+- [API Source](https://dev.socrata.com/foundry/data.nashville.gov/797j-5xh2)
+example of GET request from Postman: `https://data.nashville.gov/resource/797j-5xh2.json?$$app_token={{MSS_APP_KEY}}&building=Cohn Community Center`
 ```[
     {
         "organization_name": "Metro Social Services",

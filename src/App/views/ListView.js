@@ -49,6 +49,7 @@ function ListView({ user }) {
           <SiteCard
           user={user}
           key={siteObj.listID}
+          listNameArray={listNameArray}
           setListSites={setListSites}
           {...siteObj}
           />
@@ -60,7 +61,6 @@ function ListView({ user }) {
 
 ListView.propTypes = {
   user: PropTypes.any,
-  listNameArray: PropTypes.array,
   setListSites: PropTypes.func,
   setListNameArray: PropTypes.func
 };

@@ -15,6 +15,7 @@ import { addSite, deleteSite } from '../../helpers/data/siteData';
 function SiteCard({
   user,
   setListSites,
+  listNameArray,
   ...siteObj
 }) {
   const [siteCardObj, setSiteCardObj] = useState({
@@ -55,22 +56,24 @@ function SiteCard({
           <CardText tag='h5'></CardText>
           <CardText tag='h5'>{siteCardObj.phone_number}</CardText>
         </CardBody>
-
-            {
-              user
-                ? <CardFooter>
-                    <Button color='success' outline
-                      onClick={() => handleClick('add')}>
-                        <i className="fas fa-plus fa-2x"></i>
-                    </Button>
-                    <Button color='danger' outline
+            <>
+              {
+                user
+                && <CardFooter>
+                  {
+                    listNameArray?.length === 1
+                      ? <Button color='danger' outline
                       onClick={() => handleClick('delete')}>
                         <i className="fas fa-minus fa-2x"></i>
                     </Button>
-                  </CardFooter>
-                : ''
-            }
-        {/* <CardFooter tag='h5'>{siteCardObj.phone_number}</CardFooter> */}
+                      : <Button color='success' outline
+                    onClick={() => handleClick('add')}>
+                      <i className="fas fa-plus fa-2x"></i>
+                  </Button>
+                  }
+                </CardFooter>
+              }
+            </>
       </Card>
   );
 }
@@ -79,6 +82,7 @@ SiteCard.propTypes = {
   user: PropTypes.any,
   siteObj: PropTypes.object,
   setSiteCardObj: PropTypes.func,
+  listNameArray: PropTypes.array,
   setListSites: PropTypes.func
 };
 

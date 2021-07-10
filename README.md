@@ -1,6 +1,6 @@
  # Social Services Explorer 
 ### [Deployed App](https://social-services-explorer.netlify.app/)
-### [Loom Video Walkthrough](https://www.loom.com/share/c2c675dd294d4dc0a579010a60a18afb)
+### [Loom Video Walkthrough](https://www.loom.com/share/5de654aa739c4cb3bbf50da569e69d96)
 
 ## Project Overview
 Social Services Explorer showcases skills honed while a student at Nashville Software School.

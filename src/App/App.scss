@@ -1,3 +1,28 @@
-.App {
+// .App {
+//   text-align: center;
+// }
+.siteCardsHolder {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10%;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.listCardsHolder {
+  justify-content: right;
+  text-align: right;
+  padding-right: 5%;
+}
+.customizedCard {
+  max-width: 250px;
+  max-height: auto;
+  justify-content: center;
+  overflow: hidden;
+  margin: 5px;
   text-align: center;
+}
+
+.nav-link {
+  font-size: larger;
 }

@@ -1,6 +1,11 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
 
-// body {
-//   background-color: $favColor;
-// }
+body {
+  background-color: $favColor;
+  background-image: url('../assets/austin-wills--qKP-eGqTw0-unsplash.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
